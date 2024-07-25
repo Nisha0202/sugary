@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <>
 
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 px-0">
   <div className="navbar-start">
     {/* menu */}
     <div className="dropdown">
