@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.roboto{
+  font-family: "Roboto", sans-serif;
+}
+
+.container{
+  max-width: 1180px;
+  padding: 0px 4px;
+  margin: 0px auto;
+}
+
+
