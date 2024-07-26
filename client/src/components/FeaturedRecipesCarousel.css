@@ -1,0 +1,25 @@
+/* FeaturedRecipesCarousel.css */
+.carousel-image {
+    height: 280px; /* Set height to 300px */
+    width: 300px; /* Full width */
+    object-fit: cover; /* Cover the image */
+    margin: 0 auto; /* Center align */
+  }
+  
+  .carousel-content {
+    text-align: center; /* Center align text */
+    padding: 20px 0px; /* Add padding for better readability */
+  }
+  
+  .carousel-image {
+    outline: none; /* Removes the focus outline */
+  }
+  
+  .carousel-image:focus {
+    outline: none; /* Ensures no outline on focus */
+  }
+
+  Slider:focus{
+    outline: none;
+  }
+  

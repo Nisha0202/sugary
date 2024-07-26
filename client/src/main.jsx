@@ -9,6 +9,7 @@ import Root from './root/Root';
 import FirbaseProvider from './FirebaseProbider/FirbaseProvider';
 import ErrorPage from './components/ErrorPage'
 import Home from './pages/Home';
+import Menu from './pages/Menu';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home/>,
+      },
+      {
+        path: "/menu",
+        element: <Menu/>,
       }
  
     ],

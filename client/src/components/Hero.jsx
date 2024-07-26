@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Hero() {
     return (
         <>
-            <section className="relative w-full h-[380px] mt-3">
+            <section className="relative w-full h-[380px] mt-6">
                 {/* Video Background */}
                 <video
                     autoPlay

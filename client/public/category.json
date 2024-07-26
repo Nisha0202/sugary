@@ -1,4 +1,4 @@
 [
-    {"CategoryName": "Non-vegan"},
-    {"CategoryName": "Vegan"}
+    {"category": "non-vegan"},
+    {"category": "vegan"}
 ]
