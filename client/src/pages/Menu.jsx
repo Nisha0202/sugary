@@ -20,11 +20,11 @@ const Menu = () => {
     }, []);
 
     return (
-        <div className="flex flex-col gap-4 justify-center items-center h-auto mt-12 lg:mt-20">
+        <div className="flex flex-col gap-4 justify-center items-center h-auto ">
             <section>
-                <h2 className="text-2xl w-full font-semibold text-center text-primary">Our Menu</h2>
+                <h2 className="text-2xl w-full font-semibold text-center text-primary mt-6">Our Menu</h2>
             </section>
-            <div className="flex flex-wrap gap-4 justify-center items-center h-auto my-8">
+            <div className="flex flex-wrap gap-4 justify-center items-center h-auto my-4">
                 {cupcakes.map((cupcake, index) => (
                     <Card key={index} cupcake={cupcake} />
                 ))}

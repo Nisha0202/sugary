@@ -39,9 +39,9 @@ const [cupcakes, setCupcakes] = useState([]);
   };
 
   return (
-    <div className='max-w-[1200px] mx-auto mt-8 lg:mt-12 mb-16 lg:mb-24'>
+    <div className='max-w-[1200px] mx-auto mt-8 lg:mt-12 mb-16 lg:mb-28'>
       <Slider {...settings}>
-        {cupcakes.map(cupcake => (
+      {cupcakes.slice(0, 5).map((cupcake) => (
           <div key={cupcake._id} className='border-0 outline-none'>
             <Link to={"/menu"} legacyBehavior>
                 <img
