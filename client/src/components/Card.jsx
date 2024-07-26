@@ -28,8 +28,8 @@ const Card = ({ cupcake }) => {
         <div className="w-72 rounded-md flex justify-center items-center text-center flex-col border-2 overflow-hidden p-4 bg-white">
             <img className="w-full h-52 rounded-md object-cover border-2 " src={cupcake.image} alt={cupcake.title} />
             <div className="py-4">
-                <div className="font-semibold tracking-wide text-text2 text-xl h-8">{cupcake.title}</div>
-                <div className="text-sm tracking-wider mt-4 h-16">{cupcake.description}</div>
+                <div className="font-medium tracking-wide text-xl h-6">{cupcake.title}</div>
+                <div className="text-sm tracking-wider mt-4 h-14">{cupcake.description}</div>
             </div>
             <div className="">
                 {/* selection */}
@@ -41,7 +41,8 @@ const Card = ({ cupcake }) => {
                         <div className="relative">
                             <select
                                 id="boxSize"
-                                className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                                className="block input input-sm text-sm appearance-none w-full bg-white border border-gray-400 hover:border-gray-500
+                                 rounded-sm leading-tight focus:outline-none focus:shadow-outline"
                                 value={boxSize}
                                 onChange={handleBoxSizeChange}
                             >
@@ -57,27 +58,28 @@ const Card = ({ cupcake }) => {
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm  mb-2" htmlFor="quantity">
-                            Select Quantity:
+                            Select Quantity of Box:
                         </label>
                         <input
                             type="number"
                             id="quantity"
                             min="1" max={"6"}
-                            className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                            className="block input input-sm appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 
+                            rounded-sm leading-tight focus:outline-none focus:shadow-outline"
                             value={quantity}
                             onChange={handleQuantityChange}
                         />
                     </div>
                 </div>
-
-
                 {/* result */}
                 <div>
-                    <p className="text-sm ">Total Boxes: {quantity}</p>
+                    <p className="text-sm ">Total Boxes: {quantity} {boxSize === 6 ? "(Regular)" : "(Large)"}</p>
+                    <p className="text-sm mt-2">Total Quantity: {quantity*boxSize} pieces <span>{cupcake.weight}g each</span></p>
+                    
                     <p className="mt-2  ">Total Price: <span className=' text-secondary font-semibold'>{(price * quantity).toFixed(2)}Tk</span></p>
                 </div>
                 {/* action */}
-                <button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <button className="mt-4 w-full border-2 border-green-600 text-green-600 tracking-wide hover:bg-gray-100 font-bold py-2 px-4 rounded">
                     Add to Cart
                 </button>
             </div>
