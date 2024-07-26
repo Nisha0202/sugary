@@ -24,7 +24,7 @@ const Menu = () => {
             <section>
                 <h2 className="text-2xl w-full font-semibold text-center text-primary mt-6">Our Menu</h2>
             </section>
-            <div className="flex flex-wrap gap-4 justify-center items-center h-auto my-4">
+            <div className="flex flex-wrap gap-6 md:gap-8 justify-center items-center h-auto my-4">
                 {cupcakes.map((cupcake, index) => (
                     <Card key={index} cupcake={cupcake} />
                 ))}

@@ -25,17 +25,17 @@ const Card = ({ cupcake }) => {
     }
 
     return (
-        <div className="w-72 rounded-md border-2 overflow-hidden p-4 bg-white">
+        <div className="w-72 rounded-md flex justify-center items-center text-center flex-col border-2 overflow-hidden p-4 bg-white">
             <img className="w-full h-52 rounded-md object-cover border-2" src={cupcake.image} alt={cupcake.title} />
             <div className="py-4">
-                <div className="font-bold text-xl">{cupcake.title}</div>
-                <div className="text-sm tracking-wider mt-4">{cupcake.description}</div>
+                <div className="font-semibold tracking-wider text-text2 text-xl">{cupcake.title}</div>
+                <div className="text-sm tracking-wider mt-4 h-16">{cupcake.description}</div>
             </div>
             <div className="">
                 {/* selection */}
-                <div className='flex gap-4'>
+                <div className='flex justify-between items-center w-full gap-6 font-medium'>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="boxSize">
+                        <label className="block text-gray-700 text-sm  mb-2" htmlFor="boxSize">
                             Select Box Size:
                         </label>
                         <div className="relative">
@@ -56,7 +56,7 @@ const Card = ({ cupcake }) => {
                         </div>
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="quantity">
+                        <label className="block text-gray-700 text-sm  mb-2" htmlFor="quantity">
                             Select Quantity:
                         </label>
                         <input
@@ -73,11 +73,11 @@ const Card = ({ cupcake }) => {
 
                 {/* result */}
                 <div>
-                    <p className="text-lg">Total Boxes: {quantity}</p>
-                    <p className="text-lg font-bold">Total Price: ${(price * quantity).toFixed(2)}</p>
+                    <p className="text-sm ">Total Boxes: {quantity}</p>
+                    <p className="mt-2  ">Total Price: <span className=' text-secondary font-semibold'>{(price * quantity).toFixed(2)}Tk</span></p>
                 </div>
                 {/* action */}
-                <button className="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                     Add to Cart
                 </button>
             </div>

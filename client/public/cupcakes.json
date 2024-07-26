@@ -3,80 +3,96 @@
       "title": "Chocolate Delight",
       "description": "A rich and creamy chocolate cupcake, perfect for chocolate lovers.",
       "image": "https://i.pinimg.com/564x/1a/34/56/1a3456c3a34d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 16,
-      "pricePerTwelve": 30,
+      "pricePerSix": 560,
+      "pricePerTwelve": 1030,
       "category": "non-vegan"
     },
     {
       "title": "Vanilla Dream",
       "description": "A light and fluffy vanilla cupcake, great for any occasion.",
       "image": "https://i.pinimg.com/564x/3b/45/67/3b45672c3b7d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 14,
-      "pricePerTwelve": 26,
+      "pricePerSix": 440,
+      "pricePerTwelve": 820,
       "category": "non-vegan"
     },
     {
       "title": "Red Velvet",
       "description": "A classic red velvet cupcake with a hint of cocoa and cream cheese frosting.",
       "image": "https://i.pinimg.com/564x/4c/56/78/4c56781234d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 17,
-      "pricePerTwelve": 32,
+      "pricePerSix": 600,
+      "pricePerTwelve": 1200,
       "category": "non-vegan"
     },
     {
       "title": "Strawberry Bliss",
       "description": "A fresh and fruity strawberry cupcake, perfect for summer.",
       "image": "https://i.pinimg.com/564x/5d/67/89/5d67893a5d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 15,
-      "pricePerTwelve": 28,
+      "pricePerSix": 500,
+      "pricePerTwelve": 1000,
       "category": "non-vegan"
     },
     {
       "title": "Lemon Zest",
       "description": "A tangy and refreshing lemon cupcake, ideal for a zesty treat.",
       "image": "https://i.pinimg.com/564x/6e/78/9a/6e789a345d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 14,
-      "pricePerTwelve": 27,
+      "pricePerSix": 480,
+      "pricePerTwelve": 990,
       "category": "non-vegan"
     },
     {
       "title": "Carrot Cake",
       "description": "A moist and spiced carrot cupcake with a hint of cinnamon.",
       "image": "https://i.pinimg.com/564x/7f/89/ab/7f89ab456d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 16,
-      "pricePerTwelve": 29,
+      "pricePerSix": 620,
+      "pricePerTwelve": 1200,
       "category": "non-vegan"
     },
     {
       "title": "Peanut Butter Cup",
       "description": "A rich and nutty peanut butter cupcake, perfect for peanut butter lovers.",
       "image": "https://i.pinimg.com/564x/8g/90/bc/8g90bc567d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 17,
-      "pricePerTwelve": 31,
+      "pricePerSix": 490,
+      "pricePerTwelve": 940,
+      "category": "non-vegan"
+    },
+    {
+      "title": "Chocolate Hazelnut Delight",
+      "description": "A decadent chocolate cupcake with a smooth hazelnut filling and a chocolate ganache topping.",
+      "image": "https://i.pinimg.com/564x/6c/14/58/6c1458db54d7a2e8f1c7f7469b4e4a.jpg",
+      "pricePerSix": 580,
+      "pricePerTwelve": 1060,
       "category": "non-vegan"
     },
     {
       "title": "Vegan Chocolate",
       "description": "A deliciously rich and moist vegan chocolate cupcake.",
       "image": "https://i.pinimg.com/564x/9h/01/cd/9h01cd678d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 18,
-      "pricePerTwelve": 34,
+      "pricePerSix": 500,
+      "pricePerTwelve": 1000,
       "category": "vegan"
     },
     {
       "title": "Vegan Vanilla",
       "description": "A light and fluffy vegan vanilla cupcake, perfect for any occasion.",
       "image": "https://i.pinimg.com/564x/0i/12/de/0i12de789d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 16,
-      "pricePerTwelve": 30,
+      "pricePerSix": 360,
+      "pricePerTwelve": 700,
       "category": "vegan"
     },
     {
       "title": "Vegan Red Velvet",
       "description": "A classic vegan red velvet cupcake with a hint of cocoa.",
       "image": "https://i.pinimg.com/564x/1j/23/ef/1j23ef890d7d09b9a27f84f08e03b8.jpg",
-      "pricePerSix": 19,
-      "pricePerTwelve": 35,
+      "pricePerSix": 570,
+      "pricePerTwelve": 1035,
+      "category": "vegan"
+    },
+    {
+      "title": "Vanilla Bean Dream",
+      "description": "A classic vanilla cupcake with a rich and creamy vanilla bean frosting, perfect for vanilla lovers.",
+      "image": "https://i.pinimg.com/564x/7a/94/ef/7a94ef5c3f1a1c95c8c1c8f528a45b.jpg",
+      "pricePerSix": 510,
+      "pricePerTwelve": 1000,
       "category": "vegan"
     }
   ]
