@@ -1,7 +1,7 @@
 [
   {
       "title": "Chocolate Delight",
-      "description": "A rich and creamy chocolate cupcake, perfect for chocolate lovers.",
+      "description": "A rich and creamy chocolate cupcake for chocolate lovers.",
       "image": "https://i.pinimg.com/564x/1a/34/56/1a3456c3a34d7d09b9a27f84f08e03b8.jpg",
       "pricePerSix": 560,
       "pricePerTwelve": 1030,
@@ -19,7 +19,7 @@
   },
   {
       "title": "Red Velvet",
-      "description": "A classic red velvet cupcake with a hint of cocoa and cream cheese frosting.",
+      "description": "A classic red velvet cupcake with cream cheese frosting.",
       "image": "https://i.pinimg.com/564x/4c/56/78/4c56781234d7d09b9a27f84f08e03b8.jpg",
       "pricePerSix": 600,
       "pricePerTwelve": 1200,
@@ -55,7 +55,7 @@
   },
   {
       "title": "Peanut Butter Cup",
-      "description": "A rich and nutty peanut butter cupcake, perfect for peanut butter lovers.",
+      "description": "A rich and nutty peanut butter cupcake for peanut butter lovers.",
       "image": "https://i.pinimg.com/564x/8g/90/bc/8g90bc567d7d09b9a27f84f08e03b8.jpg",
       "pricePerSix": 490,
       "pricePerTwelve": 940,
@@ -63,8 +63,8 @@
       "weight": 75
   },
   {
-      "title": "Choco Hazelnut Bliss",
-      "description": "A decadent chocolate cupcake with a smooth hazelnut filling and a chocolate ganache topping.",
+      "title": "Choco Hazelnut",
+      "description": "A decadent chocolate cupcake with a smooth hazelnut and a chocolate ganache.",
       "image": "https://i.pinimg.com/564x/6c/14/58/6c1458db54d7a2e8f1c7f7469b4e4a.jpg",
       "pricePerSix": 580,
       "pricePerTwelve": 1060,
@@ -99,8 +99,8 @@
       "weight": 80
   },
   {
-      "title": "Vanilla Bean Dream",
-      "description": "A classic vanilla cupcake with a rich and creamy vanilla bean frosting, perfect for vanilla lovers.",
+      "title": "Vanilla Dream",
+      "description": "A classic vanilla cupcake with a rich and creamy vanilla bean frosting.",
       "image": "https://i.pinimg.com/564x/7a/94/ef/7a94ef5c3f1a1c95c8c1c8f528a45b.jpg",
       "pricePerSix": 510,
       "pricePerTwelve": 1000,
