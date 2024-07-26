@@ -1,7 +1,10 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 export default function Header() {
+  const location = useLocation()
+  const isMenuActive = location.pathname === '/menu'
+
   return (
     <div className="navbar bg-base-100 focus:bg-transparent px-0 hover:bg-none">
       <div className="navbar-start">
@@ -57,7 +60,8 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div className="text-xl text-pink-600 font-semibold">Sugary</div>
+        <NavLink  NavLink
+              to="/" className="text-lg text-pink-600 font-semibold">Sugary</NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 bg-transparent">
@@ -65,7 +69,7 @@ export default function Header() {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "font-bold bg-transparent focus:bg-transparent" : ""
+                isActive ? "font-bold bg-transparent focus:bg-transparent" : "hover:none"
               }
             >
               Home
@@ -75,7 +79,7 @@ export default function Header() {
             <NavLink
               to="/my-orders"
               className={({ isActive }) =>
-                isActive ? "font-bold bg-transparent focus:bg-transparent" : ""
+                isActive ? "font-bold bg-transparent focus:bg-transparent" : "hover:none"
               }
             >
               My Orders
@@ -85,7 +89,7 @@ export default function Header() {
             <NavLink
               to="/menu"
               className={({ isActive }) =>
-                isActive ? "font-bold bg-transparent focus:bg-transparent" : ""
+                isActive ? "font-bold bg-transparent focus:bg-transparent" : "hover:none"
               }
             >
               Menu
@@ -93,7 +97,14 @@ export default function Header() {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end flex items-center text-sm rounded-md">
+        {/* {isMenuActive && (
+          <input
+            type="text"
+            placeholder="Search..."
+            className="input focus:ring-0 input-sm input-bordered mr-4  flex items-center  gap-2 text-black rounded-md"
+          />
+        )} */}
         <NavLink to="/login" className="btn btn-sm text-green-600 tracking-wider rounded-md">
           Login
         </NavLink>
@@ -101,3 +112,4 @@ export default function Header() {
     </div>
   )
 }
+
