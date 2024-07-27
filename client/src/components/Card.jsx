@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IoMdArrowDropdown } from "react-icons/io";
-
+import { FaCartPlus } from "react-icons/fa6";
 const Card = ({ cupcake }) => {
     const [boxSize, setBoxSize] = useState(6);
     const [quantity, setQuantity] = useState(1);
@@ -29,7 +29,7 @@ const Card = ({ cupcake }) => {
         <div className="w-72 rounded-md flex justify-center items-center text-center flex-col border-2 overflow-hidden p-4 bg-white">
             <img className="w-64 h-52 rounded-md object-cover border-2
              transform transition-transform duration-300 hover:scale-105 " src={cupcake.image} alt={cupcake.title} />
-          
+
             <div className="py-4">
                 <div className='w-full justify-between flex items-center h-6 px-2'>
                     <div className="font-medium tracking-wide text-xl ">{cupcake.title}</div>
@@ -40,7 +40,7 @@ const Card = ({ cupcake }) => {
             </div>
             <div className="px-2 w-full">
                 {/* selection */}
-                <div className='flex w-full justify-between items-center gap-8 font-medium '>
+                <div className='flex w-full justify-between items-center font-medium gap-4'>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm  mb-2" htmlFor="boxSize">
                             Box Size:
@@ -48,7 +48,7 @@ const Card = ({ cupcake }) => {
                         <div className="relative">
                             <select
                                 id="boxSize"
-                                className="block p-2 min-w-24 text-sm appearance-none bg-white border border-gray-400 hover:border-gray-500
+                                className="block py-2 px-4 min-w-28 text-sm appearance-none bg-white border border-gray-400 hover:border-gray-500
                                  rounded leading-tight focus:outline-none focus:shadow-outline"
                                 value={boxSize}
                                 onChange={handleBoxSizeChange}
@@ -69,7 +69,7 @@ const Card = ({ cupcake }) => {
                             type="number"
                             id="quantity"
                             min="1" max={"6"}
-                            className="block p-2 appearance-none text-sm w-24 bg-white border border-gray-400 hover:border-gray-500 
+                            className="block py-2 px-4 appearance-none text-sm w-28 bg-white border border-gray-400 hover:border-gray-500 
                             rounded leading-tight focus:outline-none focus:shadow-outline"
                             value={quantity}
                             onChange={handleQuantityChange}
@@ -84,9 +84,18 @@ const Card = ({ cupcake }) => {
                     <p className="mt-2  ">Total Price: <span className=' text-pink-500 font-semibold'>{(price * quantity).toFixed(2)}Tk</span></p>
                 </div>
                 {/* action */}
-                <button className="mt-4 w-full border-2 border-green-600 text-green-600 tracking-wide hover:bg-gray-100 font-bold py-2 px-4 rounded">
-                    Add to Cart
-                </button>
+                <div className='w-full flex items-center justify-between gap-4 mt-4'>
+
+                    <button className="w-full flex py-2 items-center justify-center gap-2 border-2 border-green-600 text-green-600 tracking-wide
+                     hover:bg-gray-300 font-bold rounded">
+                        <FaCartPlus /> Add
+                    </button>
+                    <button className="w-full border-0 py-2 bg-gray-100 text-green-600 tracking-wide hover:bg-gray-300 font-bold  rounded">
+                        More
+                    </button>
+
+                </div>
+
             </div>
         </div>
     );
