@@ -67,7 +67,7 @@ const Menu = () => {
             {/* menu */}
             <div className="flex flex-wrap gap-6 md:gap-10 justify-center items-center h-auto mb-4 mt-0 md:mt-4">
              
-            <Slide>
+            <Slide triggerOnce>
                  {currentItems.map((cupcake, index) => (
                     <Card key={index} cupcake={cupcake} />
                 ))}
