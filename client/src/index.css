@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 .roboto{
   font-family: "Roboto", sans-serif;
 }
@@ -15,9 +12,16 @@
   margin: 0px auto;
 }
 
-.fixed {
-  position: fixed !important;
+
+.navbar-container {
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1000; /* Ensure the navbar stays on top */
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  padding-top: 60px; /* Adjust based on the height of your navbar */
 }

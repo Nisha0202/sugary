@@ -6,7 +6,8 @@ export default function Header() {
   const isMenuActive = location.pathname === '/menu'
 
   return (
-    <div className="navbar bg-base-100 focus:bg-transparent px-0 hover:bg-none">
+    <div className='navbar-container'>
+       <div className="navbar max-w-[1180px] bg-base-100 focus:bg-transparent px-2 hover:bg-none fixed">
       <div className="navbar-start">
         {/* menu */}
         <div className="dropdown">
@@ -87,18 +88,13 @@ export default function Header() {
         </ul>
       </div>
       <div className="navbar-end flex items-center text-sm rounded-md">
-        {/* {isMenuActive && (
-          <input
-            type="text"
-            placeholder="Search..."
-            className="input focus:ring-0 input-sm input-bordered mr-4  flex items-center  gap-2 text-black rounded-md"
-          />
-        )} */}
-        <NavLink to="/login" className="btn btn-sm text-green-600 tracking-wider rounded-md">
+        <NavLink to="/login" className=" bg-gray-100 px-4 py-2 font-bold text-green-600 tracking-wider rounded-md">
           Login
         </NavLink>
       </div>
     </div>
+    </div>
+   
   )
 }
 

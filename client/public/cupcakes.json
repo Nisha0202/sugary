@@ -6,7 +6,9 @@
       "pricePerSix": 560,
       "pricePerTwelve": 1030,
       "category": "non-vegan",
-      "weight": 75
+      "weight": 752,
+      "ingredients": ["flour", "sugar", "cocoa powder", "butter", "eggs", "milk", "baking powder", "vanilla extract"],
+      "others": []
   },
   {
       "title": "Vanilla Dream",
@@ -15,7 +17,9 @@
       "pricePerSix": 440,
       "pricePerTwelve": 820,
       "category": "non-vegan",
-      "weight": 70
+      "weight": 70,
+      "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "vanilla extract"],
+      "others": []
   },
   {
       "title": "Red Velvet",
@@ -24,8 +28,10 @@
       "pricePerSix": 600,
       "pricePerTwelve": 1200,
       "category": "non-vegan",
-      "weight": 80
-  },
+      "weight": 80,
+      "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "cocoa powder", "red food coloring", "cream cheese"],
+      "others": []
+    },
   {
       "title": "Strawberry Bliss",
       "description": "A fresh and fruity strawberry cupcake, perfect for summer.",
@@ -33,7 +39,9 @@
       "pricePerSix": 500,
       "pricePerTwelve": 1000,
       "category": "non-vegan",
-      "weight": 75
+      "weight": 75,
+      "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "strawberries", "vanilla extract"],
+      "others": []
   },
   {
       "title": "Lemon Zest",
@@ -42,7 +50,9 @@
       "pricePerSix": 480,
       "pricePerTwelve": 990,
       "category": "non-vegan",
-      "weight": 70
+      "weight": 70,
+      "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "lemon zest", "lemon juice"],
+      "others": []
   },
   {
       "title": "Carrot Cake",
@@ -51,7 +61,9 @@
       "pricePerSix": 620,
       "pricePerTwelve": 1200,
       "category": "non-vegan",
-      "weight": 85
+      "weight": 85,
+      "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "carrots", "cinnamon", "nutmeg"],
+      "others": []
   },
   {
       "title": "Peanut Butter Cup",
@@ -60,7 +72,9 @@
       "pricePerSix": 490,
       "pricePerTwelve": 940,
       "category": "non-vegan",
-      "weight": 75
+      "weight": 75,
+      "ingredients": ["flour", "sugar", "cocoa powder", "vegan butter", "plant-based milk", "baking powder", "vanilla extract"],
+      "others": []
   },
   {
       "title": "Choco Hazelnut",
@@ -69,7 +83,9 @@
       "pricePerSix": 580,
       "pricePerTwelve": 1060,
       "category": "non-vegan",
-      "weight": 80
+      "weight": 80,
+      "ingredients": ["flour", "sugar", "cocoa powder", "butter", "eggs", "milk", "baking powder", "hazelnuts", "chocolate ganache"],
+      "others": []
   },
   {
       "title": "Vegan Chocolate",
@@ -78,7 +94,9 @@
       "pricePerSix": 500,
       "pricePerTwelve": 1000,
       "category": "vegan",
-      "weight": 75
+      "weight": 75,
+      "ingredients": ["flour", "sugar", "cocoa powder", "vegan butter", "plant-based milk", "baking powder", "vanilla extract"],
+      "others": []
   },
   {
       "title": "Vegan Vanilla",
@@ -87,16 +105,21 @@
       "pricePerSix": 360,
       "pricePerTwelve": 700,
       "category": "vegan",
-      "weight": 70
+      "weight": 70,
+      "ingredients": ["flour", "sugar", "vegan butter", "plant-based milk", "baking powder", "vanilla extract"],
+      "others": []
+
   },
   {
       "title": "Vegan Red Velvet",
       "description": "A classic vegan red velvet cupcake with a hint of cocoa.",
-      "image": "https://i.pinimg.com/564x/59/91/8f/59918f1f67c151e8e4c5d4f0cd1530c8.jpg",
+      "image": "https://i.pinimg.com/564x/d9/bd/ef/d9bdefd4bd3203fa770823b612d9d08a.jpg",
       "pricePerSix": 570,
       "pricePerTwelve": 1035,
       "category": "vegan",
-      "weight": 80
+      "weight": 80,
+      "ingredients": ["flour", "sugar", "vegan butter", "plant-based milk", "baking powder", "cocoa powder", "red food coloring"],
+      "others": []
   },
   {
       "title": "Vanilla Bean",
@@ -105,6 +128,8 @@
       "pricePerSix": 510,
       "pricePerTwelve": 1000,
       "category": "vegan",
-      "weight": 75
+      "weight": 75,
+      "ingredients": ["flour", "sugar", "vegan butter", "plant-based milk", "baking powder", "vanilla bean"],
+      "others": []
   }
 ]

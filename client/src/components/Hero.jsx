@@ -1,6 +1,4 @@
 import React from 'react'
-import { FiSearch } from "react-icons/fi";
-import { Link } from 'react-router-dom';
 export default function Hero() {
     return (
         <>
@@ -21,11 +19,12 @@ export default function Hero() {
                 <div className="relative w-full h-full flex  items-center justify-center text-center text-white">
                     <div>
                         <h1 className="text-4xl font-bold drop-shadow-2xl">Welcome to Sugary</h1>
-                        <p className="mt-4 mb-6 drop-shadow-2xl max-w-xl px-4  tracking-wide">Creating beautifully decorated, 
+                        <p className="mt-4 mb-6 drop-shadow-2xl max-w-xl px-4 tracking-wide">Creating beautifully decorated, 
                             mouth-watering cupcakes that are perfect for any occasion
                              </p>
-                            <button className='btn rounded-md bg-gray-200 text-green-600 btn-sm'>
-                            Treat Yourself Today
+                            <button className=' font-medium rounded-md bg-gray-200 text-green-600 px-4 py-2
+                            transform transition-transform duration-300 hover:scale-105 '>
+                            Treat Yourself Today!
                             </button>
                            
                     </div>

@@ -8,8 +8,9 @@ export default function Root() {
     return (
         <>
             <div id="detail" className="roboto">
+                 <Header></Header>
                 <div className="container">
-                     <Header className= "fixed"></Header>
+                    
                 <Outlet />
            
                 </div>
