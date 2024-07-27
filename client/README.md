@@ -5,7 +5,6 @@ npm install react-slick slick-carousel
 
 react-awesome-reveal
 
-
-//filter
+//gap and justified center
 //card size
 // fade
