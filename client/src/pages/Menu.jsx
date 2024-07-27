@@ -13,19 +13,10 @@ const Menu = () => {
 
     return (
         <div className="flex flex-col gap-4 justify-center items-center h-auto ">
-            <section className='w-full flex flex-col gap-4 items-center my-6'>
+            <section className='w-full flex flex-col gap-4 items-center mb-6 mt-4 md:mt-6 '>
                 <h2 className="text-2xl w-full max-w-xl font-semibold text-center text-primary ">Our Menu</h2>
-
-                {/* <div className='max-w-xl w-full'>
-                          <label className="hover:ring-0 focus:outline-none active:outline-none focus:ring-0 border-gray-400 active:ring-0 input input-bordered 
-                          flex items-center gap-2 rounded-md py-2">
-                            <input type="text" className="grow w-full focus:ring-0 hover:ring-0 border-gray-400 active:ring-0" placeholder="Happiness, One Cupcake at a Time..." />
-                            <FiSearch className='text-xl text-gray-500 font-bold'/>
-                        </label>
-                     </div> */}
-                {/* search */}
                 <form className="max-w-xl w-full mx-auto">
-                    <label for="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <label for="default-search" className="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <FiSearch className='text-xl text-gray-500 font-bold' />
@@ -37,11 +28,10 @@ const Menu = () => {
                 </form>
 
             </section>
-            <div className="flex flex-wrap gap-6 md:gap-8 justify-center items-center h-auto my-4">
+            <div className="flex flex-wrap gap-6 md:gap-8 justify-center items-center h-auto mb-4 mt-0 md:mt-4">
                 {cupcakes.map((cupcake, index) => (
                     <Card key={index} cupcake={cupcake} />
                 ))}
-                {/* <Card cupcake={cupcake} /> */}
             </div>
         </div>
 

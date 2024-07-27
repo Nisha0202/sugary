@@ -9,12 +9,12 @@ import { NavLink, Link } from 'react-router-dom'
 
 const FeaturedRecipesCarousel = () => {
 
-const [cupcakes, setCupcakes] = useState([]);
+  const [cupcakes, setCupcakes] = useState([]);
 
   useEffect(() => {
     fetch('cupcakes.json')
-     .then(response => response.json())
-     .then(data => setCupcakes(data));
+      .then(response => response.json())
+      .then(data => setCupcakes(data));
   }, []);
 
   const settings = {
@@ -41,16 +41,40 @@ const [cupcakes, setCupcakes] = useState([]);
   return (
     <div className='max-w-[1200px] mx-auto mt-8 lg:mt-12 mb-16 lg:mb-28'>
       <Slider {...settings}>
-      {cupcakes.slice(0, 5).map((cupcake) => (
+        {cupcakes.slice(0, 5).map((cupcake) => (
           <div key={cupcake._id} className='border-0 outline-none'>
-            <Link to={"/menu"} legacyBehavior>
-                <img
-                  className="carousel-image cursor-pointer rounded-md border-2 outline-none hover:opacity-70"
-                  src={cupcake.imageUrl}
-                  alt={cupcake.title}
-                />
-    
+            {/* <Link to="/menu" className="">
+              <img
+                className="carousel-image object-cover hero cursor-pointer rounded-md border-2 outline-none"
+                src={cupcake.image}
+                alt={cupcake.title}
+              />
+              <div className="hero-overlay bg-black bg-opacity-60"></div>
+            </Link> */}
+
+            <Link
+              to="/menu"
+              className="relative carousel-image block cursor-pointer rounded-md border-2 overflow-hidden group"
+              style={{
+                backgroundImage: `url(${cupcake.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              {/* <div className="absolute inset-0 carousel-image hover:bg-black hover:bg-opacity-60 z-30"></div> */}
+              <div className="hidden group-hover:flex absolute inset-0 carousel-image hover:bg-black hover:bg-opacity-60 items-center justify-center h-full z-10">
+                <span className="btn border-2 border-green-600 bg-green-50 btn-sm text-sm rounded-2xl btn-bordered">
+                    View Menu
+                </span>
+            </div>
             </Link>
+
+
+
+
+
+
+
             <div className="carousel-content grid place-content-center">
               <h3 className='font-bold text-lg text-text'>{cupcake.title}</h3>
               <p className='text-wrap min-w-80 px-4'>{cupcake.description}</p>

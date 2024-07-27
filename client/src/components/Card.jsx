@@ -27,7 +27,8 @@ const Card = ({ cupcake }) => {
 
     return (
         <div className="w-72 rounded-md flex justify-center items-center text-center flex-col border-2 overflow-hidden p-4 bg-white">
-            <img className="w-full h-52 rounded-md object-cover border-2 " src={cupcake.image} alt={cupcake.title} />
+            <img className="w-64 h-52 rounded-md object-cover border-2
+             transform transition-transform duration-300 hover:scale-105 " src={cupcake.image} alt={cupcake.title} />
             <div className="py-4">
                 <div className='w-full justify-between flex items-center h-6 px-2'>
                     <div className="font-medium tracking-wide text-xl ">{cupcake.title}</div>
