@@ -6,6 +6,5 @@ npm install react-slick slick-carousel
 react-awesome-reveal
 
 
-//detail button
 //pagination
 //filter
