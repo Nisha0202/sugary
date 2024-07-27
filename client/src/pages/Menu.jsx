@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import { FiSearch } from 'react-icons/fi';
 import { FaSortAmountDown } from "react-icons/fa";
-
+import { Fade, Slide } from "react-awesome-reveal";
 const Menu = () => {
     const [cupcakes, setCupcakes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -66,9 +66,13 @@ const Menu = () => {
 
             {/* menu */}
             <div className="flex flex-wrap gap-6 md:gap-10 justify-center items-center h-auto mb-4 mt-0 md:mt-4">
-                {currentItems.map((cupcake, index) => (
+             
+            <Slide>
+                 {currentItems.map((cupcake, index) => (
                     <Card key={index} cupcake={cupcake} />
                 ))}
+                </Slide>
+              
             </div>
 
             <div className="pagination">
