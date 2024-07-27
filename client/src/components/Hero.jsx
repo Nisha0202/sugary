@@ -23,7 +23,11 @@ export default function Hero() {
                         <h1 className="text-4xl font-bold drop-shadow-2xl">Welcome to Sugary</h1>
                         <p className="mt-4 mb-6 drop-shadow-2xl max-w-xl px-4  tracking-wide">Creating beautifully decorated, 
                             mouth-watering cupcakes that are perfect for any occasion
-                </p>
+                             </p>
+                            <button className='btn rounded-md bg-gray-200 text-green-600 btn-sm'>
+                            Treat Yourself Today
+                            </button>
+                           
                     </div>
                 </div>
             </section>

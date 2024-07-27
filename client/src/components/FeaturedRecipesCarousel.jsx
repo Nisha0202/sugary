@@ -64,7 +64,7 @@ const FeaturedRecipesCarousel = () => {
               {/* <div className="absolute inset-0 carousel-image hover:bg-black hover:bg-opacity-60 z-30"></div> */}
               <div className="hidden group-hover:flex absolute inset-0 carousel-image hover:bg-black 
               hover:bg-opacity-40 items-center justify-center h-full z-10">
-                <span className="btn border-2 border-green-600 bg-green-50 btn-sm text-sm rounded-2xl btn-bordered">
+                <span className="btn border-2  bg-gray-100 btn-sm text-sm rounded-md btn-bordered">
                     View Menu
                 </span>
             </div>

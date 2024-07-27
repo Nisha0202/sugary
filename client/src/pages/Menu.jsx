@@ -13,7 +13,7 @@ const Menu = () => {
 
     return (
         <div className="flex flex-col gap-4 justify-center items-center h-auto ">
-            <section className='w-full flex flex-col gap-4 items-center mb-6 mt-4 md:mt-6 '>
+            <section className='w-full flex flex-col gap-6 items-center mb-6 mt-4 md:mt-6 '>
                 <h2 className="text-2xl w-full max-w-xl font-semibold text-center text-primary ">Our Menu</h2>
                 <form className="max-w-xl w-full mx-auto">
                     <label for="default-search" className="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
