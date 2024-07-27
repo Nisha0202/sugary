@@ -39,19 +39,10 @@ const FeaturedRecipesCarousel = () => {
   };
 
   return (
-    <div className='max-w-[1200px] mx-auto mt-8 lg:mt-12 mb-16 lg:mb-28'>
+    <div className='max-w-[1160px] mx-auto mt-8 lg:mt-12 mb-16 lg:mb-28 overflow-hidden'>
       <Slider {...settings}>
         {cupcakes.slice(0, 5).map((cupcake) => (
           <div key={cupcake._id} className='border-0 outline-none'>
-            {/* <Link to="/menu" className="">
-              <img
-                className="carousel-image object-cover hero cursor-pointer rounded-md border-2 outline-none"
-                src={cupcake.image}
-                alt={cupcake.title}
-              />
-              <div className="hero-overlay bg-black bg-opacity-60"></div>
-            </Link> */}
-
             <Link
               to="/menu"
               className="relative carousel-image block cursor-pointer rounded-md border-2 overflow-hidden group"

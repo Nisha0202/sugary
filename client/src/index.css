@@ -16,7 +16,7 @@
 }
 
 .fixed {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   width: 100%;
   z-index: 1000;

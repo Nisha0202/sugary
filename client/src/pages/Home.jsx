@@ -7,7 +7,6 @@ export default function Home() {
     <div>
       <Hero/>
 
-      {/* <Menu/> */}
       <section className='mt-12 lg:mt-20'>
                 <h2 className="text-2xl w-full font-semibold text-center text-primary">Featured Cupcakes</h2>
             </section>

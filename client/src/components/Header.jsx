@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-
+import { HiMenuAlt1 } from "react-icons/hi";
 export default function Header() {
   const location = useLocation()
   const isMenuActive = location.pathname === '/menu'
@@ -11,18 +11,7 @@ export default function Header() {
         {/* menu */}
         <div className="dropdown">
           <div tabIndex={0} role="button" className="mr-4 lg:hidden bg-base-100">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
+        <  HiMenuAlt1 className='text-lg'/>
           </div>
           {/* hamburger */}
           <ul
