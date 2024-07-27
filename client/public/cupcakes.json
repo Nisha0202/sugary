@@ -8,7 +8,7 @@
       "category": "non-vegan",
       "weight": 752,
       "ingredients": ["flour", "sugar", "cocoa powder", "butter", "eggs", "milk", "baking powder", "vanilla extract"],
-      "others": []
+      "others": null
   },
   {
       "title": "Vanilla Dream",
@@ -19,7 +19,7 @@
       "category": "non-vegan",
       "weight": 70,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "vanilla extract"],
-      "others": []
+      "others": null
   },
   {
       "title": "Red Velvet",
@@ -30,7 +30,7 @@
       "category": "non-vegan",
       "weight": 80,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "cocoa powder", "red food coloring", "cream cheese"],
-      "others": []
+      "others": null
     },
   {
       "title": "Strawberry Bliss",
@@ -41,7 +41,7 @@
       "category": "non-vegan",
       "weight": 75,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "strawberries", "vanilla extract"],
-      "others": []
+      "others": null
   },
   {
       "title": "Lemon Zest",
@@ -52,7 +52,7 @@
       "category": "non-vegan",
       "weight": 70,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "lemon zest", "lemon juice"],
-      "others": []
+      "others": null
   },
   {
       "title": "Carrot Cake",
@@ -63,7 +63,7 @@
       "category": "non-vegan",
       "weight": 85,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "carrots", "cinnamon", "nutmeg"],
-      "others": []
+      "others": null
   },
   {
       "title": "Peanut Butter Cup",
@@ -74,7 +74,7 @@
       "category": "non-vegan",
       "weight": 75,
       "ingredients": ["flour", "sugar", "cocoa powder", "vegan butter", "plant-based milk", "baking powder", "vanilla extract"],
-      "others": []
+      "others": null
   },
   {
       "title": "Choco Hazelnut",
@@ -85,7 +85,7 @@
       "category": "non-vegan",
       "weight": 80,
       "ingredients": ["flour", "sugar", "cocoa powder", "butter", "eggs", "milk", "baking powder", "hazelnuts", "chocolate ganache"],
-      "others": []
+      "others": null
   },
   {
       "title": "Vegan Chocolate",
@@ -96,7 +96,7 @@
       "category": "vegan",
       "weight": 75,
       "ingredients": ["flour", "sugar", "cocoa powder", "vegan butter", "plant-based milk", "baking powder", "vanilla extract"],
-      "others": []
+      "others": null
   },
   {
       "title": "Vegan Vanilla",
@@ -107,7 +107,7 @@
       "category": "vegan",
       "weight": 70,
       "ingredients": ["flour", "sugar", "vegan butter", "plant-based milk", "baking powder", "vanilla extract"],
-      "others": []
+      "others": null
 
   },
   {
@@ -119,7 +119,7 @@
       "category": "vegan",
       "weight": 80,
       "ingredients": ["flour", "sugar", "vegan butter", "plant-based milk", "baking powder", "cocoa powder", "red food coloring"],
-      "others": []
+      "others": null
   },
   {
       "title": "Vanilla Bean",
@@ -130,6 +130,6 @@
       "category": "vegan",
       "weight": 75,
       "ingredients": ["flour", "sugar", "vegan butter", "plant-based milk", "baking powder", "vanilla bean"],
-      "others": []
+      "others": null
   }
 ]
