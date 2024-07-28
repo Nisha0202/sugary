@@ -18,7 +18,7 @@ const FeaturedRecipesCarousel = () => {
   }, []);
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3, // Display 3 cupcakes per slide
@@ -52,7 +52,7 @@ const FeaturedRecipesCarousel = () => {
                 backgroundPosition: 'center',
               }}
             >
-              {/* <div className="absolute inset-0 carousel-image hover:bg-black hover:bg-opacity-60 z-30"></div> */}
+              
               <div className="hidden group-hover:flex absolute inset-0 carousel-image hover:bg-black 
               hover:bg-opacity-40 items-center justify-center h-full z-10">
                 <span className="btn border-2  bg-gray-100 btn-sm text-sm rounded-md btn-bordered">
@@ -60,11 +60,6 @@ const FeaturedRecipesCarousel = () => {
                 </span>
             </div>
             </Link>
-
-
-
-
-
 
 
             <div className="carousel-content grid place-content-center">

@@ -10,6 +10,7 @@ import FirbaseProvider from './FirebaseProbider/FirbaseProvider';
 import ErrorPage from './components/ErrorPage'
 import Home from './pages/Home';
 import Menu from './pages/Menu';
+import SignUp from './pages/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,12 @@ const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu/>,
+      },
+      {
+        path: "/signup",
+        element: <SignUp/>,
       }
+ 
  
     ],
   },

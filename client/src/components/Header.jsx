@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { HiMenuAlt1 } from "react-icons/hi";
+import { BsFillCartCheckFill } from "react-icons/bs";
+
 export default function Header() {
   const location = useLocation()
   const isMenuActive = location.pathname === '/menu'
@@ -79,16 +81,20 @@ export default function Header() {
             <NavLink
               to="/menu"
               className={({ isActive }) =>
-                isActive ? "font-bold bg-transparent focus:bg-transparent" : "hover:none"
-              }
-            >
+                isActive ? "font-bold bg-transparent focus:bg-transparent" : "hover:none" }>
               Menu
             </NavLink>
           </li>
         </ul>
       </div>
       <div className="navbar-end flex items-center text-sm rounded-md">
-        <NavLink to="/login" className=" bg-gray-100 px-4 py-2 font-bold text-green-600 tracking-wider rounded-md">
+      <NavLink
+              to="/menu"
+              className={({ isActive }) =>
+                isActive ? "p-2 bg-gray-200 rounded mx-4" : "p-2 bg-gray-200 border-2 rounded-md mx-4" }>
+              <BsFillCartCheckFill className='text-lg  text-green-600 hover:text-text'></BsFillCartCheckFill>
+            </NavLink>
+        <NavLink to="/login" className=" border-2 px-4 py-2 font-bold text-green-600 hover:text-text bg-gray-200 tracking-wider rounded-md">
           Login
         </NavLink>
       </div>
