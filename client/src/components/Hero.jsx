@@ -18,7 +18,7 @@ export default function Hero() {
                 {/* Content */}
                 <div className="relative w-full h-full flex  items-center justify-center text-center text-white">
                     <div>
-                        <h1 className="text-4xl font-bold drop-shadow-2xl">Welcome to Sugary</h1>
+                        <h1 className="text-4xl font-semibold drop-shadow-2xl">Welcome to Sugary</h1>
 
                         <p className="mt-4 mb-6 drop-shadow-2xl max-w-xl px-4 tracking-wide custom-text-shadow">
                             Creating beautifully decorated, mouth-watering cupcakes that are perfect for any occasion
