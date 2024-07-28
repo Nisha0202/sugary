@@ -13,20 +13,22 @@ export default function Hero() {
                 />
 
                 {/* Overlay */}
-                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-55 rounded-md" />
+                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 rounded-md" />
 
                 {/* Content */}
                 <div className="relative w-full h-full flex  items-center justify-center text-center text-white">
                     <div>
                         <h1 className="text-4xl font-bold drop-shadow-2xl">Welcome to Sugary</h1>
-                        <p className="mt-4 mb-6 drop-shadow-2xl max-w-xl px-4 tracking-wide">Creating beautifully decorated, 
-                            mouth-watering cupcakes that are perfect for any occasion
-                             </p>
-                            <button className=' font-medium rounded-md bg-gray-200 text-green-600 px-4 py-2
+
+                        <p className="mt-4 mb-6 drop-shadow-2xl max-w-xl px-4 tracking-wide custom-text-shadow">
+                            Creating beautifully decorated, mouth-watering cupcakes that are perfect for any occasion
+                        </p>
+
+                        <button className=' font-medium rounded-md bg-gray-200 text-green-600 px-4 py-2
                             transform transition-transform duration-300 hover:scale-105 '>
-                            Treat Yourself Today!
-                            </button>
-                           
+                            Place Your Order!
+                        </button>
+
                     </div>
                 </div>
             </section>
