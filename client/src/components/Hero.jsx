@@ -8,7 +8,7 @@ export default function Hero() {
                     autoPlay
                     loop
                     muted
-                    className="absolute top-0 left-0 w-full h-full object-cover rounded-md"
+                    className="absolute top-0 border-0 left-0 w-full h-full object-cover rounded-md"
                     src="https://videos.pexels.com/video-files/7525343/7525343-hd_1920_1080_25fps.mp4"
                 />
 
