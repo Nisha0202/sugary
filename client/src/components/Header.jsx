@@ -52,7 +52,7 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <NavLink  NavLink
+        <NavLink
               to="/" className="text-lg text-pink-600 font-semibold">Sugary</NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
