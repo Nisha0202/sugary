@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import SuccessAlert from '../Alert/SuccessAlert';
+import { IoEyeOutline } from "react-icons/io5";
+import { LuEye, LuEyeOff } from "react-icons/lu";
 
 export default function SignUp() {
   const [success, setSuccess] = useState(null);
@@ -14,6 +16,7 @@ export default function SignUp() {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -24,6 +27,7 @@ export default function SignUp() {
       const response = await axios.post('http://localhost:5000/api/createuser', data);
       console.log('Response:', response.data);
       setSuccess('success');
+      reset();
     } catch (error) {
       console.log('Error submitting form', error);
       setFailor('failor');
@@ -85,10 +89,10 @@ export default function SignUp() {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
             <span
-              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-text"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword ? <LuEye /> : <LuEyeOff />}
             </span>
           </div>
           {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
