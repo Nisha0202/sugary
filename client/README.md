@@ -9,3 +9,5 @@ react-awesome-reveal
 
 // fade
 //backend
+// sign up
+// login

@@ -32,7 +32,7 @@ const Card = ({ cupcake }) => {
 
             <div className="py-4">
                 <div className='w-full justify-between flex items-center h-6 px-2'>
-                    <div className="font-medium tracking-wide text-xl ">{cupcake.title}</div>
+                    <div className="font-semibold tracking-wide text-xl text-text">{cupcake.title}</div>
                     <div className='text-sm'>{cupcake.weight}g each</div>
                 </div>
 
