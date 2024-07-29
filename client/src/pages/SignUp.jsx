@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import SuccessAlert from '../Alert/SuccessAlert';
-import { IoEyeOutline } from "react-icons/io5";
 import { LuEye, LuEyeOff } from "react-icons/lu";
+import SuccessAlert from '../Alert/SuccessAlert';
 
 export default function SignUp() {
   const [success, setSuccess] = useState(null);
@@ -15,7 +13,6 @@ export default function SignUp() {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
@@ -26,8 +23,13 @@ export default function SignUp() {
     try {
       const response = await axios.post('http://localhost:5000/api/createuser', data);
       console.log('Response:', response.data);
-      setSuccess('success');
-      reset();
+      if (response.data.success) {
+        localStorage.setItem('token', response.data.token);
+        setSuccess('success');
+        reset();
+      } else {
+        setFailor('failor');
+      }
     } catch (error) {
       console.log('Error submitting form', error);
       setFailor('failor');
@@ -45,7 +47,10 @@ export default function SignUp() {
             type="text"
             name="name"
             id="name"
-            {...register("name", { required: "Name is required" })}
+            {...register("name", { 
+              required: "Name is required",
+              minLength: { value: 3, message: "Name must be at least 3 characters long" }
+            })}
             className="mt-1 p-2 block w-full border border-gray-300 focus:border-green-600 active:border-green-600 rounded-md"
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
@@ -61,7 +66,7 @@ export default function SignUp() {
               {...register("location", { required: "Location is required" })}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
-            <button className='btn font-medium text-xs bg-gray-100 text-green-600 rounded-md hover:bg-gray-300'>Get <br /> Location</button>
+            <button type="button" className='btn font-medium text-xs bg-gray-100 text-green-600 rounded-md hover:bg-gray-300'>Get <br /> Location</button>
           </div>
           {errors.location && <p className="text-red-500 text-sm">{errors.location.message}</p>}
         </div>
@@ -72,7 +77,13 @@ export default function SignUp() {
             type="email"
             name="email"
             id="email"
-            {...register("email", { required: "Email is required" })}
+            {...register("email", { 
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Email address is invalid"
+              }
+            })}
             className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -85,7 +96,10 @@ export default function SignUp() {
               type={showPassword ? "text" : "password"}
               name="password"
               id="password"
-              {...register("password", { required: "Password is required" })}
+              {...register("password", { 
+                required: "Password is required",
+                minLength: { value: 5, message: "Password must be at least 5 characters long" }
+              })}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
             <span
@@ -105,13 +119,13 @@ export default function SignUp() {
           Sign Up
         </button>
 
-        <Link to={'/login'} className="text-sm flex flex-grow justify-end tracking-wide text-left">Already Signed Up?
+        <Link to={'/login'} className="text-sm flex flex-grow justify-end tracking-wide text-left">
+          Already Signed Up?
           <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Log In</span>
         </Link>
       </form>
-      {success && <SuccessAlert message="Your operation was successful!" />}
+      {success && <SuccessAlert message="You are Ready to order!" />}
+      {failor && <p className="text-red-500 text-center">Failed to submit the form. Please try again.</p>}
     </div>
   );
 }
-
-
