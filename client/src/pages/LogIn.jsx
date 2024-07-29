@@ -1,18 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { LuEye, LuEyeOff } from "react-icons/lu";
+import SuccessAlert from '../Alert/SuccessAlert';
 
 export default function LogIn() {
+  const [success, setSuccess] = useState(null);
+  const [failor, setFailure] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    // Add your form submission logic here (e.g., API call)
+  const onSubmit = async (data) => {
     console.log('Form submitted:', data);
+    setLoading(true); // Set loading to true when form is submitted
+
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/loginuser', data);
+      console.log('Response:', response.data);
+      setSuccess('Welcome! You are Ready to Order!');
+      setFailure(null);
+      reset();
+    } catch (error) {
+      console.error('Error:', error);
+      if (error.response && error.response.status === 400) {
+        setFailure(error.response.data.error || 'Wrong Credentials');
+      } else {
+        setFailure('An unexpected error occurred. Please try again.');
+      }
+    } finally {
+      setLoading(false); // Set loading to false when request is complete
+    }
+
+
+
   };
 
   return (
@@ -34,14 +63,25 @@ export default function LogIn() {
         
         <div className="mb-4">
           <label htmlFor="password" className="block text-sm text-text">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            {...register("password", { required: "Password is required" })}
-            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-          />
-          {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              id="password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: { value: 5, message: "Password must be at least 5 characters long" }
+              })}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+            <span
+              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-text"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <LuEye /> : <LuEyeOff />}
+            </span>
+          </div>
+          {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
         </div>
         
         <button
@@ -56,6 +96,9 @@ export default function LogIn() {
         
         </Link>
       </form>
+      {success && <SuccessAlert message={success} />}
+      {failor && <p className="text-red-500 font-bold text-center">{failor}</p>}
+      {loading && <span className="loading loading-spinner font-bold text-success"></span>}
     </div>
   );
 }

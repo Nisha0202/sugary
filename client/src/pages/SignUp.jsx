@@ -23,29 +23,10 @@ export default function SignUp() {
     setLoading(true); // Set loading to true when form is submitted
 
 
-    // axios.post('http://localhost:5000/api/createuser', data)
-    // .then(res => {
-    //   console.log('Response:', res.data);
-    //   setSuccess('You Are Ready to Order!');
-    //   setFailure(null);
-    //   reset();
-    //   setLoading(false); // Set loading to false when request is complete
-
-    // })
-    // .catch(error => {
-    //   console.error('Error:', error);
-    //   if (error.response && error.response.status === 400) {
-    //     setFailure('User account already exists!');
-    //     setLoading(false); // Set loading to false when request is complete
-    //   } else {
-    //     setFailure('An unexpected error occurred. Please try!');}
-    //     setLoading(false); // Set loading to false when request is complete
-    // });
-
     try {
       const response = await axios.post('http://localhost:5000/api/createuser', data);
       console.log('Response:', response.data);
-      setSuccess('User created successfully!');
+      setSuccess('You are Ready to Order!');
       setFailure(null);
       reset();
     } catch (error) {

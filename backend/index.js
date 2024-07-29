@@ -17,7 +17,7 @@ app.use(express.json())
 console.log('Hello')
 
 app.use('/api', require("./routes/CreateUser"));
-// app.use('/api', require("./Routes/DisplayData"));
+app.use('/api', require("./routes/LoginUser"));
 // app.use('/api', require("./Routes/OrderData"));
 // app.use('/api', require("./Routes/AddItem"));
 

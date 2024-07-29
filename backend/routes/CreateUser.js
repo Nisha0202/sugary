@@ -38,7 +38,9 @@ router.post("/createuser",
             });
 
             // create token
-            const token = jwt.sign({ userId: user._id, username: user.name, email: user.email }, jwtSecret, { expiresIn: '1h' });
+            const token = jwt.sign({ userId: user._id, username: user.name, email: user.email,
+                isAdmin: user.isAdmin  
+             },jwtSecret, { expiresIn: '1h' });
             res.json({ success: true, token });
 
         } catch (error) {
