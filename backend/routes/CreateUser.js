@@ -16,16 +16,19 @@ router.post("/createuser",
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
+        }  
+   
+        //check if user exists
+        const existingUser = await User.findOne({ email: req.body.email });
+        if (existingUser) {
+            return res.status(400).json({ error: 'Email already exists' });
         }
 
         const salt = await bcrypt.genSalt(6);
         let secpassWord = await bcrypt.hash(req.body.password, salt); // hashed password
-
+  
+    
         try {
-            const existingUser = await User.findOne({ email: req.body.email });
-            if (existingUser) {
-                return res.status(400).json({ error: 'Email already exists' });
-            }
 
             const user = await User.create({
                 name: req.body.name,
@@ -36,8 +39,8 @@ router.post("/createuser",
 
             // create token
             const token = jwt.sign({ userId: user._id, username: user.name, email: user.email }, jwtSecret, { expiresIn: '1h' });
-
             res.json({ success: true, token });
+
         } catch (error) {
             console.log(error);
             res.status(500).json({ success: false });

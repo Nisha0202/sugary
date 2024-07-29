@@ -87,11 +87,11 @@ export default function Header() {
           </li>
         </ul>
       </div>
-      <div className="navbar-end flex items-center text-sm rounded-md">
+      <div className="navbar-end flex items-center text-sm rounded-md gap-1">
       <NavLink
               to="/menu"
               className={({ isActive }) =>
-                isActive ? "p-2 hover:bg-gray-200 rounded mx-4" : "p-2  hover:bg-gray-200  rounded-md mx-4" }>
+                isActive ? "p-2 hover:bg-gray-200 rounded mx-4" : "p-2  hover:bg-gray-200 hover:text-text rounded-md" }>
               <BsFillCartCheckFill className='text-lg  text-green-600 hover:text-text'></BsFillCartCheckFill>
             </NavLink>
         <NavLink to="/login" className=" px-4 py-2 font-bold text-green-600 hover:text-text hover:bg-gray-200 tracking-wider rounded-md">

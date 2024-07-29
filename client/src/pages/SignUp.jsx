@@ -7,8 +7,9 @@ import SuccessAlert from '../Alert/SuccessAlert';
 
 export default function SignUp() {
   const [success, setSuccess] = useState(null);
-  const [failor, setFailor] = useState(null);
+  const [failor, setFailure] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -19,21 +20,44 @@ export default function SignUp() {
 
   const onSubmit = async (data) => {
     console.log('Form submitted:', data);
+    setLoading(true); // Set loading to true when form is submitted
 
-    try {
-      const response = await axios.post('http://localhost:5000/api/createuser', data);
-      console.log('Response:', response.data);
-      if (response.data.success) {
-        localStorage.setItem('token', response.data.token);
-        setSuccess('success');
-        reset();
+    // try {
+    //   const response = await axios.post('http://localhost:5000/api/createuser', data);
+    //   console.log('Response:', response.data);
+    //   if (response.data.success) {
+    //     localStorage.setItem('sugarytoken', response.data.token);
+    //     setSuccess('success');
+    //     reset();
+    //   } else {
+    //     setFailor('failor');
+    //   }
+    // } catch (error) {
+    //   console.log('Error submitting form', error);
+    //   setFailor('failor');
+    // }
+
+    axios.post('http://localhost:5000/api/createuser', data)
+    .then(res => {
+      console.log('Response:', res.data);
+      setSuccess('User created successfully!');
+      setFailure(null);
+      reset();
+      setLoading(false); // Set loading to false when request is complete
+
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      if (error.response && error.response.status === 400) {
+        setFailure('User account already exists.');
+        setLoading(false); // Set loading to false when request is complete
       } else {
-        setFailor('failor');
-      }
-    } catch (error) {
-      console.log('Error submitting form', error);
-      setFailor('failor');
-    }
+        setFailure('An unexpected error occurred. Please try');}
+        setLoading(false); // Set loading to false when request is complete
+    });
+
+
+
   };
 
   return (
@@ -53,7 +77,7 @@ export default function SignUp() {
             })}
             className="mt-1 p-2 block w-full border border-gray-300 focus:border-green-600 active:border-green-600 rounded-md"
           />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
         </div>
 
         <div className="mb-4">
@@ -68,7 +92,7 @@ export default function SignUp() {
             />
             <button type="button" className='btn font-medium text-xs bg-gray-100 text-green-600 rounded-md hover:bg-gray-300'>Get <br /> Location</button>
           </div>
-          {errors.location && <p className="text-red-500 text-sm">{errors.location.message}</p>}
+          {errors.location && <p className="text-red-500 text-sm mt-1">{errors.location.message}</p>}
         </div>
 
         <div className="mb-4">
@@ -86,7 +110,7 @@ export default function SignUp() {
             })}
             className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
           />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
         </div>
 
         <div className="mb-4">
@@ -109,7 +133,7 @@ export default function SignUp() {
               {showPassword ? <LuEye /> : <LuEyeOff />}
             </span>
           </div>
-          {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+          {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
         </div>
 
         <button
@@ -124,8 +148,9 @@ export default function SignUp() {
           <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Log In</span>
         </Link>
       </form>
-      {success && <SuccessAlert message="You are Ready to order!" />}
-      {failor && <p className="text-red-500 text-center">Failed to submit the form. Please try again.</p>}
+      {success && <SuccessAlert message={success} />}
+      {failor && <p className="text-red-500 text-center">{failor}</p>}
+      {loading && <span className="loading loading-spinner text-success"></span>}
     </div>
   );
 }
