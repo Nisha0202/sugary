@@ -8,9 +8,9 @@ const SuccessAlert = ({ message }) => {
   return (
     <div
       role="alert"
-      className=" absolute top-1/2 left-1/2 flex items-center justify-center"
+      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center bg-white p-2 border border-gray-300 rounded shadow"
     >
-      <div className="relative bg-green-600 p-4 max-w-md ">
+      <div className="relative p-4 max-w-md ">
         <button
           className="absolute top-0 right-0 mt-2 mr-2 text-black"
           onClick={() => setIsVisible(false)}
@@ -30,7 +30,7 @@ const SuccessAlert = ({ message }) => {
             />
           </svg>
         </button>
-        <div className="alert alert-success bg-green-600 flex items-center p-2 max-w-md rounded-md mt-1">
+        <div className="alert alert-success border-0 text-green-600 font-bold bg-white flex items-center p-2 max-w-md rounded-md mt-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"

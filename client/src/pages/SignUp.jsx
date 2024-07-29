@@ -22,39 +22,42 @@ export default function SignUp() {
     console.log('Form submitted:', data);
     setLoading(true); // Set loading to true when form is submitted
 
-    // try {
-    //   const response = await axios.post('http://localhost:5000/api/createuser', data);
-    //   console.log('Response:', response.data);
-    //   if (response.data.success) {
-    //     localStorage.setItem('sugarytoken', response.data.token);
-    //     setSuccess('success');
-    //     reset();
-    //   } else {
-    //     setFailor('failor');
-    //   }
-    // } catch (error) {
-    //   console.log('Error submitting form', error);
-    //   setFailor('failor');
-    // }
 
-    axios.post('http://localhost:5000/api/createuser', data)
-    .then(res => {
-      console.log('Response:', res.data);
+    // axios.post('http://localhost:5000/api/createuser', data)
+    // .then(res => {
+    //   console.log('Response:', res.data);
+    //   setSuccess('You Are Ready to Order!');
+    //   setFailure(null);
+    //   reset();
+    //   setLoading(false); // Set loading to false when request is complete
+
+    // })
+    // .catch(error => {
+    //   console.error('Error:', error);
+    //   if (error.response && error.response.status === 400) {
+    //     setFailure('User account already exists!');
+    //     setLoading(false); // Set loading to false when request is complete
+    //   } else {
+    //     setFailure('An unexpected error occurred. Please try!');}
+    //     setLoading(false); // Set loading to false when request is complete
+    // });
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/createuser', data);
+      console.log('Response:', response.data);
       setSuccess('User created successfully!');
       setFailure(null);
       reset();
-      setLoading(false); // Set loading to false when request is complete
-
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('Error:', error);
       if (error.response && error.response.status === 400) {
-        setFailure('User account already exists.');
-        setLoading(false); // Set loading to false when request is complete
+        setFailure(error.response.data.error || 'User account already exists.');
       } else {
-        setFailure('An unexpected error occurred. Please try');}
-        setLoading(false); // Set loading to false when request is complete
-    });
+        setFailure('An unexpected error occurred. Please try again.');
+      }
+    } finally {
+      setLoading(false); // Set loading to false when request is complete
+    }
 
 
 
@@ -71,7 +74,7 @@ export default function SignUp() {
             type="text"
             name="name"
             id="name"
-            {...register("name", { 
+            {...register("name", {
               required: "Name is required",
               minLength: { value: 3, message: "Name must be at least 3 characters long" }
             })}
@@ -101,7 +104,7 @@ export default function SignUp() {
             type="email"
             name="email"
             id="email"
-            {...register("email", { 
+            {...register("email", {
               required: "Email is required",
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -120,7 +123,7 @@ export default function SignUp() {
               type={showPassword ? "text" : "password"}
               name="password"
               id="password"
-              {...register("password", { 
+              {...register("password", {
                 required: "Password is required",
                 minLength: { value: 5, message: "Password must be at least 5 characters long" }
               })}
@@ -149,8 +152,8 @@ export default function SignUp() {
         </Link>
       </form>
       {success && <SuccessAlert message={success} />}
-      {failor && <p className="text-red-500 text-center">{failor}</p>}
-      {loading && <span className="loading loading-spinner text-success"></span>}
+      {failor && <p className="text-red-500 font-bold text-center">{failor}</p>}
+      {loading && <span className="loading loading-spinner font-bold text-success"></span>}
     </div>
   );
 }
