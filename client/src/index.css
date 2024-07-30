@@ -24,9 +24,15 @@
 
 body {
   padding-top: 60px; /* Adjust based on the height of your navbar */
-  background-color: #F7F7F7;
+  background-color: #ffffff;
+  color: rgb(30, 30, 30);
 }
 
 .custom-text-shadow {
   text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom CSS for smoother transitions (optional) */
+input + label {
+  transition: all 0.2s ease-in-out;
 }

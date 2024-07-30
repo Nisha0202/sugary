@@ -57,63 +57,66 @@ export default function LogIn() {
 
   return (
     <div className='mt-4 min-h-[calc(100vh-300px)]'>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto px-2 py-14 rounded-md ">
-        <h2 className="text-xl font-semibold mb-4 text-primary tracking-wider text-center">Log In</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto px-2 py-14 rounded-md text-sm">
+        <h2 className="text-xl font-semibold mb-8 text-primary tracking-wider text-center">Welcome back!</h2>
 
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm text-text">Email</label>
-          <input
+        <div className="relative mb-8">
+          <input  
             type="email"
             name="email"
-            id="email"
-            {...register("email", { required: "Email is required" })}
-            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-          />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+            id="email" 
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Email address is invalid"
+              }
+            })}
+            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
+          <label for="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
+          peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Email</label>
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+        </div>
+        
+        <div className="relative mb-8">
+          <input  
+             type={showPassword ? "text" : "password"}
+             name="password"
+             id="password"
+             {...register("password", {
+               required: "Password is required",
+               minLength: { value: 5, message: "Password must be at least 5 characters long" }
+             })}
+            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded 
+            focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
+          <label for="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 
+          peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Password</label>
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
         </div>
 
 
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-sm text-text">Password</label>
-          <div className="relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              id="password"
-              {...register("password", {
-                required: "Password is required",
-                minLength: { value: 5, message: "Password must be at least 5 characters long" }
-              })}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-            <span
-              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-text"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <LuEye /> : <LuEyeOff />}
-            </span>
-          </div>
-          {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
-        </div>
+
+
+
 
         <button
           type="submit"
-          className="w-full mt-2 mb-4 py-2.5 px-4 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
+          className="w-full mb-6 py-2.5 px-4 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
         >
           Log In
         </button>
         <div className='flex justify-between items-center'>
-        <Link to={'/'} className="text-sm tracking-wide">Frogot Password?
-        <span className="mx-2 text-start text-primary font- underline underline-offset-2">Here</span>
+          <Link to={'/'} className="text-sm tracking-wide">Frogot Password?
+            <span className="mx-2 text-start text-primary font- underline underline-offset-2">Here</span>
 
-        </Link>
-        <Link to={'/signup'} className="text-sm  tracking-wide text-left">New Here?
-          <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Sign Up</span>
+          </Link>
+          <Link to={'/signup'} className="text-sm  tracking-wide text-left">New Here?
+            <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Sign Up</span>
 
-        </Link>
+          </Link>
 
         </div>
-  
+
         {loading && <span className="loading loading-spinner font-bold text-success absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
       flex items-center justify-center"></span>}
       </form>

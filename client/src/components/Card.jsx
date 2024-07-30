@@ -26,7 +26,7 @@ const Card = ({ cupcake }) => {
     }
 
     return (
-        <div className="w-80 rounded-md flex justify-center items-center text-center flex-col border-2 overflow-hidden p-4 bg-white">
+        <div className="w-80 rounded-md flex justify-center items-center text-center flex-col border-2 overflow-hidden p-4 bg-transparent">
             <img className="w-72 h-[14rem] rounded-md object-cover border-2
              transform transition-transform duration-300 hover:scale-105 " src={cupcake.image} alt={cupcake.title} />
 

@@ -7,5 +7,6 @@ react-awesome-reveal
 
 //gap and justified center
 
-//verifying
+//ui input box bg colr login name
+// isverify true then only login
 //password forget

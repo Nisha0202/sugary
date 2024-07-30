@@ -8,8 +8,8 @@ export default function Header() {
   const isMenuActive = location.pathname === '/menu'
 
   return (
-    <div className='navbar-container'>
-       <div className="navbar max-w-[1180px] focus:bg-transparent px-2 hover:bg-none fixed">
+    <div className='navbar-container bg-white'>
+       <div className="navbar max-w-[1180px] bg-white px-2 hover:bg-none fixed">
       <div className="navbar-start">
         {/* menu */}
         <div className="dropdown">

@@ -55,11 +55,10 @@ export default function SignUp() {
 
   return (
     <div className='mt-4 min-h-[calc(100vh-300px)]'>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto px-2 py-8 rounded-md">
-        <h2 className="text-xl font-semibold mb-4 text-primary tracking-wider text-center">Sign Up</h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto px-2 py-6 rounded-md text-sm">
+        <h2 className="text-xl font-semibold mb-8 text-primary tracking-wider text-center">Welcome!</h2>
 
-        <div className="mb-3">
-          <label htmlFor="name" className="block text-sm text-text">Name</label>
+        <div className="relative mb-8">
           <input
             type="text"
             name="name"
@@ -68,28 +67,40 @@ export default function SignUp() {
               required: "Name is required",
               minLength: { value: 3, message: "Name must be at least 3 characters long" }
             })}
-            className="mt-1 p-2 block w-full border border-gray-300 focus:border-green-600 active:border-green-600 rounded-md"
-          />
-          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
+          <label for="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
+          peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Name</label>
+
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="location" className="block text-sm text-text">Location</label>
-          <div className='flex gap-2'>
+        <div className="relative mb-8 flex items-center">
+          <div className="flex-1 relative">
             <input
               type="text"
               name="location"
               id="location"
               {...register("location", { required: "Location is required" })}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
+              placeholder=" "
             />
-            <button type="button" className='btn font-medium text-xs bg-gray-100 text-green-600 rounded-md hover:bg-gray-300'>Get <br /> Location</button>
+            <label
+              htmlFor="name"
+              className="absolute top-0 left-4 px-1 text-gray-500 bg-white text-base transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2"
+            >
+              Location
+            </label>
           </div>
-          {errors.location && <p className="text-red-500 text-sm mt-1">{errors.location.message}</p>}
+          <button
+            type="button"
+            className="text-xs bg-gray-100 text-green-600 rounded-r-md hover:bg-gray-300 px-3 py-2.5 border-2"
+          >
+            My Location
+          </button>
+          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm text-text">Email</label>
+        <div className="relative mb-8">
           <input
             type="email"
             name="email"
@@ -101,34 +112,28 @@ export default function SignUp() {
                 message: "Email address is invalid"
               }
             })}
-            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-          />
+            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
+          <label for="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
+          peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Email</label>
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-sm text-text">Password</label>
-          <div className="relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              id="password"
-              {...register("password", {
-                required: "Password is required",
-                minLength: { value: 5, message: "Password must be at least 5 characters long" }
-              })}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-            <span
-              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-text"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <LuEye /> : <LuEyeOff />}
-            </span>
-          </div>
-          {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
-        </div>
 
+        <div className="relative mb-8">
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            id="password"
+            {...register("password", {
+              required: "Password is required",
+              minLength: { value: 5, message: "Password must be at least 5 characters long" }
+            })}
+            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded 
+            focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
+          <label for="name" className="text-base absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 
+          peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2">Password</label>
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+        </div>
         <button
           type="submit"
           className="w-full mt-2 mb-4 py-2.5 px-4 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
@@ -140,12 +145,12 @@ export default function SignUp() {
           Already Signed Up?
           <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Log In</span>
         </Link>
-         {loading && <span className="loading loading-spinner font-bold text-success absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+        {loading && <span className="loading loading-spinner font-bold text-success absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
       flex items-center justify-center"></span>}
       </form>
       {success && <SuccessAlert message={success} />}
       {failor && <p className="text-red-500 font-bold text-center">{failor}</p>}
-     
+
     </div>
   );
 }
