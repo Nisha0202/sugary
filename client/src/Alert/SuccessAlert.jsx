@@ -8,7 +8,8 @@ const SuccessAlert = ({ message }) => {
   return (
     <div
       role="alert"
-      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center bg-white p-2 border border-gray-300 rounded shadow"
+      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+      flex items-center justify-center bg-white p-2 border border-gray-300 rounded shadow"
     >
       <div className="relative p-4 max-w-md ">
         <button

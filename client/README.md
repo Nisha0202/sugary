@@ -7,7 +7,4 @@ react-awesome-reveal
 
 //gap and justified center
 
-// fade
-//backend
-// sign up
-// login
+//password forget

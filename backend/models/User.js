@@ -28,11 +28,19 @@ const moment = require('moment');
     type: String, // Change type to String to store formatted date
     default: () => moment().format('MM/DD/YYYY hA') // Default format
   },
+  verificationToken: {
+    type: String,
+    default: null
+  },
+  verificationTokenExpiry: {
+    type: Date,
+    default: null
+  },
 });
 
 // Pre-save hook to format the date
 UserSchema.pre('save', function(next) {
-  this.date = moment().format('MM/DD/YYYY hA');
+  this.date = moment().format('MM/DD/YYYY h:mm A');
   next();
 });
 

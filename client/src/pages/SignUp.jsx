@@ -140,7 +140,8 @@ export default function SignUp() {
           Already Signed Up?
           <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Log In</span>
         </Link>
-         {loading && <span className="loading loading-spinner font-bold text-success"></span>}
+         {loading && <span className="loading loading-spinner font-bold text-success absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+      flex items-center justify-center"></span>}
       </form>
       {success && <SuccessAlert message={success} />}
       {failor && <p className="text-red-500 font-bold text-center">{failor}</p>}
