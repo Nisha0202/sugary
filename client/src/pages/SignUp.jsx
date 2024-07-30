@@ -26,9 +26,18 @@ export default function SignUp() {
     try {
       const response = await axios.post('http://localhost:5000/api/createuser', data);
       console.log('Response:', response.data);
-      setSuccess('You are Ready to Order!');
-      setFailure(null);
-      reset();
+      // Check for the token in the response
+      if (response.data.token) {
+        // Store the token in local storage
+        localStorage.setItem('sugaryToken', response.data.token);
+
+        // Set success message and reset form
+        setSuccess('You are ready to order!');
+        setFailure(null);
+        reset();
+      } else {
+        setFailure('An unexpected error occurred. Please try again.');
+      }
     } catch (error) {
       console.error('Error:', error);
       if (error.response && error.response.status === 400) {
@@ -131,10 +140,11 @@ export default function SignUp() {
           Already Signed Up?
           <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Log In</span>
         </Link>
+         {loading && <span className="loading loading-spinner font-bold text-success"></span>}
       </form>
       {success && <SuccessAlert message={success} />}
       {failor && <p className="text-red-500 font-bold text-center">{failor}</p>}
-      {loading && <span className="loading loading-spinner font-bold text-success"></span>}
+     
     </div>
   );
 }

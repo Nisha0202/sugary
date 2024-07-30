@@ -26,9 +26,20 @@ export default function LogIn() {
     try {
       const response = await axios.post('http://localhost:5000/api/loginuser', data);
       console.log('Response:', response.data);
-      setSuccess('Welcome! You are Ready to Order!');
-      setFailure(null);
-      reset();
+
+      // Check for the token in the response
+      if (response.data.token) {
+        // Store the token in local storage
+        localStorage.setItem('sugaryToken', response.data.token);
+
+        // Set success message and reset form
+        setSuccess('Welcome! You are Ready to Order!');
+        setFailure(null);
+        reset();
+      } else {
+        setFailure('An unexpected error occurred. Please try again.');
+      }
+
     } catch (error) {
       console.error('Error:', error);
       if (error.response && error.response.status === 400) {
@@ -48,7 +59,7 @@ export default function LogIn() {
     <div className='mt-4 min-h-[calc(100vh-300px)]'>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto px-2 py-14 rounded-md ">
         <h2 className="text-xl font-semibold mb-4 text-primary tracking-wider text-center">Log In</h2>
-            
+
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm text-text">Email</label>
           <input
@@ -60,7 +71,7 @@ export default function LogIn() {
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
         </div>
-        
+
         <div className="mb-4">
           <label htmlFor="password" className="block text-sm text-text">Password</label>
           <div className="relative">
@@ -83,22 +94,23 @@ export default function LogIn() {
           </div>
           {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
         </div>
-        
+
         <button
           type="submit"
           className="w-full mt-2 mb-4 py-2.5 px-4 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
         >
           Log In
         </button>
-       
+
         <Link to={'/signup'} className="text-sm flex flex-grow  justify-end tracking-wide text-left">New Here?
-           <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Sign Up</span>
-        
+          <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Sign Up</span>
+
         </Link>
+        {loading && <span className="loading loading-spinner font-bold text-success"></span>}
       </form>
       {success && <SuccessAlert message={success} />}
       {failor && <p className="text-red-500 font-bold text-center">{failor}</p>}
-      {loading && <span className="loading loading-spinner font-bold text-success"></span>}
+
     </div>
   );
 }
