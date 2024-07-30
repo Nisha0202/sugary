@@ -7,4 +7,5 @@ react-awesome-reveal
 
 //gap and justified center
 
+//verifying
 //password forget

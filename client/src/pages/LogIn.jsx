@@ -43,7 +43,7 @@ export default function LogIn() {
     } catch (error) {
       console.error('Error:', error);
       if (error.response && error.response.status === 400) {
-        setFailure(error.response.data.error || 'Wrong Credentials');
+        setFailure(error.response.data.error || 'Wrong Credentials!');
       } else {
         setFailure('An unexpected error occurred. Please try again.');
       }
@@ -71,6 +71,7 @@ export default function LogIn() {
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
         </div>
+
 
         <div className="mb-4">
           <label htmlFor="password" className="block text-sm text-text">Password</label>

@@ -29,10 +29,10 @@ export default function SignUp() {
       // Check for the token in the response
       if (response.data.token) {
         // Store the token in local storage
-        localStorage.setItem('sugaryToken', response.data.token);
+        //localStorage.setItem('sugaryToken', response.data.token);
 
         // Set success message and reset form
-        setSuccess('You are ready to order!');
+        setSuccess('Please Verify Your Email and Login.');
         setFailure(null);
         reset();
       } else {

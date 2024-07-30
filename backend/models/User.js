@@ -21,21 +21,17 @@ const moment = require('moment');
     required: true
   },
   isAdmin: {
-    type: String,
+    type: Boolean,
+    default: false
+  },
+  isVerified: {
+    type: Boolean,
     default: false
   },
   date: {
     type: String, // Change type to String to store formatted date
     default: () => moment().format('MM/DD/YYYY hA') // Default format
-  },
-  verificationToken: {
-    type: String,
-    default: null
-  },
-  verificationTokenExpiry: {
-    type: Date,
-    default: null
-  },
+  }
 });
 
 // Pre-save hook to format the date

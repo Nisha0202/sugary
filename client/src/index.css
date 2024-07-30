@@ -24,6 +24,7 @@
 
 body {
   padding-top: 60px; /* Adjust based on the height of your navbar */
+  background-color: #F7F7F7;
 }
 
 .custom-text-shadow {

@@ -5,3 +5,4 @@ npm install express-validator
 npm i jsonwebtoken
 npm i bcrypt
 npm install moment
+npm install nodemailer

@@ -9,17 +9,17 @@ export default function Header() {
 
   return (
     <div className='navbar-container'>
-       <div className="navbar max-w-[1180px] bg-base-100 focus:bg-transparent px-2 hover:bg-none fixed">
+       <div className="navbar max-w-[1180px] focus:bg-transparent px-2 hover:bg-none fixed">
       <div className="navbar-start">
         {/* menu */}
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="mr-4 lg:hidden bg-base-100">
+          <div tabIndex={0} role="button" className="mr-4 lg:hidden">
         <  HiMenuAlt1 className='text-lg'/>
           </div>
           {/* hamburger */}
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-gray-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            className="menu menu-sm dropdown-content bg-gray-100 rounded-md z-[1] mt-3 w-52 p-2 shadow">
             <li>
               <NavLink
                 to="/"
