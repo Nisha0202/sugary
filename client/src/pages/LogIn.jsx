@@ -101,11 +101,18 @@ export default function LogIn() {
         >
           Log In
         </button>
+        <div className='flex justify-between items-center'>
+        <Link to={'/'} className="text-sm tracking-wide">Frogot Password?
+        <span className="mx-2 text-start text-primary font- underline underline-offset-2">Here</span>
 
-        <Link to={'/signup'} className="text-sm flex flex-grow  justify-end tracking-wide text-left">New Here?
+        </Link>
+        <Link to={'/signup'} className="text-sm  tracking-wide text-left">New Here?
           <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Sign Up</span>
 
         </Link>
+
+        </div>
+  
         {loading && <span className="loading loading-spinner font-bold text-success absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
       flex items-center justify-center"></span>}
       </form>
