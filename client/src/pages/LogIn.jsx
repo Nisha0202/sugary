@@ -44,7 +44,10 @@ export default function LogIn() {
       console.error('Error:', error);
       if (error.response && error.response.status === 400) {
         setFailure(error.response.data.error || 'Wrong Credentials!');
-      } else {
+      }else if (error.response && error.response.status === 403) {
+        setFailure(error.response.data.error || 'User not verified!');
+      }
+       else {
         setFailure('An unexpected error occurred. Please try again.');
       }
     } finally {
@@ -93,10 +96,6 @@ export default function LogIn() {
           peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Password</label>
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
         </div>
-
-
-
-
 
 
         <button

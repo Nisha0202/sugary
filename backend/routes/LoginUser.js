@@ -35,7 +35,11 @@ router.post("/loginuser", [
             const pwdCompare = await bcrypt.compare(password, userData.password);
             if (!pwdCompare) {
                 return res.status(400).json({ errors: "Wrong Credentials!" });
-            } else {
+            }
+            else if (!userData.isVerified) {
+                return res.status(403).json({ errors: "User not verified!" });
+            } 
+            else {
                 const token = jwt.sign({
                     userId: userData._id,
                     username: userData.name,

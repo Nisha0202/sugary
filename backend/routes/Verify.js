@@ -23,7 +23,20 @@ router.get('/verify-email', async (req, res) => {
         user.isVerified = true;
         await user.save();
 
-        res.json({ success: true, message: 'Email verified successfully' });
+        //res.json({ success: true, message: 'Email verified successfully' });
+
+        // Customize this response to fit your needs
+           res.send(`
+            <html>
+                <body>
+                    <h1>Thank You!</h1>
+                    <p>Your email has been successfully verified. You can now <a href="/login">log in</a>.</p>
+                </body>
+            </html>
+        `);
+
+
+
     } catch (error) {
         console.error('Error verifying email:', error);
         res.status(500).json({ error: 'Error verifying email' });

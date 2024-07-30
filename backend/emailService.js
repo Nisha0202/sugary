@@ -12,12 +12,12 @@ const transporter = nodemailer.createTransport({
 });
 
 // Function to send verification email
-const sendVerificationEmail = async (user, token) => {
+const sendVerificationEmail = async (userId, token) => {
     const verificationUrl = `http://localhost:5000/api/verify-email?token=${token}`;
 
     const mailOptions = {
         from: 'no-reply@yourapp.com',
-        to: user.email,
+        to: userId.email,
         subject: 'Email Verification',
         html: `<p>Hello ${user.name},</p>
                <p>Please verify your email by clicking on the following link or paste it in your browser:</p>
