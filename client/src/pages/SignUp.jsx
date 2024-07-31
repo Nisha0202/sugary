@@ -74,9 +74,9 @@ export default function SignUp() {
               required: "Name is required",
               minLength: { value: 3, message: "Name must be at least 3 characters long" }
             })}
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
+            className="block w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
-          peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Name</label>
+          peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base rounded">Name</label>
 
           {errors.name && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.name.message}</p>}
         </div>
@@ -88,7 +88,7 @@ export default function SignUp() {
               name="location"
               id="location"
               {...register("location", { required: "Location is required" })}
-              className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
+              className="block w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
               placeholder=" "
             />
             <label
@@ -100,7 +100,7 @@ export default function SignUp() {
           </div>
           <button
             type="button"
-            className="text-xs bg-gray-100 text-green-600 rounded-r-md hover:bg-gray-300 px-3 py-2.5 border-2"
+            className="rounded text-xs bg-gray-100 text-green-600 rounded-r-md hover:bg-gray-300 px-3 py-3.5 border-2"
           >
             My Location
           </button>
@@ -119,9 +119,9 @@ export default function SignUp() {
                 message: "Email address is invalid"
               }
             })}
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
+            className="block w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
-          peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Email</label>
+          peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base rounded">Email</label>
           {errors.email && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.email.message}</p>}
         </div>
 
@@ -135,10 +135,10 @@ export default function SignUp() {
               required: "Password is required",
               minLength: { value: 5, message: "Password must be at least 5 characters long" }
             })}
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded 
+            className="block w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded 
             focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="text-base absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 
-          peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2">Password</label>
+          peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2 rounded">Password</label>
              <button
             type="button"
             onClick={handlePasswordToggle}

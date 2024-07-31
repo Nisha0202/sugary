@@ -80,7 +80,7 @@ export default function LogIn() {
                 message: "Email address is invalid"
               }
             })}
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
+            className="block w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
           peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Email</label>
           {errors.email && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.email.message}</p>}
@@ -95,7 +95,7 @@ export default function LogIn() {
                required: "Password is required",
                minLength: { value: 5, message: "Password must be at least 5 characters long" }
              })}
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded 
+            className="block w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded 
             focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 
           peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Password</label>
