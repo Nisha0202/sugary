@@ -6,3 +6,5 @@ npm i jsonwebtoken
 npm i bcrypt
 npm install moment
 npm install nodemailer
+npm install emailjs
+

@@ -19,6 +19,8 @@ console.log('Hello')
 app.use('/api', require("./routes/CreateUser"));
 app.use('/api', require("./routes/LoginUser"));
 app.use('/api', require("./routes/Verify"));
+app.use('/api', require("./routes/ForgotPass"));
+app.use('/api', require("./routes/ResetPass"));
 // app.use('/api', require("./Routes/AddItem"));
 
 

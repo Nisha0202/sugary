@@ -31,7 +31,15 @@ const moment = require('moment');
   date: {
     type: String, // Change type to String to store formatted date
     default: () => moment().format('MM/DD/YYYY hA') // Default format
-  }
+  },
+  resetPasswordToken: {
+    type: String,
+    default: null
+  },
+  resetPasswordExpires: {
+    type: Date,
+    default: null
+  },
 });
 
 // Pre-save hook to format the date

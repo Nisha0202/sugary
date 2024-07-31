@@ -113,12 +113,12 @@ export default function LogIn() {
 
         <button
           type="submit"
-          className="w-full mb-6 py-2.5 px-4 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
+          className="w-full mb-6 py-3 px-4 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
         >
           Log In
         </button>
         <div className='flex justify-between items-center'>
-          <Link to={'/'} className="text-sm ">Frogot Password?
+          <Link to={'/forgot-password'} className="text-sm ">Frogot Password?
             <span className="mx-2 text-start text-primary underline underline-offset-2">Here</span>
 
           </Link>
