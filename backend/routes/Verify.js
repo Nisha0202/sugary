@@ -14,7 +14,7 @@ router.get('/verify-email', async (req, res) => {
 
     try {
         const decoded = jwt.verify(token, jwtSecret);
-        const user = await User.findById(decoded.userId);
+        const user = await User.findOne({ email: decoded.email });
 
         if (!user) {
             return res.status(400).json({ error: 'Invalid token' });
@@ -30,7 +30,7 @@ router.get('/verify-email', async (req, res) => {
             <html>
                 <body>
                     <h1>Thank You!</h1>
-                    <p>Your email has been successfully verified. You can now <a href="/login">log in</a>.</p>
+                    <p>Your email has been successfully verified. You can now <a href="${process.env.APP_URL}/login">log in</a>.</p>
                 </body>
             </html>
         `);

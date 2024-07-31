@@ -1,5 +1,6 @@
 // emailService.js
 const nodemailer = require('nodemailer');
+const User = require('../backend/models/User');
 
 // Create a transport object using Mailtrap SMTP settings
 const transporter = nodemailer.createTransport({
@@ -14,6 +15,12 @@ const transporter = nodemailer.createTransport({
 // Function to send verification email
 const sendVerificationEmail = async (user, token) => {
     const verificationUrl = `http://localhost:5000/api/verify-email?token=${token}`;
+    await User.create({
+        name: user.name,
+        location: user.location,
+        email: user.email,
+        password: user.password
+    });
 
     const mailOptions = {
         from: 'no-reply@yourapp.com',

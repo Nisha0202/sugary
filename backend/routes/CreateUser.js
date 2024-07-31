@@ -29,15 +29,15 @@ router.post("/createuser",
         let secpassWord = await bcrypt.hash(req.body.password, salt); // hashed password
 
         try {
-            const user = await User.create({
+            const user = {
                 name: req.body.name,
                 location: req.body.location,
                 email: req.body.email,
                 password: secpassWord
-            });
+            };
 
             // create token
-            const token = jwt.sign({ userId: user._id, username: user.name, email: user.email,
+            const token = jwt.sign({ username: user.name, email: user.email,
                 isAdmin: user.isAdmin  
              }, jwtSecret, { expiresIn: '7d' },);
 

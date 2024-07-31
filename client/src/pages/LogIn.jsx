@@ -56,9 +56,12 @@ export default function LogIn() {
       setLoading(false); // Set loading to false when request is complete
     }
 
-
-
   };
+
+    // Toggle password visibility
+    const handlePasswordToggle = () => {
+      setShowPassword(prevState => !prevState);
+    };
 
   return (
     <div className='mt-4 min-h-[calc(100vh-300px)]'>
@@ -80,7 +83,7 @@ export default function LogIn() {
             className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
           peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Email</label>
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+          {errors.email && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.email.message}</p>}
         </div>
         
         <div className="relative mb-8">
@@ -96,7 +99,15 @@ export default function LogIn() {
             focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 
           peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Password</label>
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+            <button
+            type="button"
+            onClick={handlePasswordToggle}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+          >
+            {showPassword ? <LuEyeOff size={20} /> : <LuEye size={20} />}
+          </button>
+          
+          {errors.password && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.password.message}</p>}
         </div>
 
 
@@ -107,11 +118,11 @@ export default function LogIn() {
           Log In
         </button>
         <div className='flex justify-between items-center'>
-          <Link to={'/'} className="text-sm tracking-wide">Frogot Password?
-            <span className="mx-2 text-start text-primary font- underline underline-offset-2">Here</span>
+          <Link to={'/'} className="text-sm ">Frogot Password?
+            <span className="mx-2 text-start text-primary underline underline-offset-2">Here</span>
 
           </Link>
-          <Link to={'/signup'} className="text-sm  tracking-wide text-left">New Here?
+          <Link to={'/signup'} className="text-sm tracking-wide text-left">New Here?
             <span className='mx-2 text-end text-green-600 font-medium underline underline-offset-2'>Sign Up</span>
 
           </Link>

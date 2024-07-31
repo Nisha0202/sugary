@@ -19,6 +19,11 @@ export default function SignUp() {
   } = useForm();
 
  const apiUrl = 'http://localhost:5000';
+
+   // Toggle password visibility
+   const handlePasswordToggle = () => {
+    setShowPassword(prevState => !prevState);
+  };
  
   const onSubmit = async (data) => {
     console.log('Form submitted:', data);
@@ -73,7 +78,7 @@ export default function SignUp() {
           <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
           peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Name</label>
 
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+          {errors.name && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.name.message}</p>}
         </div>
 
         <div className="relative mb-8 flex items-center">
@@ -99,7 +104,7 @@ export default function SignUp() {
           >
             My Location
           </button>
-          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+          {errors.location && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.location.message}</p>}
         </div>
 
         <div className="relative mb-8">
@@ -117,7 +122,7 @@ export default function SignUp() {
             className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
           peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Email</label>
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+          {errors.email && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.email.message}</p>}
         </div>
 
 
@@ -134,7 +139,14 @@ export default function SignUp() {
             focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="text-base absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 
           peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2">Password</label>
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+             <button
+            type="button"
+            onClick={handlePasswordToggle}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+          >
+            {showPassword ? <LuEyeOff size={20} /> : <LuEye size={20} />}
+          </button>
+          {errors.password && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.password.message}</p>}
         </div>
         <button
           type="submit"
