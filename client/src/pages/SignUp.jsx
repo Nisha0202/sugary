@@ -18,15 +18,17 @@ export default function SignUp() {
     formState: { errors },
   } = useForm();
 
+ const apiUrl = 'http://localhost:5000';
+ 
   const onSubmit = async (data) => {
     console.log('Form submitted:', data);
     setLoading(true); // Set loading to true when form is submitted
 
 
     try {
-      const response = await axios.post('http://localhost:5000/api/createuser', data);
+      const response = await axios.post(`${apiUrl}/api/createuser`, data);
       console.log('Response:', response.data);
-      // Check for the token in the response
+      // Check htmlFor the token in the response
       if (response.data.token) {
         // Store the token in local storage
         //localStorage.setItem('sugaryToken', response.data.token);
@@ -68,7 +70,7 @@ export default function SignUp() {
               minLength: { value: 3, message: "Name must be at least 3 characters long" }
             })}
             className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
-          <label for="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
+          <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
           peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Name</label>
 
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
@@ -113,7 +115,7 @@ export default function SignUp() {
               }
             })}
             className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
-          <label for="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
+          <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
           peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Email</label>
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
         </div>
@@ -130,7 +132,7 @@ export default function SignUp() {
             })}
             className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded 
             focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
-          <label for="name" className="text-base absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 
+          <label htmlFor="name" className="text-base absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 
           peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2">Password</label>
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
         </div>
