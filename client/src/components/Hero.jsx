@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link } from 'react-router-dom';
 export default function Hero() {
     return (
         <>
@@ -24,10 +25,10 @@ export default function Hero() {
                             Creating beautifully decorated, mouth-watering cupcakes that are perfect for any occasion
                         </p>
 
-                        <button className=' font-medium rounded-md bg-gray-200 text-green-600 px-4 py-2
+                        <Link to='/menu' className=' font-medium rounded-md bg-gray-200 text-green-600 px-4 py-2
                             transform transition-transform duration-300 hover:scale-105 '>
                             Place Your Order!
-                        </button>
+                        </Link>
 
                     </div>
                 </div>

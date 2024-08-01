@@ -15,7 +15,7 @@ react-awesome-reveal
 // password forget x
 
 //login logout nav x
-//admin nav
+//admin nav x
 
 
 
