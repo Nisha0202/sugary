@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const jwtSecret = process.env.SECRET_TOKEN;
 
+
 router.post("/loginuser", [
     body('email', 'Invalid email').isEmail()
 ], async (req, res) => {
@@ -18,14 +19,18 @@ router.post("/loginuser", [
     
     try {
         if (email === 'admin@gmail.com' && password === '11111') {
+
+            let userData = await User.findOne({ email });
             // Generate a different authToken for the admin user
-            const data = {
-                user: {
-                    isAdmin: true
-                }
-            };
-            const authToken = jwt.sign(data, jwtSecret, { expiresIn: '1h' });
-            return res.json({ success: true, authToken });
+            const token = jwt.sign({
+                userId: userData._id,
+                username: userData.name,
+                email: userData.email,
+                isAdmin: true  
+            }, jwtSecret, { expiresIn: '1h' });
+
+            return res.json({ success: true, token });
+
         } else {
             let userData = await User.findOne({ email });
             if (!userData) {

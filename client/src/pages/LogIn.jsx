@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import SuccessAlert from '../Alert/SuccessAlert';
+import { jwtDecode } from "jwt-decode";
 
 export default function LogIn() {
   const [success, setSuccess] = useState(null);
   const [failor, setFailure] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -23,7 +24,7 @@ export default function LogIn() {
   const onSubmit = async (data) => {
     console.log('Form submitted:', data);
     setLoading(true); // Set loading to true when form is submitted
-  
+
 
     try {
       const response = await axios.post(`${apiUrl}/api/loginuser`, data);
@@ -33,11 +34,33 @@ export default function LogIn() {
       if (response.data.token) {
         // Store the token in local storage
         localStorage.setItem('sugaryToken', response.data.token);
+        const token = localStorage.getItem('sugaryToken');
+        const decoded = jwtDecode(token);
+        if (token && decoded.isAdmin) {
+          setSuccess('Welcome! Admin!');
+          setFailure(null);
+          reset();
+          setTimeout(() => {
+            // Your code here
+            console.log('Executed after 2 seconds');
+            navigate('/');
+            location.reload();
+          }, 2000);
+  
+        } else if (token) {
+          // Set success message and reset form
+          setSuccess('Welcome! You are Ready to Order!');
+          setFailure(null);
+          reset();
+          setTimeout(() => {
+            // Your code here
+            console.log('Executed after 2 seconds');
+            navigate('/');
+            location.reload();
+          }, 2000);
+  
+        }
 
-        // Set success message and reset form
-        setSuccess('Welcome! You are Ready to Order!');
-        setFailure(null);
-        reset();
       } else {
         setFailure('An unexpected error occurred. Please try again.');
       }
@@ -46,10 +69,10 @@ export default function LogIn() {
       console.error('Error:', error);
       if (error.response && error.response.status === 400) {
         setFailure(error.response.data.error || 'Wrong Credentials!');
-      }else if (error.response && error.response.status === 403) {
+      } else if (error.response && error.response.status === 403) {
         setFailure(error.response.data.error || 'User not verified!');
       }
-       else {
+      else {
         setFailure('An unexpected error occurred. Please try again.');
       }
     } finally {
@@ -58,10 +81,10 @@ export default function LogIn() {
 
   };
 
-    // Toggle password visibility
-    const handlePasswordToggle = () => {
-      setShowPassword(prevState => !prevState);
-    };
+  // Toggle password visibility
+  const handlePasswordToggle = () => {
+    setShowPassword(prevState => !prevState);
+  };
 
   return (
     <div className='mt-4 min-h-[calc(100vh-300px)]'>
@@ -69,10 +92,10 @@ export default function LogIn() {
         <h2 className="text-xl font-semibold mb-8 text-primary tracking-wider text-center">Welcome back!</h2>
 
         <div className="relative mb-8">
-          <input  
+          <input
             type="email"
             name="email"
-            id="email" 
+            id="email"
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -85,28 +108,28 @@ export default function LogIn() {
           peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Email</label>
           {errors.email && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.email.message}</p>}
         </div>
-        
+
         <div className="relative mb-8">
-          <input  
-             type={showPassword ? "text" : "password"}
-             name="password"
-             id="password"
-             {...register("password", {
-               required: "Password is required",
-               minLength: { value: 5, message: "Password must be at least 5 characters long" }
-             })}
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            id="password"
+            {...register("password", {
+              required: "Password is required",
+              minLength: { value: 5, message: "Password must be at least 5 characters long" }
+            })}
             className="block w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded 
             focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer" placeholder=" " />
           <label htmlFor="name" className="absolute top-0 left-4 px-1 text-gray-500 bg-white transition-all transform -translate-y-1/2 scale-75 origin-top-left peer-placeholder-shown:scale-100 
           peer-placeholder-shown:-translate-y-1/2 peer-focus:scale-75 peer-focus:-translate-y-1/2 text-base">Password</label>
-            <button
+          <button
             type="button"
             onClick={handlePasswordToggle}
             className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
           >
             {showPassword ? <LuEyeOff size={20} /> : <LuEye size={20} />}
           </button>
-          
+
           {errors.password && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.password.message}</p>}
         </div>
 

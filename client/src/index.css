@@ -17,7 +17,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000; /* Ensure the navbar stays on top */
+  z-index: 10; /* Ensure the navbar stays on top */
   display: flex;
   justify-content: center;
 }
