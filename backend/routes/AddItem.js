@@ -16,4 +16,14 @@ router.post('/add-item', async (req, res) => {
   }
 });
 
+router.get('/get-items', async (req, res) => {
+  try {
+    const cupcakes = await Item.find();
+    res.status(200).json(cupcakes);
+  } catch (error) {
+    console.error('Error fetching cupcakes:', error);
+    res.status(500).json({ message: 'Error fetching cupcakes' });
+  }
+});
+
 module.exports = router;

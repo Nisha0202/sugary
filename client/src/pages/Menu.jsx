@@ -7,12 +7,19 @@ const Menu = () => {
     const [cupcakes, setCupcakes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
+    const apiUrl = 'http://localhost:5000';
+
+    // useEffect(() => {
+    //     fetch('cupcakes.json')
+    //         .then(response => response.json())
+    //         .then(data => setCupcakes(data));
+    // }, []);
 
     useEffect(() => {
-        fetch('cupcakes.json')
-            .then(response => response.json())
-            .then(data => setCupcakes(data));
-    }, []);
+        fetch(`${apiUrl}/api/get-items`)
+          .then(response => response.json())
+          .then(data => setCupcakes(data));
+      }, []);
 
     // Calculate the current items to display
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -80,7 +87,7 @@ const Menu = () => {
                     <button
                         key={index}
                         onClick={() => handlePageChange(index + 1)}
-                        className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? 'bg-primary text-white' : 'bg-gray-200'}`}
+                        className={`px-4 rounded-md py-2 mx-1 ${currentPage === index + 1 ? 'bg-primary text-white' : 'bg-gray-200'}`}
                     >
                         {index + 1}
                     </button>

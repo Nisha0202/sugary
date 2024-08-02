@@ -7,7 +7,7 @@ const AddMenu = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm();
+  const { register, reset, handleSubmit, formState: { errors }, setValue } = useForm();
   const fileInputRef = useRef(null);
   const [success, setSuccess] = useState(null);
   const [failore, setFailore] = useState(null);
@@ -48,6 +48,7 @@ const AddMenu = () => {
       const response = await axios.post(`${apiUrl}/api/add-item`, data);
       console.log('Data submitted successfully:', response.data);
       setSuccess('Data submitted successfully');
+      reset();
     } catch (error) {
       console.error('Error submitting form:', error.response?.data || error.message); // Log detailed error info
       setFailore('Failed to submit data!');
