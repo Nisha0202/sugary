@@ -16,6 +16,10 @@ react-awesome-reveal
 
 //login logout nav x
 //admin nav x
+// add menu form
+// model
+// api
+
 
 
 
