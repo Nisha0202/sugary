@@ -18,7 +18,7 @@ router.post('/add-item', async (req, res) => {
 
 router.get('/get-items', async (req, res) => {
   try {
-    const cupcakes = await Item.find();
+    const cupcakes = await Item.find().sort({ date: -1 }); // Sort by createdAt in descending order
     res.status(200).json(cupcakes);
   } catch (error) {
     console.error('Error fetching cupcakes:', error);
