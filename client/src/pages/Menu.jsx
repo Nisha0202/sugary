@@ -53,7 +53,7 @@ const Menu = () => {
                 <h2 className="text-2xl w-full max-w-xl font-semibold text-center text-primary ">Our Menu</h2>
 
              
-                <div className='flex gap-4 max-w-xl w-full items-center'>
+                <div className='flex lg:gap-4 gap-1 max-w-xl w-full items-center'>
                        {/* search */}
                     <form className="max-w-xl w-full mx-auto">
                         <label htmlFor="default-search" className="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>

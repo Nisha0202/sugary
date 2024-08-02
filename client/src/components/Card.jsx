@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCartPlus } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 const Card = ({ cupcake }) => {
     const [boxSize, setBoxSize] = useState(6);
     const [quantity, setQuantity] = useState(1);
@@ -106,9 +107,9 @@ const Card = ({ cupcake }) => {
                      hover:bg-gray-300 font-bold rounded">
                         <FaCartPlus /> Add
                     </button>
-                    <button className="w-full border-0 py-2 bg-gray-100 text-green-600 tracking-wide hover:bg-gray-300 font-bold  rounded">
+                    <Link to= {`/menu/${cupcake._id}`} className="w-full border-0 py-2 bg-gray-100 text-green-600 tracking-wide hover:bg-gray-300 font-bold  rounded">
                         More
-                    </button>
+                    </Link>
 
                 </div>
 
