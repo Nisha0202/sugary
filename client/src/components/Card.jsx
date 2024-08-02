@@ -20,16 +20,36 @@ const Card = ({ cupcake }) => {
         const value = parseInt(event.target.value);
         setQuantity(value);
     };
+    // Add a helper function to check if the date is recent
+    const isRecent = (dateString) => {
+        const dateParts = dateString.split(' ')[0].split('/').map(Number);
+        const dateTime = new Date(dateParts[2], dateParts[0] - 1, dateParts[1]);
+        const oneMonthAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+        return dateTime < oneMonthAgo;
+      };
 
     if (!cupcake) {
         return <div className='grid place-items-center my-4 text-xl font-semibold'>No menu item to show!</div>
     }
 
     return (
-        <div className="w-80 rounded-md flex justify-center items-center text-center flex-col border-2 overflow-hidden p-4 bg-transparent">
-            <img className="w-72 h-[14rem] rounded-md object-cover border-2
+        <div className=" w-80 rounded-md flex justify-center items-center text-center flex-col border-2 overflow-hidden p-4 bg-transparent">
+            {/* <div className='w-72 h-[14rem] rounded-md indicator
+             '>
+                <img className="w-72 h-[14rem] rounded-md object-cover border-2
              transform transition-transform duration-300 hover:scale-105 " src={cupcake.image} alt={cupcake.title} />
-
+                <span className="indicator-item badge mr-4 mt-4 text-white border-0 bg-primary pt-2 pb-2.5">new</span>
+            </div> */}
+            <div className="w-72 h-[14rem] rounded-md indicator">
+                <img
+                    className="w-72 h-[14rem] rounded-md object-cover border-2 transform transition-transform duration-300 hover:scale-105"
+                    src={cupcake.image}
+                    alt={cupcake.title}
+                />
+                {cupcake.date && isRecent(cupcake.date) && (
+                   <span className="indicator-item badge mr-4 mt-4 text-white border-0 bg-primary pt-2 pb-2.5">new</span>
+                )}
+            </div>
             <div className="py-4">
                 <div className='w-full justify-between flex items-center h-6 px-2'>
                     <div className="font-semibold tracking-wide text-xl text-text">{cupcake.title}</div>
@@ -76,7 +96,7 @@ const Card = ({ cupcake }) => {
                         />
                     </div>
                 </div>
-                
+
                 {/* result */}
                 <div>
                     {/* <p className="text-sm ">Total Boxes: {quantity} {boxSize === 6 ? "(Regular)" : "(Large)"}</p>

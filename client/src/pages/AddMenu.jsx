@@ -178,7 +178,7 @@ const AddMenu = () => {
   };
 
   return (
-    <div className='mt-1 min-h-[calc(100vh-300px)]'>
+    <div className='mt-1 min-h-[calc(100vh-200px)]'>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto px-2 py-14 rounded-md text-sm">
   <h2 className="text-xl font-semibold mb-6 text-primary tracking-wider text-center">Add New Cupcake!</h2>
 

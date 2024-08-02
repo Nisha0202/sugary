@@ -45,13 +45,13 @@ const ItemSchema = new Schema({
   },
   date: {
     type: String, // Change type to String to store formatted date
-    default: () => moment().format('MM/DD/YYYY hA') // Default format
+    default: () => moment().format('MM/DD/YYYY') // Default format
   },
 });
 
 // Pre-save hook to format the date
 ItemSchema.pre('save', function(next) {
-  this.date = moment().format('MM/DD/YYYY h:mm A');
+  this.date = moment().format('MM/DD/YYYY');
   next();
 });
 

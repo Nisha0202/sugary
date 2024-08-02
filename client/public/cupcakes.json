@@ -8,7 +8,8 @@
       "category": "non-vegan",
       "weight": 752,
       "ingredients": ["flour", "sugar", "cocoa powder", "butter", "eggs", "milk", "baking powder", "vanilla extract"],
-      "others": null
+      "others": null,
+      "date" : null
   },
   {
       "title": "Vanilla Dream",
@@ -19,7 +20,8 @@
       "category": "non-vegan",
       "weight": 70,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "vanilla extract"],
-      "others": null
+      "others": null,
+      "date" : null
   },
   {
       "title": "Red Velvet",
@@ -30,7 +32,8 @@
       "category": "non-vegan",
       "weight": 80,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "cocoa powder", "red food coloring", "cream cheese"],
-      "others": null
+      "others": null,
+      "date" : null
     },
   {
       "title": "Strawberry Bliss",
@@ -41,7 +44,8 @@
       "category": "non-vegan",
       "weight": 75,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "strawberries", "vanilla extract"],
-      "others": null
+      "others": null,
+      "date" : null
   },
   {
       "title": "Lemon Zest",
@@ -52,7 +56,8 @@
       "category": "non-vegan",
       "weight": 70,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "lemon zest", "lemon juice"],
-      "others": null
+      "others": null,
+      "date" : null
   },
   {
       "title": "Carrot Cake",
@@ -63,7 +68,8 @@
       "category": "non-vegan",
       "weight": 85,
       "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "carrots", "cinnamon", "nutmeg"],
-      "others": null
+      "others": null,
+      "date" : null
   },
   {
       "title": "Peanut Butter Cup",
@@ -74,7 +80,8 @@
       "category": "non-vegan",
       "weight": 75,
       "ingredients": ["flour", "sugar", "cocoa powder", "vegan butter", "plant-based milk", "baking powder", "vanilla extract"],
-      "others": null
+      "others": null,
+      "date" : null
   },
   {
       "title": "Choco Hazelnut",
@@ -85,7 +92,8 @@
       "category": "non-vegan",
       "weight": 80,
       "ingredients": ["flour", "sugar", "cocoa powder", "butter", "eggs", "milk", "baking powder", "hazelnuts", "chocolate ganache"],
-      "others": null
+      "others": null,
+      "date" : null
   },
   {
       "title": "Vegan Chocolate",
@@ -96,7 +104,8 @@
       "category": "vegan",
       "weight": 75,
       "ingredients": ["flour", "sugar", "cocoa powder", "vegan butter", "plant-based milk", "baking powder", "vanilla extract"],
-      "others": null
+      "others": null,
+      "date" : null
   },
   {
       "title": "Vegan Vanilla",
@@ -107,7 +116,8 @@
       "category": "vegan",
       "weight": 70,
       "ingredients": ["flour", "sugar", "vegan butter", "plant-based milk", "baking powder", "vanilla extract"],
-      "others": null
+      "others": null,
+      "date" : null
 
   },
   {
@@ -119,7 +129,8 @@
       "category": "vegan",
       "weight": 80,
       "ingredients": ["flour", "sugar", "vegan butter", "plant-based milk", "baking powder", "cocoa powder", "red food coloring"],
-      "others": null
+      "others": null,
+      "date" : null
   },
   {
       "title": "Vanilla Bean",
@@ -130,6 +141,19 @@
       "category": "vegan",
       "weight": 75,
       "ingredients": ["flour", "sugar", "vegan butter", "plant-based milk", "baking powder", "vanilla bean"],
-      "others": null
-  }
+      "others": null,
+      "date" : "04/07/2024"
+  },
+  {
+    "title": "Beowiny Flavour",
+    "description": "A unique and exotic cupcake flavor that blends a hint of honey with spices.",
+    "image": "https://i.ibb.co/nMJLMHK/Default-a-chocolate-moist-cupcake-with-white-background-1.jpg",
+    "pricePerSix": 600,
+    "pricePerTwelve": 1100,
+    "category": "non-vegan",
+    "weight": 750,
+    "ingredients": ["flour", "sugar", "butter", "eggs", "milk", "baking powder", "honey", "cinnamon", "nutmeg"],
+    "others": null,
+    "date": "02/08/2024"
+}
 ]

@@ -6,20 +6,33 @@ import { Fade, Slide } from "react-awesome-reveal";
 const Menu = () => {
     const [cupcakes, setCupcakes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
     const itemsPerPage = 6;
     const apiUrl = 'http://localhost:5000';
 
     // useEffect(() => {
-    //     fetch('cupcakes.json')
-    //         .then(response => response.json())
-    //         .then(data => setCupcakes(data));
-    // }, []);
+    //     fetch(`${apiUrl}/api/get-items`)
+    //       .then(response => response.json())
+    //       .then(data => setCupcakes(data));
+    //   }, []);
 
     useEffect(() => {
-        fetch(`${apiUrl}/api/get-items`)
-          .then(response => response.json())
-          .then(data => setCupcakes(data));
-      }, []);
+        const fetchData = async () => {
+            setIsLoading(true); // Set loading to true
+            try {
+                const response = await fetch(`${apiUrl}/api/get-items`);
+                const data = await response.json();
+                setCupcakes(data);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setTimeout(() => {
+                    setIsLoading(false); // Set loading to false after 1 second
+                }, 1000);
+            }
+        };
+        fetchData();
+    }, []);
 
     // Calculate the current items to display
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -35,7 +48,7 @@ const Menu = () => {
     };
 
     return (
-        <div className="flex flex-col gap-4 justify-center items-center h-auto ">
+        <div className="flex flex-col gap-4 justify-center items-center  min-h-[calc(100vh-200px)] ">
             <section className='w-full flex flex-col gap-6 items-center mb-6 mt-4 md:mt-6 '>
                 <h2 className="text-2xl w-full max-w-xl font-semibold text-center text-primary ">Our Menu</h2>
 
@@ -73,12 +86,15 @@ const Menu = () => {
 
             {/* menu */}
             <div className="flex flex-wrap gap-6 md:gap-10 justify-center items-center h-auto mb-4 mt-0 md:mt-4">
-             
+            {isLoading ? (
+                <div className="loading-indicator mt-2 min-h-[calc(100vh-200px)]">Loading Menu...</div>
+            ) : (
             <Slide triggerOnce>
                  {currentItems.map((cupcake, index) => (
                     <Card key={index} cupcake={cupcake} />
                 ))}
                 </Slide>
+            )}
               
             </div>
 
@@ -87,7 +103,7 @@ const Menu = () => {
                     <button
                         key={index}
                         onClick={() => handlePageChange(index + 1)}
-                        className={`px-4 rounded-md py-2 mx-1 ${currentPage === index + 1 ? 'bg-primary text-white' : 'bg-gray-200'}`}
+                        className={`py-2 px-3 rounded-md text-xs font-semibold mx-1 ${currentPage === index + 1 ? 'bg-primary text-white' : 'bg-gray-200'}`}
                     >
                         {index + 1}
                     </button>
