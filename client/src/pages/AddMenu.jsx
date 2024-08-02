@@ -75,10 +75,10 @@ const AddMenu = () => {
               name={field.name}
               id={field.name}
               {...register(field.name, { required: field.required ? `${field.label} is required` : false })}
-              className="block w-full px-4 py-1.5 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
+              className="block w-full px-4 py-2 mt-2.5 text-text bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
             >
               {field.options.map(option => (
-                <option className='py-2.5 text-text' key={option} value={option === 'Select category' ? '' : option}>
+                <option className=' text-text' key={option} value={option === 'Select category' ? '' : option}>
                   {option}
                 </option>
               ))}
@@ -146,7 +146,7 @@ const AddMenu = () => {
             <button
               type="button"
               onClick={handlePrevious}
-              className="py-2 px-4 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
+              className="py-2 px-4 w-24 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
             >
               Previous
             </button>
@@ -155,14 +155,14 @@ const AddMenu = () => {
             <button
               type="button"
               onClick={handleNext}
-              className="py-2 px-4 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
+              className="py-2 px-4 w-24 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
             >
               Next
             </button>
           ) : (
             <button
               type="submit"
-              className="py-2 px-4 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
+              className="py-2 px-4 w-24 bg-gray-100 text-pink-500 font-semibold rounded-md hover:bg-gray-300 transition-colors"
             >
               Add
             </button>
