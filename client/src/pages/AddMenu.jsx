@@ -1,30 +1,68 @@
 import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import SuccessAlert from '../Alert/SuccessAlert';
 
 const AddMenu = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const { register, handleSubmit, formState: { errors }, setValue } = useForm();
-  const fileInputRef = useRef(null); // Add this line
-
+  const fileInputRef = useRef(null);
+  const [success, setSuccess] = useState(null);
+  const [failore, setFailore] = useState(null);
+  const [loading, setLoading] = useState(false);
   const questionsPerPage = 4;
-  const totalQuestions = 10; // Total number of fields to be paginated
+  const totalQuestions = 10;
   const pages = Math.ceil(totalQuestions / questionsPerPage);
 
-  const onSubmit = (data) => {
-    data.ingredients = data.ingredients.split(',').map(ingredient => ingredient.trim());
-    console.log(data);
-    // Add your form submission logic here
+  const apiUrl = 'http://localhost:5000';
+
+  const handleImageUpload = async (file) => {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const response = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGbb}`,
+        formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
+      );
+      return response.data.data.url;
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      throw error;
+    }
   };
+  const onSubmit = async (data) => {
+   setLoading(true);
+    try {
+      if (file) {
+        const imageUrl = await handleImageUpload(file);
+        data.image = imageUrl;
+      }
+      data.ingredients = data.ingredients.split(',').map(ingredient => ingredient.trim());
+      
+      console.log('Submitting data:', data); // Log data to ensure it's formatted correctly
+  
+      const response = await axios.post(`${apiUrl}/api/add-item`, data);
+      console.log('Data submitted successfully:', response.data);
+      setSuccess('Data submitted successfully');
+    } catch (error) {
+      console.error('Error submitting form:', error.response?.data || error.message); // Log detailed error info
+      setFailore('Failed to submit data!');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setFile(file);
-      setValue('image', file.name); // Set the file name or handle it as needed
+      setValue('image', file.name);
 
-      // Create a preview of the selected image
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
@@ -33,7 +71,9 @@ const AddMenu = () => {
     }
   };
 
-  const handleNext = () => {
+
+  const handleNext = (event) => {
+    event.preventDefault();
     if (currentPage < pages - 1) {
       setCurrentPage(currentPage + 1);
     }
@@ -44,6 +84,8 @@ const AddMenu = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+
+
 
   const renderFormFields = () => {
     const fields = [
@@ -67,7 +109,7 @@ const AddMenu = () => {
               name={field.name}
               id={field.name}
               {...register(field.name, { required: field.required ? `${field.label} is required` : false })}
-              className="block w-full px-4 py-1.5 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
+              className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
               placeholder=" "
             />
           ) : field.type === 'select' ? (
@@ -122,7 +164,7 @@ const AddMenu = () => {
               name={field.name}
               id={field.name}
               {...register(field.name, { required: field.required ? `${field.label} is required` : false })}
-              className="block w-full px-4 py-1.5 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
+              className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
               placeholder=" "
             />
           )}
@@ -137,38 +179,42 @@ const AddMenu = () => {
   return (
     <div className='mt-1 min-h-[calc(100vh-300px)]'>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto px-2 py-14 rounded-md text-sm">
-        <h2 className="text-xl font-semibold mb-6 text-primary tracking-wider text-center">Add New Cupcake!</h2>
-        
-        {renderFormFields()}
+  <h2 className="text-xl font-semibold mb-6 text-primary tracking-wider text-center">Add New Cupcake!</h2>
 
-        <div className="flex justify-between mt-6">
-          {currentPage > 0 && (
-            <button
-              type="button"
-              onClick={handlePrevious}
-              className="py-2 px-4 w-24 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
-            >
-              Previous
-            </button>
-          )}
-          {currentPage < pages - 1 ? (
-            <button
-              type="button"
-              onClick={handleNext}
-              className="py-2 px-4 w-24 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
-            >
-              Next
-            </button>
-          ) : (
-            <button
-              type="submit"
-              className="py-2 px-4 w-24 bg-gray-100 text-pink-500 font-semibold rounded-md hover:bg-gray-300 transition-colors"
-            >
-              Add
-            </button>
-          )}
-        </div>
-      </form>
+  {renderFormFields()}
+
+  <div className="flex justify-between mt-6">
+    {currentPage > 0 && (
+      <button
+        type="button"
+        onClick={handlePrevious}
+        className="py-2 px-4 w-24 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
+      >
+        Previous
+      </button>
+    )}
+    {currentPage < pages - 1 ? (
+      <button
+        type="button"
+        onClick={handleNext}
+        className="py-2 px-4 w-24 bg-gray-100 text-green-600 font-semibold rounded-md hover:bg-gray-300 transition-colors"
+      >
+        Next
+      </button>
+    ) : (
+      <button
+        type="submit"
+        className="py-2 px-4 w-24 bg-gray-100 text-pink-500 font-semibold rounded-md hover:bg-gray-300 transition-colors"
+      >
+        Add
+      </button>
+    )}
+  </div>
+  {loading && <span className="loading loading-spinner font-bold text-success absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"></span>}
+</form>
+
+      {success && <SuccessAlert message={success} />}
+      {failore && <p className="text-red-500 font-bold text-center">{failore}</p>}
     </div>
   );
 };

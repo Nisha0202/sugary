@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const moment = require('moment');
 
 const ItemSchema = new Schema({
   title: {
@@ -13,7 +14,6 @@ const ItemSchema = new Schema({
   image: {
     type: String,
     required: true,
-    match: /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|bmp|webp|ico))$/,
   },
   pricePerSix: {
     type: Number,
@@ -28,7 +28,7 @@ const ItemSchema = new Schema({
   category: {
     type: String,
     required: true,
-    enum: ['vegan', 'non-vegan'],
+
   },
   weight: {
     type: Number,
@@ -43,8 +43,18 @@ const ItemSchema = new Schema({
     type: String,
     default: null,
   },
+  date: {
+    type: String, // Change type to String to store formatted date
+    default: () => moment().format('MM/DD/YYYY hA') // Default format
+  },
 });
 
-const Item = mongoose.model('Cupcake', ItemSchema);
+// Pre-save hook to format the date
+ItemSchema.pre('save', function(next) {
+  this.date = moment().format('MM/DD/YYYY h:mm A');
+  next();
+});
+
+const Item = mongoose.model('cupcakes', ItemSchema);
 
 module.exports = Item;
