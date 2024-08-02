@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
 const AddMenu = () => {
@@ -6,6 +6,7 @@ const AddMenu = () => {
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const { register, handleSubmit, formState: { errors }, setValue } = useForm();
+  const fileInputRef = useRef(null); // Add this line
 
   const questionsPerPage = 4;
   const totalQuestions = 10; // Total number of fields to be paginated
@@ -83,21 +84,38 @@ const AddMenu = () => {
               ))}
             </select>
           ) : field.type === 'file' ? (
-            <>
+            <div className=' border-2 p-4 rounded-md'>
+
+              {/* Hidden file input */}
               <input
-                type="file"
-                name={field.name}
-                id={field.name}
-                accept="image/*"
+                ref={fileInputRef}
+                type='file'
+                style={{ display: 'none' }}
                 onChange={handleFileChange}
-                className="block w-full px-4 py-1.5 text-gray-900 bg-white border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent"
+                accept='image/*'
               />
-              {imagePreview && (
-                <div className="mt-4 flex w-20 h-20 justify-center">
-                  <img src={imagePreview} alt="Image preview" className="max-w-full h-auto rounded-md shadow-md" />
-                </div>
-              )}
-            </>
+              {/* Image placeholder */}
+              <div
+                className='img-box w-56 h-48 border-2 mx-auto my-4 bg-transparent flex items-center justify-center rounded-md cursor-pointer'
+                onClick={() => fileInputRef.current.click()}
+              >
+                {imagePreview ? (
+                  <img src={imagePreview} alt="Image Preview" className="w-24 h-24 object-cover rounded-md" />
+                ) : (
+                  <div className='flex place-content-center border-2'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      className='h-6 w-6 text-gray-600'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                    >
+                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M12 6v6m0 0v6m0-6h6m-6 0H6' />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            </div>
           ) : (
             <input
               type={field.type}
