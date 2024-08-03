@@ -87,7 +87,7 @@ export default function LogIn() {
   };
 
   return (
-    <div className='mt-4 min-h-[calc(100vh-300px)]'>
+    <div className='mt-4 min-h-[calc(100vh-268px)]'>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto px-2 py-14 rounded-md text-sm">
         <h2 className="text-xl font-semibold mb-8 text-primary tracking-wider text-center">Welcome back!</h2>
 

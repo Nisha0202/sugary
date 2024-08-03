@@ -8,12 +8,13 @@ const More = ({ cupcakes }) => {
     const [error, setError] = useState(null);
     const cupcake = cupcakes.find(cupcake => cupcake._id === id);
     const navigate = useNavigate();
+
     if (!cupcake) {
-        return <div>Cupcake not found!</div>;
+        return <div>No details not found!</div>;
     }
 
     if (error) {
-        return <div className=' min-h-[calc(100vh-200px)] w-full flex justify-center items-center'>{error}</div>;
+        return <div className=' min-h-[calc(100vh-208px)] w-full flex justify-center items-center'>{error}</div>;
     }
 
     function capitalizeFirstLetter(string) {
