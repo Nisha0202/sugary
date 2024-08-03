@@ -16,12 +16,12 @@ app.get('/', (req, res) => {
 app.use(express.json())
 console.log('Hello')
 
-app.use('/api', require("./routes/CreateUser"));
-app.use('/api', require("./routes/LoginUser"));
-app.use('/api', require("./routes/Verify"));
-app.use('/api', require("./routes/ForgotPass"));
-app.use('/api', require("./routes/ResetPass"));
-app.use('/api', require("./routes/AddItem"));
+app.use('/api', require("./routes/CreateUser.js"));
+app.use('/api', require("./routes/LoginUser.js"));
+app.use('/api', require("./routes/Verify.js"));
+app.use('/api', require("./routes/ForgotPass.js"));
+app.use('/api', require("./routes/ResetPass.js"));
+app.use('/api', require("./routes/AddItem.js"));
 
 
 

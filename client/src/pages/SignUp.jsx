@@ -18,7 +18,7 @@ export default function SignUp() {
     formState: { errors },
   } = useForm();
 
- const apiUrl = 'http://localhost:5000';
+ const apiUrl = 'https://sugary-backend.vercel.app';
 
    // Toggle password visibility
    const handlePasswordToggle = () => {

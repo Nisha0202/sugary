@@ -11,7 +11,7 @@ const ForgotPassword = () => {
     const onSubmit = async (data) => {
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:5000/api/forgot-password', { email: data.email });
+            const response = await axios.post('https://sugary-backend.vercel.app/api/forgot-password', { email: data.email });
             setSuccess(response.data.message);
 setLoading(false);
 

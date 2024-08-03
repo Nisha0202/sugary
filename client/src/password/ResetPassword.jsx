@@ -15,7 +15,7 @@ const ResetPassword = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post('http://localhost:5000/api/reset-password', { token, newPassword: data.password });
+            const response = await axios.post('https://sugary-backend.vercel.app/api/reset-password', { token, newPassword: data.password });
             setSuccess(response.data.message);
             setLoading(false);
         } catch (error) {

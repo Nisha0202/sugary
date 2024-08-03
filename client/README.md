@@ -20,15 +20,16 @@ react-awesome-reveal
 // model x
 // api x
 
-// menu detail
+// menu detail x
+// search
 //add to card
 // payment
 // order
 
 
 
-//pagination
-// admin access to upload menu
+//pagination x
+// admin access to upload menu x
 
 
 

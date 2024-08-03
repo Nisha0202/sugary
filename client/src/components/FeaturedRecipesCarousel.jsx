@@ -39,7 +39,7 @@ const FeaturedRecipesCarousel = () => {
   };
 
   return (
-    <div className='max-w-[1160px] mx-auto mt-8 lg:mt-12 mb-16 lg:mb-28 overflow-hidden'>
+    <div className='max-w-[1160px] mx-auto mt-8 lg:mt-12 mb-12 lg:mb-24 overflow-hidden'>
       <Slider {...settings}>
         {cupcakes.slice(0, 5).map((cupcake, index) => (
           <div key={index} className='border-0 outline-none'>

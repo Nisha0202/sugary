@@ -94,7 +94,7 @@ import axios from 'axios';
 
 const App = () => {
   const [cupcakes, setCupcakes] = useState([]);
-  const apiUrl = 'http://localhost:5000';
+  const apiUrl = 'https://sugary-backend.vercel.app';
 
   useEffect(() => {
     const fetchCupcakes = async () => {

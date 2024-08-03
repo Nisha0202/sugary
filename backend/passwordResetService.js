@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 
 // Function to send password reset email
 const sendPasswordResetEmail = async (user, token) => {
-    const resetUrl = `http://localhost:5173/reset-password?token=${token}`;
+    const resetUrl = `https://sugaryy.netlify.app/reset-password?token=${token}`;
     const mailOptions = {
         from: 'no-reply@yourapp.com',
         to: user.email,

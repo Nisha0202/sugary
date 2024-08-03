@@ -16,7 +16,7 @@ const AddMenu = () => {
   const totalQuestions = 10;
   const pages = Math.ceil(totalQuestions / questionsPerPage);
 
-  const apiUrl = 'http://localhost:5000';
+  const apiUrl = 'https://sugary-backend.vercel.app';
 
   const handleImageUpload = async (file) => {
     const formData = new FormData();

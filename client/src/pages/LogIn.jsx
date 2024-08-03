@@ -19,7 +19,7 @@ export default function LogIn() {
     formState: { errors },
   } = useForm();
 
-  const apiUrl = 'http://localhost:5000';
+  const apiUrl = 'https://sugary-backend.vercel.app';
 
   const onSubmit = async (data) => {
     console.log('Form submitted:', data);

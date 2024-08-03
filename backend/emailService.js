@@ -1,6 +1,6 @@
 // emailService.js
 const nodemailer = require('nodemailer');
-const User = require('../backend/models/User');
+const User = require('./models/User.js');
 
 // Create a transport object using Mailtrap SMTP settings
 const transporter = nodemailer.createTransport({
@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 
 // Function to send verification email
 const sendVerificationEmail = async (user, token) => {
-    const verificationUrl = `http://localhost:5000/api/verify-email?token=${token}`;
+    const verificationUrl = `https://sugary-backend.vercel.app/api/verify-email?token=${token}`;
     await User.create({
         name: user.name,
         location: user.location,
