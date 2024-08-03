@@ -29,25 +29,25 @@ const Menu = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [filter, currentPage]);
 
-// Filter and search logic
-const filteredCupcakes = cupcakes.filter(cupcake => {
-    const matchesSearch = (cupcake.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    cupcake.description.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesFilter = filter === 'affordable' 
-        ? true 
-        : filter 
-            ? cupcake.category.toLowerCase() === filter.toLowerCase() 
-            : true;
+    // Filter and search logic
+    const filteredCupcakes = cupcakes.filter(cupcake => {
+        const matchesSearch = (cupcake.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            cupcake.description.toLowerCase().includes(searchQuery.toLowerCase()));
+        const matchesFilter = filter === 'affordable'
+            ? true
+            : filter
+                ? cupcake.category.toLowerCase() === filter.toLowerCase()
+                : true;
 
-    return matchesSearch && matchesFilter;
-});
+        return matchesSearch && matchesFilter;
+    });
 
-// Sorting logic for affordable filter
-const sortedCupcakes = filter === 'affordable'
-    ? filteredCupcakes.sort((a, b) => a.pricePerSix - b.pricePerSix)
-    : filteredCupcakes;
+    // Sorting logic for affordable filter
+    const sortedCupcakes = filter === 'affordable'
+        ? filteredCupcakes.sort((a, b) => a.pricePerSix - b.pricePerSix)
+        : filteredCupcakes;
 
     // Pagination logic
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -72,7 +72,7 @@ const sortedCupcakes = filter === 'affordable'
                                 <FiSearch className='text-xl text-text font-bold' />
                             </div>
                             <input
-                            title='Seach here'
+                                title='Seach here'
                                 type="search"
                                 id="default-search"
                                 className="focus:outline-none input rounded-md block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300
@@ -100,17 +100,17 @@ const sortedCupcakes = filter === 'affordable'
                     </div>
                 </div>
             </section>
-       
-        {/* Display no results message */}
-        {!isLoading && sortedCupcakes.length === 0 && (
-            <div className="text-gray-600 text-lg">No cupcakes match your search and filter criteria.</div>
-        )}
+
+            {/* Display no results message */}
+            {!isLoading && sortedCupcakes.length === 0 && (
+                <div className="text-gray-600 text-lg">No cupcakes match your search and filter criteria.</div>
+            )}
 
 
             {/* menu */}
-            <div className="flex flex-wrap gap-6 md:gap-10 justify-center items-center h-auto mb-4 mt-0 md:mt-4">
+            <div className="flex flex-wrap gap-6 md:gap-10 justify-center items-center min-h-[calc(100vh-200px)] h-auto mb-4 mt-0 md:mt-4">
                 {isLoading ? (
-                    <div className="loading-indicator mt-2 min-h-[calc(100vh-200px)]">Loading Menu...</div>
+                    <div className="loading-indicator fixed top-0 left-0 right-0 bottom-0 z-20 flex items-center justify-center">Loading Menu...</div>
                 ) : (
                     <Slide triggerOnce>
                         {currentItems.map((cupcake, index) => (

@@ -21,8 +21,10 @@ react-awesome-reveal
 // api x
 
 // menu detail x
-// search
-//add to card
+// search x
+// add to card
+// order time
+// protected routes
 // payment
 // order
 
