@@ -27,6 +27,9 @@ react-awesome-reveal
 
 
 
+//pagination
+// admin access to upload menu
+
 
 
 

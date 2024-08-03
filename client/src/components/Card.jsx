@@ -46,13 +46,12 @@ const Card = ({ cupcake }) => {
                    <span className="indicator-item badge mr-4 mt-4 text-white border-0 bg-primary pt-2 pb-2.5">new</span>
                 )}
             </div>
-            <div className="py-4">
-                <div className='w-full justify-between flex items-center h-6 px-2'>
-                    <div className="font-semibold tracking-wide text-xl text-text">{cupcake.title}</div>
+            <div className="py-4 w-full px-2">
+                <div className='w-full justify-between flex items-center h-6'>
+                    <div className="font-semibold flex flex-1 tracking-wide text-xl text-text">{cupcake.title}</div>
                     <div className='text-sm'>{cupcake.weight}g each</div>
                 </div>
-
-                <div className="text-sm tracking-wider mt-4 h-10">{cupcake.description}</div>
+                {/* <div className="text-sm tracking-wider mt-4 h-10">{cupcake.description}</div> */}
             </div>
             <div className="px-2 w-full">
                 {/* selection */}

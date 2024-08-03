@@ -10,11 +10,6 @@ const Menu = () => {
     const itemsPerPage = 6;
     const apiUrl = 'http://localhost:5000';
 
-    // useEffect(() => {
-    //     fetch(`${apiUrl}/api/get-items`)
-    //       .then(response => response.json())
-    //       .then(data => setCupcakes(data));
-    //   }, []);
 
     useEffect(() => {
         const fetchData = async () => {
