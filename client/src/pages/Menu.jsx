@@ -33,7 +33,8 @@ const Menu = () => {
 
 // Filter and search logic
 const filteredCupcakes = cupcakes.filter(cupcake => {
-    const matchesSearch = cupcake.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = (cupcake.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    cupcake.description.toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesFilter = filter === 'affordable' 
         ? true 
         : filter 

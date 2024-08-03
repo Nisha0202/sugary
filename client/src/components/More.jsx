@@ -21,7 +21,7 @@ const More = ({ cupcakes }) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
     return (
-        <div className="flex justify-center min-h-[calc(100vh-350px)] mx-auto p-4 mt-4 lg:mt-8 relative">
+        <div className="flex justify-center min-h-[calc(100vh-268px)] mx-auto p-4 mt-4 lg:mt-8 relative">
             <button
                 onClick={() => navigate(-1)}
                 className="absolute top-4 right-0 border-2 m-2 bg-gray-300 rounded-full p-2 hover:bg-gray-400"
@@ -44,15 +44,15 @@ const More = ({ cupcakes }) => {
                     <div className='grid grid-cols-2 max-w-xl'>
                         <div >
                             <h2 className=' text-sm mb-2'>Weight</h2>
-                            <p className=" mb-4 font-medium tracking-wide">{cupcake.weight}g each</p>
+                            <p className=" mb-4 font-medium ">{cupcake.weight}g each</p>
                         </div>
                         <div>
                             <h2 className='text-sm mb-2'>Category</h2>
-                            <p className=" mb-4 font-medium tracking-wide">{capitalizeFirstLetter(cupcake.category)}</p>
+                            <p className=" mb-4 font-medium ">{capitalizeFirstLetter(cupcake.category)}</p>
                         </div>
                         <div>
                             <h2 className='text-sm mb-2 max-w-xl'>Ingredients</h2>
-                            <p className=" mb-4 font-medium tracking-wide">
+                            <p className=" mb-4 font-medium ">
                                 {cupcake.ingredients.map(ingredient => ingredient.charAt(0).toUpperCase() + ingredient.slice(1)).join(', ')}
                             </p>
                         </div>
