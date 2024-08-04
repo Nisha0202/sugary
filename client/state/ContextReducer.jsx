@@ -15,7 +15,8 @@ const reducer = (state, action) => {
                 return [...state, action.payload];
             }
         case "REMOVE":
-            return state.filter((item, index) => index !== action.index);
+                // Remove item by index logic
+                return state.filter((item, index) => index !== action.index);
         case "DROP":
             return [];
         case "UPDATE":
