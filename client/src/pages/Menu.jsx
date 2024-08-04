@@ -88,9 +88,9 @@ const Menu = () => {
 
                     {/* sort */}
                     <div className="dropdown dropdown-left">
-                        <div tabIndex={0} role="button" className="btn m-1 text-text">
+                        <summary tabIndex={0}  className="btn m-1 text-text">
                             <FaSortAmountDown />
-                        </div>
+                        </summary>
                         <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                             <li><a onClick={() => setFilter('affordable')}>Affordable</a></li>
                             <li><a onClick={() => setFilter('vegan')}>Vegan</a></li>

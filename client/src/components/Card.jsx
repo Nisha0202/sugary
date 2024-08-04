@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { IoMdArrowDropdown } from "react-icons/io";
-import { FaCartPlus } from "react-icons/fa6";
+import { FaCartPlus} from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import { useDispatchCart, useCart } from "../../state/ContextReducer"; // Import useDispatchCart
+
+
 const Card = ({ cupcake }) => {
     const [boxSize, setBoxSize] = useState(6);
     const [quantity, setQuantity] = useState(1);
     const [price, setPrice] = useState(0);
+    const dispatch = useDispatchCart(); // Get dispatch function
 
     useEffect(() => {
         setPrice(boxSize === 6 ? cupcake.pricePerSix : cupcake.pricePerTwelve);
@@ -28,6 +32,25 @@ const Card = ({ cupcake }) => {
         const oneMonthAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
         return dateTime < oneMonthAgo;
       };
+
+
+
+    //   Add yo Cart
+    const handleAddtoCart = () => {
+        dispatch({
+            type: "ADD",
+            payload: {
+                id: cupcake.id,
+                name: cupcake.title,
+                qty: quantity,
+                size: boxSize,
+                price: price * quantity,
+                
+          
+            }
+        });
+
+    };
 
     if (!cupcake) {
         return <div className='grid place-items-center my-4 text-xl font-semibold'>No menu item to show!</div>
@@ -102,10 +125,11 @@ const Card = ({ cupcake }) => {
                 {/* action */}
                 <div className='w-full flex items-center justify-between gap-4 mt-4'>
 
-                    <button className="w-full flex py-2 items-center justify-center gap-2 border-2 border-green-600 text-green-600 tracking-wide
+                    <button onClick={handleAddtoCart} className="w-full flex py-2 items-center justify-center gap-2 border-2 border-green-600 text-green-600 tracking-wide
                      hover:bg-gray-300 font-bold rounded">
                         <FaCartPlus /> Add
                     </button>
+
                     <Link to= {`/menu/${cupcake._id}`} className="w-full border-0 py-2 bg-gray-100 text-green-600 tracking-wide hover:bg-gray-300 font-bold  rounded">
                         More
                     </Link>

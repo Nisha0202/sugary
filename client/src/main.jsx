@@ -80,7 +80,6 @@ import {
 } from "react-router-dom";
 import './index.css';
 import Root from './root/Root';
-import FirbaseProvider from './FirebaseProbider/FirbaseProvider';
 import ErrorPage from './components/ErrorPage';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
@@ -91,6 +90,7 @@ import ResetPassword from './password/ResetPassword';
 import AddMenu from './pages/AddMenu';
 import More from './components/More';
 import axios from 'axios';
+import { CartProvider } from '../state/ContextReducer';
 
 const App = () => {
   const [cupcakes, setCupcakes] = useState([]);
@@ -134,8 +134,8 @@ const App = () => {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <FirbaseProvider>
-      <App />
-    </FirbaseProvider>
+     <CartProvider>
+    <App />
+  </CartProvider>,
   </React.StrictMode>
 );
