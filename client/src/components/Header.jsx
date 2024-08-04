@@ -15,7 +15,6 @@ export default function Header() {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const cart = useCart();
-  const cartItemCount = cart.reduce((total, item) => total + item.qty, 0);
   const [isCartVisible, setIsCartVisible] = useState(false);
 
   useEffect(() => {
@@ -47,8 +46,8 @@ export default function Header() {
     setIsMobileMenuOpen(prev => !prev);
   };
 
-  // Debugging line to check cart visibility state
-  console.log("Is Cart Visible:", isCartVisible);
+  // Calculate the number of unique items in the cart
+  const uniqueItemsCount = cart.length;
 
   return (
     <div className='navbar-container bg-white'>
@@ -188,16 +187,17 @@ export default function Header() {
 
         {/* Navbar End */}
         <div className="navbar-end flex items-center text-sm rounded-md gap-1">
-        <button
+          <button
             onClick={() => setIsCartVisible(!isCartVisible)}
             className={isCartVisible ? "p-2 hover:bg-gray-200 rounded" : "p-2 hover:bg-gray-200 hover:text-text rounded-md"}
           >
             <BsFillCartCheckFill className='text-lg indicator text-green-600 hover:text-text' />
-            {cartItemCount > 0 && (
-              <span className="ms-2 px-1.5 indicator-item indicator-middle indicator-end p-1 text-[10px] font-bold rounded-full text-white bg-pink-500">{cartItemCount}</span>
+            {uniqueItemsCount > 0 && (
+              <span className="ms-2 px-1.5 indicator-item indicator-middle indicator-end p-1 text-[10px] font-bold rounded-full text-white bg-pink-500">
+                {uniqueItemsCount}
+              </span>
             )}
           </button>
-
 
           {isCartVisible && <Cart onClose={() => setIsCartVisible(false)} />}
           {token ? (

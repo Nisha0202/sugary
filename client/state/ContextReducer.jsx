@@ -3,26 +3,61 @@ import React, { useEffect, useReducer, useContext, createContext } from 'react';
 const CartStateContext = createContext();
 const CartDispatchContext = createContext();
 
+// const reducer = (state, action) => {
+//     switch (action.type) {
+//         case "ADD":
+//             return [...state, { id: action.id, name: action.name, qty: action.qty, size: action.size, price: action.price }]
+//         case "REMOVE":
+//             return state.filter((item, index) => index !== action.index);
+//         default:
+//             console.error("Error in Reducer");
+//             return state;
+//     }
+// };
+
 const reducer = (state, action) => {
     switch (action.type) {
         case "ADD":
-            const existingIndex = state.findIndex(item => item.title === action.payload.title);
-            if (existingIndex !== -1) {
-                const updatedCart = [...state];
-                updatedCart[existingIndex].qty += action.payload.qty;
-                return updatedCart;
+            // Check if the item with the same ID and size already exists
+            const existingItemIndex = state.findIndex(
+                item => item.id === action.id && item.size === action.size
+            );
+
+            if (existingItemIndex !== -1) {
+                // Item exists, update the quantity
+                return state.map((item, index) =>
+                    index === existingItemIndex
+                        ? { ...item, qty: item.qty + action.qty, price: action.price }
+                        : item
+                );
             } else {
-                return [...state, action.payload];
+                // Item does not exist, add a new one
+                return [
+                    ...state,
+                    {
+                        id: action.id,
+                        name: action.name,
+                        qty: action.qty,
+                        size: action.size,
+                        price: action.price,
+                        img: action.img
+                    }
+                ];
             }
-        case "REMOVE":
-                // Remove item by index logic
-                return state.filter((item, index) => index !== action.index);
-        case "DROP":
-            return [];
+
         case "UPDATE":
-            return state.map(item => item.id === action.payload.id ? { ...item, ...action.payload } : item);
+            // Update an existing item
+            return state.map(item =>
+                item.id === action.id && item.size === action.size
+                    ? { ...item, qty: action.qty, price: action.price }
+                    : item
+            );
+
+        case "REMOVE":
+            return state.filter((item, index) => index !== action.index);
+
         default:
-            console.error("Error in Reducer");
+            console.error("Unhandled action type:", action.type);
             return state;
     }
 };

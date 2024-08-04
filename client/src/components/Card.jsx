@@ -10,7 +10,7 @@ const Card = ({ cupcake }) => {
     const [quantity, setQuantity] = useState(1);
     const [price, setPrice] = useState(0);
     const dispatch = useDispatchCart(); // Get dispatch function
-
+ const cart = useCart()
     useEffect(() => {
         setPrice(boxSize === 6 ? cupcake.pricePerSix : cupcake.pricePerTwelve);
     }, [boxSize, cupcake.pricePerSix, cupcake.pricePerTwelve]);
@@ -36,22 +36,52 @@ const Card = ({ cupcake }) => {
 
 
     //   Add to Cart
-    const handleAddtoCart = () => {
-        const token = localStorage.getItem('sugaryToken');
-        if (!token) {
-          return window.location.href = '/login'; // redirect to login page
+    // const handleAddtoCart = () => {
+    //     const token = localStorage.getItem('sugaryToken');
+    //     if (!token) {
+    //       return window.location.href = '/login'; // redirect to login page
+    //     }
+    //     dispatch({
+    //       type: "ADD",
+    //       payload: {
+    //         id: cupcake.id,
+    //         name: cupcake.title,
+    //         qty: quantity,
+    //         size: boxSize,
+    //         price: price * quantity,
+    //       }
+          
+    //     });
+    //     console.log('Dispatched ADD action');
+
+    //   };
+
+    const handleAddToCart = async () => {
+        const existingItemIndex = cart.findIndex(item => item.id === cupcake._id && item.size === boxSize);
+
+        if (existingItemIndex !== -1) {
+            // Item exists in cart with the same size
+            await dispatch({
+                type: "UPDATE",
+                id: cupcake._id,
+                price: price,
+                qty: quantity
+            });
+            console.log("Item updated in cart.");
+        } else {
+            // Item does not exist in cart or size is different
+            await dispatch({
+                type: "ADD",
+                id: cupcake._id,
+                name: cupcake.title,
+                price: price,
+                qty: quantity,
+                size: boxSize,
+                img: cupcake.image
+            });
+            console.log("Item added to cart.");
         }
-        dispatch({
-          type: "ADD",
-          payload: {
-            id: cupcake.id,
-            name: cupcake.title,
-            qty: quantity,
-            size: boxSize,
-            price: price * quantity,
-          }
-        });
-      };
+    };
 
     if (!cupcake) {
         return <div className='grid place-items-center my-4 text-xl font-semibold'>No menu item to show!</div>
@@ -126,7 +156,7 @@ const Card = ({ cupcake }) => {
                 {/* action */}
                 <div className='w-full flex items-center justify-between gap-4 mt-4'>
 
-                    <button onClick={handleAddtoCart} className="w-full flex py-2 items-center justify-center gap-2 border-2 border-green-600 text-green-600 tracking-wide
+                    <button onClick={handleAddToCart} className="w-full flex py-2 items-center justify-center gap-2 border-2 border-green-600 text-green-600 tracking-wide
                      hover:bg-gray-300 font-bold rounded">
                         <FaCartPlus /> Add
                     </button>

@@ -23,8 +23,8 @@ react-awesome-reveal
 // menu detail x
 // search x
 // add to card x
-// remove item
-// order time and date
+// remove item x
+// order time and date 
 // protected routes add-menu x
 // local storage in cart x
 // order
@@ -33,6 +33,7 @@ react-awesome-reveal
 
 //pagination x
 // admin access to upload menu x
+// by default time 
 
 
 
