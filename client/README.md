@@ -22,8 +22,9 @@ react-awesome-reveal
 
 // menu detail x
 // search x
-// add to card
-// order time
+// add to card x
+// remove item
+// order time and date
 // protected routes
 // payment
 // order

@@ -35,22 +35,23 @@ const Card = ({ cupcake }) => {
 
 
 
-    //   Add yo Cart
+    //   Add to Cart
     const handleAddtoCart = () => {
+        const token = localStorage.getItem('sugaryToken');
+        if (!token) {
+          return window.location.href = '/login'; // redirect to login page
+        }
         dispatch({
-            type: "ADD",
-            payload: {
-                id: cupcake.id,
-                name: cupcake.title,
-                qty: quantity,
-                size: boxSize,
-                price: price * quantity,
-                
-          
-            }
+          type: "ADD",
+          payload: {
+            id: cupcake.id,
+            name: cupcake.title,
+            qty: quantity,
+            size: boxSize,
+            price: price * quantity,
+          }
         });
-
-    };
+      };
 
     if (!cupcake) {
         return <div className='grid place-items-center my-4 text-xl font-semibold'>No menu item to show!</div>
