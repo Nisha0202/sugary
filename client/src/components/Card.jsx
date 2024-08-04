@@ -36,25 +36,6 @@ const Card = ({ cupcake }) => {
 
 
     //   Add to Cart
-    // const handleAddtoCart = () => {
-    //     const token = localStorage.getItem('sugaryToken');
-    //     if (!token) {
-    //       return window.location.href = '/login'; // redirect to login page
-    //     }
-    //     dispatch({
-    //       type: "ADD",
-    //       payload: {
-    //         id: cupcake.id,
-    //         name: cupcake.title,
-    //         qty: quantity,
-    //         size: boxSize,
-    //         price: price * quantity,
-    //       }
-          
-    //     });
-    //     console.log('Dispatched ADD action');
-
-    //   };
 
     const handleAddToCart = async () => {
         const existingItemIndex = cart.findIndex(item => item.id === cupcake._id && item.size === boxSize);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart, useDispatchCart } from "../../state/ContextReducer";
 import { MdDeleteForever } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
@@ -10,18 +10,56 @@ const Cart = ({ onClose }) => {
 
     const [showModal, setShowModal] = useState(false);
     const [selectedDateTime, setSelectedDateTime] = useState('');
+    const [displayDateTime, setDisplayDateTime] = useState('');
     const [location, setLocation] = useState('');
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        // Set the default date and time to one day ahead of the current date
+        const now = new Date();
+        now.setDate(now.getDate() + 1); // Set to tomorrow
+        const formattedDateTime = now.toISOString().slice(0, 16); // Format as YYYY-MM-DDTHH:MM
+        const displayDateTime = formatDateToDDMMYYYY(now); // For display purposes
+        setSelectedDateTime(formattedDateTime);
+        setDisplayDateTime(displayDateTime);
+    }, []);
+
+    // Function to format date to dd/mm/yy
+    const formatDateToDDMMYYYY = (date) => {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const year = date.getFullYear().toString().slice(-2); // Last two digits of the year
+        return `${day}/${month}/${year}`;
+    };
+
+    // Function to format date from dd/mm/yy to YYYY-MM-DDTHH:MM
+    const formatDDMMYYToISO = (dateString) => {
+        const [day, month, year] = dateString.split('/').map(Number);
+        const fullYear = 2000 + year; // Assuming year is in 00-99 range
+        const date = new Date(fullYear, month - 1, day);
+        return date.toISOString().slice(0, 16);
+    };
 
     const handleDeleteItem = (index) => {
         console.log("Deleting item at index:", index);
         dispatch({ type: 'REMOVE', index });
     };
+
     const handleSetTimeClick = () => {
         setShowModal(true);
     };
 
     const handleOrderClick = () => {
+        // Calculate the minimum date which is one day ahead of the current date
+        const now = new Date();
+        now.setDate(now.getDate() + 1);
+        const minDate = now.toISOString().slice(0, 16);
+
+        if (selectedDateTime <= minDate) {
+            setError('The selected date and time must be at least one day ahead of the current date.');
+            return;
+        }
+
         if (selectedDateTime && location.trim() !== '') {
             console.log('Order placed with:', selectedDateTime, location);
             setShowModal(false);
@@ -31,7 +69,10 @@ const Cart = ({ onClose }) => {
     };
 
     const handleCalendarSelect = (e) => {
-        setSelectedDateTime(e.target.value);
+        const dateTime = e.target.value;
+        setSelectedDateTime(dateTime);
+        const selectedDate = new Date(dateTime);
+        setDisplayDateTime(formatDateToDDMMYYYY(selectedDate));
     };
 
     return (
@@ -95,6 +136,7 @@ const Cart = ({ onClose }) => {
                                     value={selectedDateTime}
                                     onChange={handleCalendarSelect}
                                 />
+                                <p className="text-sm mt-2 text-gray-600">Selected Date: {displayDateTime}</p>
                             </div>
                             <div className="mb-4">
                                 <label className="block">Location:</label>
