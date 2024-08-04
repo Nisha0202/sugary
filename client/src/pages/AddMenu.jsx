@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import SuccessAlert from '../Alert/SuccessAlert';
+import { jwtDecode } from "jwt-decode";
 
 const AddMenu = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -15,6 +16,26 @@ const AddMenu = () => {
   const questionsPerPage = 4;
   const totalQuestions = 10;
   const pages = Math.ceil(totalQuestions / questionsPerPage);
+
+  const [sugaryToken, setSugaryToken] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(null);
+  useEffect(() => {
+    const token = localStorage.getItem('sugaryToken');
+    if (token) {
+      setSugaryToken(token);
+        const decoded = jwtDecode(token);
+        setIsAdmin(decoded.isAdmin); // Assuming 'isAdmin' is a boolean property
+    }
+  }, []);
+
+  if (!isAdmin) {
+    return (
+      <div  className='min-h-[calc(100vh-268px)]
+      flex items-center justify-center'>
+        <h1 className='text-red-600 text-lg '>Not Authorized</h1>
+      </div>
+    );
+  }
 
   const apiUrl = 'https://sugary-backend.vercel.app';
 

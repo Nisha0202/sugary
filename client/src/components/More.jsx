@@ -10,7 +10,7 @@ const More = ({ cupcakes }) => {
     const navigate = useNavigate();
 
     if (!cupcake) {
-        return <div>No details not found!</div>;
+        return <div className=' min-h-[calc(100vh-208px)] w-full flex justify-center items-center' >No details not found!</div>;
     }
 
     if (error) {

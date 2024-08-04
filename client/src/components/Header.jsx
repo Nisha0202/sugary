@@ -188,17 +188,17 @@ export default function Header() {
 
         {/* Navbar End */}
         <div className="navbar-end flex items-center text-sm rounded-md gap-1">
-          <button
+        <button
             onClick={() => setIsCartVisible(!isCartVisible)}
-            className={({ isActive }) =>
-              isActive ? "p-2 hover:bg-gray-200 rounded mx-4" : "p-2 hover:bg-gray-200 hover:text-text rounded-md"
-            }
+            className={isCartVisible ? "p-2 hover:bg-gray-200 rounded" : "p-2 hover:bg-gray-200 hover:text-text rounded-md"}
           >
             <BsFillCartCheckFill className='text-lg indicator text-green-600 hover:text-text' />
             {cartItemCount > 0 && (
               <span className="ms-2 px-1.5 indicator-item indicator-middle indicator-end p-1 text-[10px] font-bold rounded-full text-white bg-pink-500">{cartItemCount}</span>
             )}
           </button>
+
+
           {isCartVisible && <Cart onClose={() => setIsCartVisible(false)} />}
           {token ? (
             <>

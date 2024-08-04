@@ -25,8 +25,8 @@ react-awesome-reveal
 // add to card x
 // remove item
 // order time and date
-// protected routes
-// payment
+// protected routes add-menu
+// local storage in cart
 // order
 
 
