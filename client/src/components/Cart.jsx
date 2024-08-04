@@ -48,3 +48,4 @@ const Cart = ({ onClose }) => {
 };
 
 export default Cart;
+

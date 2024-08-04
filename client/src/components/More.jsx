@@ -24,7 +24,7 @@ const More = ({ cupcakes }) => {
         <div className="flex justify-center min-h-[calc(100vh-268px)] mx-auto p-4 mt-4 lg:mt-8 relative">
             <button
                 onClick={() => navigate(-1)}
-                className="absolute top-4 right-0 border-2 m-2 bg-gray-300 rounded-full p-2 hover:bg-gray-400"
+                className="absolute top-4 right-0 border-2 mx-2 bg-gray-300 rounded-full p-2 hover:bg-gray-400"
                 aria-label="Go back" title='Back'
             >
                 <IoArrowBackCircleOutline className="h-6 w-6 font-bold" />
@@ -41,17 +41,19 @@ const More = ({ cupcakes }) => {
                 <div className="w-full lg:w-1/2 xl:w-2/3 p-4 lg:pt-0 lg:ps-12 text-gray-800">
                     <h2 className="text-2xl lg:text-3xl tracking-wider font-bold mb-2">{cupcake.title}</h2>
                     <p className="text-gray-700 mb-6 w-full text-wrap">{cupcake.description}</p>
-                    <div className='grid grid-cols-2 max-w-xl'>
+                    <div className='flex flex-col gap-4 w-full'>
+                        <div className='flex justify-between max-w-sm items-center mr-4'>
                         <div >
                             <h2 className=' text-sm mb-2'>Weight</h2>
                             <p className=" mb-4 font-medium ">{cupcake.weight}g each</p>
-                        </div>
-                        <div>
+                        </div> 
+                         <div>
                             <h2 className='text-sm mb-2'>Category</h2>
                             <p className=" mb-4 font-medium ">{capitalizeFirstLetter(cupcake.category)}</p>
                         </div>
-                        <div>
-                            <h2 className='text-sm mb-2 max-w-xl'>Ingredients</h2>
+                        </div>
+                        <div className='w-full'>
+                            <h2 className='text-sm mb-2 w-full'>Ingredients</h2>
                             <p className=" mb-4 font-medium ">
                                 {cupcake.ingredients.map(ingredient => ingredient.charAt(0).toUpperCase() + ingredient.slice(1)).join(', ')}
                             </p>
