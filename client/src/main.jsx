@@ -17,6 +17,7 @@ import AddMenu from './pages/AddMenu';
 import More from './components/More';
 import axios from 'axios';
 import { CartProvider } from '../state/ContextReducer';
+import AllOrders from './pages/AllOrders';
 
 const App = () => {
   const [cupcakes, setCupcakes] = useState([]);
@@ -49,6 +50,7 @@ const App = () => {
         { path: "/reset-password", element: <ResetPassword /> },
         { path: "/add-menu", element: <AddMenu /> },
         { path: "/menu/:id", element: <More cupcakes={cupcakes} /> },
+        { path: "/all-orders", element: <AllOrders/> },
       ],
     },
   ]);

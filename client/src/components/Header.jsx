@@ -34,6 +34,7 @@ export default function Header() {
 
   const handleLogout = () => {
     localStorage.removeItem('sugaryToken');
+    localStorage.removeItem('cart');
     setShowConfirmDialog(false);
     navigate('/login');
   };
@@ -87,7 +88,7 @@ export default function Header() {
                 <>
                   <li>
                     <NavLink
-                      to="/my-orders"
+                      to="/all-orders"
                       className={({ isActive }) =>
                         isActive ? "font-bold bg-transparent focus:bg-transparent hover:bg-gray-400" : ""
                       }
@@ -153,7 +154,7 @@ export default function Header() {
               <>
                 <li>
                   <NavLink
-                    to="/my-orders"
+                    to="/all-orders"
                     className={({ isActive }) =>
                       isActive ? "font-bold bg-transparent focus:bg-transparent" : "hover:none"
                     }
