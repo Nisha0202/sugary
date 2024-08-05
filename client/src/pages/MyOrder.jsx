@@ -26,7 +26,7 @@ useEffect(() => {
     if (email) {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/orderlist/${email}`);
+                const response = await axios.get(`https://sugary-backend.vercel.app/api/orderlist/${email}`);
                 if (response.data && Array.isArray(response.data)) {
                     setOrders(response.data);
                 } else {
@@ -47,6 +47,13 @@ useEffect(() => {
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
+    if (!orders)  return (
+        <div  className='min-h-[calc(100vh-268px)]
+        flex items-center justify-center'>
+          <h1 className='text-red-600 text-lg '>You haven't placed any orders yet!</h1>
+        </div>
+      );
+    
 
     return (
         <div className="px-4 min-h-screen">

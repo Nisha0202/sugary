@@ -27,7 +27,7 @@ const AllOrders = () => {
         if (isAdmin) {
             const fetchOrders = async () => {
                 try {
-                    const response = await axios.get('http://localhost:5000/api/orderlist');
+                    const response = await axios.get('https://sugary-backend.vercel.app/api/orderlist');
                     setOrders(response.data);
                     setLoading(false);
                 } catch (error) {
@@ -44,7 +44,7 @@ const AllOrders = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:5000/api/orders/${selectedOrderId}`);
+            await axios.delete(`https://sugary-backend.vercel.app/api/orders/${selectedOrderId}`);
             setOrders(orders.filter(order => order._id !== selectedOrderId));
             setShowConfirm(false);
             setSelectedOrderId(null);
@@ -55,7 +55,7 @@ const AllOrders = () => {
 
     const handleConfirm = async (id) => {
         try {
-            const response = await axios.patch(`http://localhost:5000/api/orders/${id}/confirm`);
+            const response = await axios.patch(`https://sugary-backend.vercel.app/api/orders/${id}/confirm`);
             setOrders(orders.map(order => order._id === id ? response.data : order));
         } catch (error) {
             console.error('Error confirming order:', error);

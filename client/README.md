@@ -39,5 +39,8 @@ react-awesome-reveal
 // by default time  x
 
 
+Admin Email- admin@gmail.com
+Admin password- 11111
 
-
+Customer Email- aneha@gmail.com
+Customer password- 12345

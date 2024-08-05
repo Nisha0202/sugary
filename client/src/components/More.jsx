@@ -11,35 +11,38 @@ const More = ({ cupcakes }) => {
   // Handle missing cupcake scenario with a more informative message
   if (!cupcake) {
     return (
-      <div className="flex justify-center items-center min-h-screen text-xl font-medium">
+      <div className="flex flex-col justify-center items-center min-h-screen text-lg">
         Cupcake not found. Please check the URL or try browsing our other delicious cupcakes.
       </div>
     );
   }
 
   return (
-    <div className="cupcake-details ">
-      <header className="flex justify-between max-w-xl items-center py-2 px-4 mt-6">
-        <button
-          className="back-button hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-full "
+    <div className="cupcake-details flex flex-col items-center justify-center mb-4">
+      <header className="flex justify-between w-full items-center py-2 px-4 mt-6">
+        <div className='w-full lg:w-1/3 flex items-center'>
+              <button
+          className="back-button hover:bg-gray-200 focus:outline-none focus:ring-0 focus:ring-offset-2  rounded-full "
           onClick={() => navigate(-1)}
           aria-label="Go back"
           title="Back"
         >
           <IoArrowBackCircleOutline className="h-6 w-6 text-gray-700" />
-        </button>
-        <h1 className="text-xl font-bold text-gray-800">{cupcake.title}</h1>
+        </button> 
+        </div>
+     
+        <div className="text-2xl w-full text-end lg:text-start lg:w-2/3 font-bold text-gray-800 ">{cupcake.title}</div>
       </header>
-      <main className="flex flex-col lg:flex-row justify-between px-4 py-4">
-        <section className="cupcake-image w-full mb-4 max-w-sm h-96">
+      <main className="flex flex-col lg:flex-row justify-between gap-4 px-4 py-4"> 
+        <section className="cupcake-image w-full flex justify-center items-center lg:w-1/3 mb-4  h-96">
           <img
             src={cupcake.image}
             alt={cupcake.title}
-            className="rounded-md max-w-md h-96 object-cover object-center border-2"
+            className="rounded-md w-80 h-96  object-cover border-2"
           />
         </section>
-        <section className="cupcake-info w-full">
-          <p className="text-gray-700 mb-4 leading-loose">{cupcake.description}</p>
+        <section className="cupcake-info w-full lg:w-2/3">
+          <p className="text-gray-700 mb-4 leading-loose max-w-xl text-wrap">{cupcake.description}</p>
           <div className="details-grid grid grid-cols-2 gap-4">
             <div className="detail">
               <h3 className="text-base font-medium text-gray-800">Weight</h3>

@@ -90,7 +90,7 @@ const Cart = ({ onClose}) => {
                 bill: totalPrice,
             };
 
-            const response = await axios.post('http://localhost:5000/api/orderlist', orderData);
+            const response = await axios.post('https://sugary-backend.vercel.app/api/orderlist', orderData);
             if (response.status === 201) {
                 setSuccess('Order placed successfully!');
                 dispatch({ type: 'CLEAR' });
