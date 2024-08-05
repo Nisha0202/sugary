@@ -3,17 +3,6 @@ import React, { useEffect, useReducer, useContext, createContext } from 'react';
 const CartStateContext = createContext();
 const CartDispatchContext = createContext();
 
-// const reducer = (state, action) => {
-//     switch (action.type) {
-//         case "ADD":
-//             return [...state, { id: action.id, name: action.name, qty: action.qty, size: action.size, price: action.price }]
-//         case "REMOVE":
-//             return state.filter((item, index) => index !== action.index);
-//         default:
-//             console.error("Error in Reducer");
-//             return state;
-//     }
-// };
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -55,6 +44,8 @@ const reducer = (state, action) => {
 
         case "REMOVE":
             return state.filter((item, index) => index !== action.index);
+        case "CLEAR":
+            return [];
 
         default:
             console.error("Unhandled action type:", action.type);

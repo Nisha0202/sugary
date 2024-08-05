@@ -22,7 +22,7 @@ app.use('/api', require("./routes/Verify.js"));
 app.use('/api', require("./routes/ForgotPass.js"));
 app.use('/api', require("./routes/ResetPass.js"));
 app.use('/api', require("./routes/AddItem.js"));
-
+app.use('/api', require("./routes/OrderList.js"));
 
 
 

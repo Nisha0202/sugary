@@ -29,12 +29,13 @@ react-awesome-reveal
 // local storage in cart x
 // order
 // my order
+//make sent real email 
 
 
 
 //pagination x
 // admin access to upload menu x
-// by default time 
+// by default time  x
 
 
 

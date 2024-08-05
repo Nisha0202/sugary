@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useCart, useDispatchCart } from "../../state/ContextReducer";
 import { MdDeleteForever } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
+import SuccessAlert from '../Alert/SuccessAlert';
+import axios from 'axios';
+import moment from 'moment';
 
 const Cart = ({ onClose }) => {
     const cart = useCart();
@@ -9,39 +12,20 @@ const Cart = ({ onClose }) => {
     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
     const [showModal, setShowModal] = useState(false);
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false);
     const [selectedDateTime, setSelectedDateTime] = useState('');
     const [displayDateTime, setDisplayDateTime] = useState('');
     const [location, setLocation] = useState('');
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     useEffect(() => {
-        // Set the default date and time to one day ahead of the current date
-        const now = new Date();
-        now.setDate(now.getDate() + 1); // Set to tomorrow
-        const formattedDateTime = now.toISOString().slice(0, 16); // Format as YYYY-MM-DDTHH:MM
-        const displayDateTime = formatDateToDDMMYYYY(now); // For display purposes
-        setSelectedDateTime(formattedDateTime);
-        setDisplayDateTime(displayDateTime);
+        const now = moment().add(1, 'day').startOf('day');
+        setSelectedDateTime(now.format('YYYY-MM-DDTHH:mm'));
+        setDisplayDateTime(now.format('DD/MM/YYYY h:mm A'));
     }, []);
 
-    // Function to format date to dd/mm/yy
-    const formatDateToDDMMYYYY = (date) => {
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-        const year = date.getFullYear().toString().slice(-2); // Last two digits of the year
-        return `${day}/${month}/${year}`;
-    };
-
-    // Function to format date from dd/mm/yy to YYYY-MM-DDTHH:MM
-    const formatDDMMYYToISO = (dateString) => {
-        const [day, month, year] = dateString.split('/').map(Number);
-        const fullYear = 2000 + year; // Assuming year is in 00-99 range
-        const date = new Date(fullYear, month - 1, day);
-        return date.toISOString().slice(0, 16);
-    };
-
     const handleDeleteItem = (index) => {
-        console.log("Deleting item at index:", index);
         dispatch({ type: 'REMOVE', index });
     };
 
@@ -50,19 +34,15 @@ const Cart = ({ onClose }) => {
     };
 
     const handleOrderClick = () => {
-        // Calculate the minimum date which is one day ahead of the current date
-        const now = new Date();
-        now.setDate(now.getDate() + 1);
-        const minDate = now.toISOString().slice(0, 16);
+        const now = moment().add(1, 'day').startOf('day').format('YYYY-MM-DDTHH:mm');
 
-        if (selectedDateTime <= minDate) {
+        if (moment(selectedDateTime).isBefore(now)) {
             setError('The selected date and time must be at least one day ahead of the current date.');
             return;
         }
 
         if (selectedDateTime && location.trim() !== '') {
-            console.log('Order placed with:', selectedDateTime, location);
-            setShowModal(false);
+            setShowConfirmDialog(true);
         } else {
             setError('Please select date, time, and enter location.');
         }
@@ -71,10 +51,42 @@ const Cart = ({ onClose }) => {
     const handleCalendarSelect = (e) => {
         const dateTime = e.target.value;
         setSelectedDateTime(dateTime);
-        const selectedDate = new Date(dateTime);
-        setDisplayDateTime(formatDateToDDMMYYYY(selectedDate));
+        setDisplayDateTime(moment(dateTime).format('DD/MM/YYYY h:mm A'));
     };
 
+    const handleConfirmOrder = async () => {
+        try {
+          
+            const orderData = {
+                items: cart.map(item => ({
+                    name: item.name,
+                    size: item.size,
+                    quantity: item.qty,
+                })),
+                dateTime: moment(selectedDateTime).format('DD/MM/YYYY h:mm A'),
+                location,
+                bill: totalPrice,
+            };
+
+            const response = await axios.post('http://localhost:5000/api/orderlist', orderData);
+            if (response.status === 201) {
+                setSuccess('Placed successfully!');
+                dispatch({ type: 'CLEAR' });
+                setShowConfirmDialog(false);
+                setShowModal(false);
+                onClose();
+            } else {
+                setError('Failed to place order. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error placing order:', error);
+            setError('There was an error placing the order. Please try again.');
+        }
+    };
+
+    const handleCancelOrder = () => {
+        setShowConfirmDialog(false);
+    };
     return (
         <div role="alert" className="roboto fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-4 border border-gray-300 rounded shadow max-w-md w-full relative">
@@ -87,34 +99,28 @@ const Cart = ({ onClose }) => {
                     <p className='text-lg text-center w-full'>No Item Added to Cart Yet</p>
                 ) : (
                     <ul>
-                        {cart.map((item, index) => {
-                            const isRegular = item.size === 6;
-                            const totalPieces = item.qty * item.size;
-                            return (
-                                <li key={index} className="flex justify-between items-center mb-4">
-                                    <p className="text-sm w-2/5">
-                                        {item.qty} {isRegular ? "(Regular) " : "(Large) "}
-                                        {item.qty === 1 ? "box" : "boxes"}
-                                    </p>
-                                    <div className="text-sm w-3/5">
-                                        <div className='text-lg font-medium w-full text-black'>{item.name} </div>
-                                        <div>{totalPieces} pieces</div>
-                                    </div>
-                                    <p className="text-sm w-1/5 text-right">{item.price.toFixed(2)} Tk</p>
-                                    <MdDeleteForever
-                                        className="text-xl ms-3 text-red-600 hover:text-red-700 cursor-pointer"
-                                        onClick={() => handleDeleteItem(index)}
-                                    />
-                                </li>
-                            );
-                        })}
+                        {cart.map((item, index) => (
+                            <li key={index} className="flex justify-between items-center mb-4">
+                                <p className="text-sm w-2/5">
+                                    {item.qty} {item.size === 6 ? "(Regular) " : "(Large) "}
+                                    {item.qty === 1 ? "box" : "boxes"}
+                                </p>
+                                <div className="text-sm w-3/5">
+                                    <div className='text-lg font-medium w-full text-black'>{item.name}</div>
+                                    <div>{item.qty * item.size} pieces</div>
+                                </div>
+                                <p className="text-sm w-1/5 text-right">{item.price.toFixed(0)} Tk</p>
+                                <MdDeleteForever
+                                    className="text-xl ms-3 text-red-600 hover:text-red-700 cursor-pointer"
+                                    onClick={() => handleDeleteItem(index)}
+                                />
+                            </li>
+                        ))}
                     </ul>
                 )}
 
                 <div className='flex mt-4 pt-2 border-t-2 justify-between items-center'>
                     <div className="flex-1">Total:<span className='font-bold ms-2 text-lg'>{totalPrice.toFixed(2)} Tk</span></div>
-
-                    {/* Set Time Button */}
                     <div className='btn btn-ghost btn-sm' onClick={handleSetTimeClick}>
                         Set Time and Location
                     </div>
@@ -160,6 +166,32 @@ const Cart = ({ onClose }) => {
                         </div>
                     </div>
                 )}
+
+                {/* Confirmation Dialog */}
+                {showConfirmDialog && (
+                    <div className="fixed inset-0 flex text-black items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+                        <div className="bg-gray-100 px-4 py-6 border border-gray-300 rounded shadow w-72 relative">
+                            <button
+                                className="absolute top-2 right-2 text-xl text-black"
+                                onClick={handleCancelOrder}
+                            >
+                                <IoIosClose />
+                            </button>
+                            <h3 className="mb-4 text-start text-base">Are you sure you want to place this order?</h3>
+                            <div className="flex justify-end">
+                                <button className="btn btn-ghost btn-sm text-red-500 mr-2" onClick={handleCancelOrder}>
+                                    Cancel
+                                </button>
+                                <button className="btn btn-ghost btn-sm text-green-500" onClick={handleConfirmOrder}>
+                                    Confirm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {success && <SuccessAlert message={success} className='w-full ' />}
+
             </div>
         </div>
     );
