@@ -3,7 +3,9 @@ const moment = require('moment');
 const { Schema } = mongoose;
 
 const OrderSchema = new mongoose.Schema({
+
     username: String,
+    useremail: String,
     items: [
         {
             name: String,
@@ -13,7 +15,8 @@ const OrderSchema = new mongoose.Schema({
     ],
     dateTime: String,
     location: String,
-    bill: Number
+    bill: Number,
+    isConfirmed: { type: Boolean, default: false } 
 });
 
 // Pre-save hook to format the date

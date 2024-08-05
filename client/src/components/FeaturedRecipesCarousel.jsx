@@ -25,7 +25,7 @@ const FeaturedRecipesCarousel = () => {
     slidesToScroll: 1,
     swipeToSlide: true, // Enables swipe to slide
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 900,

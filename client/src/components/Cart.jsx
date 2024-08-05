@@ -21,6 +21,8 @@ const Cart = ({ onClose}) => {
     const [success, setSuccess] = useState('');
     const [admin, setAdmin] = useState('');
     const [user, setUser] = useState('');
+    const [email, setEmail] = useState('');
+    
 
     const token = localStorage.getItem('sugaryToken');
     useEffect(() => {
@@ -29,6 +31,7 @@ const Cart = ({ onClose}) => {
                 const decoded = jwtDecode(token);
                 setAdmin(decoded.isAdmin);
                 setUser(decoded.username);
+                setEmail(decoded.email);
                 console.log(user);
             } catch (error) {
                 console.error('Error decoding token:', error);
@@ -75,6 +78,7 @@ const Cart = ({ onClose}) => {
         try {
             const orderData = {
                 username: user,
+                useremail: email,
                 items: cart.map(item => ({
                     
                     name: item.name,
