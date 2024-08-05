@@ -5,7 +5,7 @@ export default function Footer() {
   return (
 
 
-      <footer className="bg-gray-200 min-h-52 flex justify-center items-center pt-6 px-4 lg:px-0">
+      <footer className="bg-gray-200 min-h-52 flex justify-center items-center pt-6 pb-3 px-4 lg:px-0">
         <div className="container mx-auto p-4 flex flex-col gap-6">
 
           <div className='flex flex-col gap-4 lg:flex-row justify-between'>

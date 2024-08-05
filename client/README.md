@@ -28,7 +28,7 @@ react-awesome-reveal
 // protected routes add-menu x
 // local storage in cart x
 // order x
-// my order 
+// my order x
 // make sent real email 
 //location
 

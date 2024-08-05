@@ -21,7 +21,7 @@ const More = ({ cupcakes }) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
     return (
-        <div className="flex justify-center min-h-[calc(100vh-268px)] mx-auto p-4 mt-4 lg:mt-8 relative">
+        <div className="flex justify-center min-h-[calc(100vh-288px)] mx-auto p-4 mt-4 lg:mt-10 relative">
             <button
                 onClick={() => navigate(-1)}
                 className="absolute top-4 right-0 border-2 mx-2 bg-gray-300 rounded-full p-2 hover:bg-gray-400"

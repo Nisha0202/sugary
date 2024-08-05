@@ -3,13 +3,25 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCartPlus} from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { useDispatchCart, useCart } from "../../state/ContextReducer"; // Import useDispatchCart
-
+import { jwtDecode } from 'jwt-decode';
 
 const Card = ({ cupcake }) => {
     const [boxSize, setBoxSize] = useState(6);
     const [quantity, setQuantity] = useState(1);
     const [price, setPrice] = useState(0);
     const dispatch = useDispatchCart(); // Get dispatch function
+
+    const [isAdmin, setIsAdmin] = useState(null);
+    useEffect(() => {
+      const token = localStorage.getItem('sugaryToken');
+      if (token) {
+       
+          const decoded = jwtDecode(token);
+          setIsAdmin(decoded.isAdmin); // Assuming 'isAdmin' is a boolean property
+      }
+    }, []);
+  
+  
  const cart = useCart()
     useEffect(() => {
         setPrice(boxSize === 6 ? cupcake.pricePerSix : cupcake.pricePerTwelve);
@@ -129,15 +141,12 @@ const Card = ({ cupcake }) => {
 
                 {/* result */}
                 <div>
-                    {/* <p className="text-sm ">Total Boxes: {quantity} {boxSize === 6 ? "(Regular)" : "(Large)"}</p>
-                    <p className="text-sm mt-2">Total Quantity: {quantity*boxSize} pieces <span>{cupcake.weight}g each</span></p>
-                     */}
                     <p className="mt-2  ">Total Price: <span className=' text-pink-500 font-semibold'>{(price * quantity).toFixed(2)}Tk</span></p>
                 </div>
                 {/* action */}
                 <div className='w-full flex items-center justify-between gap-4 mt-4'>
 
-                    <button onClick={handleAddToCart} className="w-full flex py-2 items-center justify-center gap-2 border-2 border-green-600 text-green-600 tracking-wide
+                    <button onClick={handleAddToCart}   disabled={isAdmin} className="w-full flex py-2 items-center justify-center gap-2 border-2 border-green-600 text-green-600 tracking-wide
                      hover:bg-gray-300 font-bold rounded">
                         <FaCartPlus /> Add
                     </button>
