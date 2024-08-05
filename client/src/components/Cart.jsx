@@ -140,13 +140,13 @@ const Cart = ({ onClose}) => {
                         ))}
                     </ul>
                 )}
-
+  {cart.length != 0 &&
                 <div className='flex mt-4 pt-2 border-t-2 justify-between items-center'>
                     <div className="flex-1">Total:<span className='font-bold ms-2 text-lg'>{totalPrice.toFixed(2)} Tk</span></div>
-                    <div className='btn btn-ghost btn-sm' onClick={handleSetTimeClick}>
+                    <div className='btn btn-sm bg-gray-200 text-green-600' onClick={handleSetTimeClick}>
                         Set Time and Location
                     </div>
-                </div>
+                </div>}
 
                 {/* Modal for DateTime and Location */}
                 {showModal && (
@@ -178,7 +178,7 @@ const Cart = ({ onClose}) => {
                             </div>
                             <div className="flex justify-end">
                                 <button
-                                    className={`btn btn-ghost btn-sm ${selectedDateTime && location.trim() ? 'text-pink-500 ' : ''}`}
+                                    className={`btn btn-sm bg-gray-300 ${selectedDateTime && location.trim() ? 'text-pink-500 ' : ''}`}
                                     onClick={handleOrderClick}
                                 >
                                     Place an Order
@@ -212,7 +212,7 @@ const Cart = ({ onClose}) => {
                     </div>
                 )}
 
-                {success && <SuccessAlert className='w-full inset-0' message={success}/>}
+                {success && <SuccessAlert className='w-64 absolute z-40' message={success}/>}
             </div>
         </div>
     );

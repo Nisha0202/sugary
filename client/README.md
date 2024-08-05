@@ -24,12 +24,13 @@ react-awesome-reveal
 // search x
 // add to card x
 // remove item x
-// order time and date 
+// order time and date x
 // protected routes add-menu x
 // local storage in cart x
-// order
-// my order
-//make sent real email 
+// order x
+// my order 
+// make sent real email 
+//location
 
 
 

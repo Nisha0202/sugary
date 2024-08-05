@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const moment = require('moment');
 const { Schema } = mongoose;
 
-const OrderSchema = new mongoose.Schema({
+const OrderSchema = new Schema({
 
     username: String,
     useremail: String,

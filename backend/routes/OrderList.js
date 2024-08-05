@@ -57,5 +57,23 @@ router.patch('/orders/:id/confirm', async (req, res) => {
 });
 
 
+
+// Get orders for a specific user
+router.get('/orderlist/:email', async (req, res) => {
+  try {
+    const email = req.params.email;
+    const orders = await Order.find({ useremail: email });
+
+    if (!orders || orders.length === 0) {
+      return res.status(404).json({ message: 'No orders found for this user' });
+    }
+
+    res.json(orders);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+});
+
+
 module.exports = router;
 
