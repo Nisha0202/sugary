@@ -1,24 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
+const Order = require('../models/Order.js');
 
-// Define a schema and model for orders
-const orderSchema = new mongoose.Schema({
-  items: [
-    {
-      name: String,
-      size: Number,
-      quantity: Number
-    }
-  ],
-  dateTime: String,
-  location: String,
-  bill: Number
-});
-
-
-
-const Order = mongoose.model('orders', orderSchema);
 
 router.post('/orderlist', async (req, res) => {
   try {

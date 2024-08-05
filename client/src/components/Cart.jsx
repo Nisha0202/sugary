@@ -5,12 +5,13 @@ import { IoIosClose } from "react-icons/io";
 import SuccessAlert from '../Alert/SuccessAlert';
 import axios from 'axios';
 import moment from 'moment';
+import { jwtDecode } from "jwt-decode";
 
-const Cart = ({ onClose }) => {
+
+const Cart = ({ onClose}) => { 
     const cart = useCart();
     const dispatch = useDispatchCart();
     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-
     const [showModal, setShowModal] = useState(false);
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
     const [selectedDateTime, setSelectedDateTime] = useState('');
@@ -18,6 +19,22 @@ const Cart = ({ onClose }) => {
     const [location, setLocation] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [admin, setAdmin] = useState('');
+    const [user, setUser] = useState('');
+
+    const token = localStorage.getItem('sugaryToken');
+    useEffect(() => {
+        if (token) {
+            try {
+                const decoded = jwtDecode(token);
+                setAdmin(decoded.isAdmin);
+                setUser(decoded.username);
+                console.log(user);
+            } catch (error) {
+                console.error('Error decoding token:', error);
+            }
+        }
+    }, [token]);
 
     useEffect(() => {
         const now = moment().add(1, 'day').startOf('day');
@@ -56,9 +73,10 @@ const Cart = ({ onClose }) => {
 
     const handleConfirmOrder = async () => {
         try {
-          
             const orderData = {
+                username: user,
                 items: cart.map(item => ({
+                    
                     name: item.name,
                     size: item.size,
                     quantity: item.qty,
@@ -70,7 +88,7 @@ const Cart = ({ onClose }) => {
 
             const response = await axios.post('http://localhost:5000/api/orderlist', orderData);
             if (response.status === 201) {
-                setSuccess('Placed successfully!');
+                setSuccess('Order placed successfully!');
                 dispatch({ type: 'CLEAR' });
                 setShowConfirmDialog(false);
                 setShowModal(false);
@@ -86,6 +104,7 @@ const Cart = ({ onClose }) => {
     const handleCancelOrder = () => {
         setShowConfirmDialog(false);
     };
+
     return (
         <div role="alert" className="roboto fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-4 border border-gray-300 rounded shadow max-w-md w-full relative">
@@ -189,11 +208,11 @@ const Cart = ({ onClose }) => {
                     </div>
                 )}
 
-                {success && <SuccessAlert message={success} className='w-full ' />}
-
+                {success && <SuccessAlert className='w-full inset-0' message={success}/>}
             </div>
         </div>
     );
 };
 
 export default Cart;
+
