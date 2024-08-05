@@ -63,7 +63,7 @@ const Cart = ({ onClose }) => {
                     size: item.size,
                     quantity: item.qty,
                 })),
-                dateTime: moment(selectedDateTime).format('DD/MM/YYYY h:mm A'),
+                dateTime: displayDateTime,
                 location,
                 bill: totalPrice,
             };
@@ -74,7 +74,6 @@ const Cart = ({ onClose }) => {
                 dispatch({ type: 'CLEAR' });
                 setShowConfirmDialog(false);
                 setShowModal(false);
-                onClose();
             } else {
                 setError('Failed to place order. Please try again.');
             }

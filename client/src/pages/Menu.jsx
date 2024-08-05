@@ -103,7 +103,7 @@ const Menu = () => {
 
             {/* Display no results message */}
             {!isLoading && sortedCupcakes.length === 0 && (
-                <div className="text-gray-600 text-lg">No cupcakes match your search and filter criteria.</div>
+                <div className="text-gray-600 text-lg">No cupcakes to show.</div>
             )}
 
 

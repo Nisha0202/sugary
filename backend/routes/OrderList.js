@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
       quantity: Number
     }
   ],
-  dateTime: Date,
+  dateTime: String,
   location: String,
   bill: Number
 });
