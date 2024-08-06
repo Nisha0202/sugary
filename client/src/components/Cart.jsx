@@ -192,7 +192,7 @@ const Cart = ({ onClose}) => {
                 {/* Confirmation Dialog */}
                 {showConfirmDialog && (
                     <div className="fixed inset-0 flex text-black items-center justify-center bg-gray-800 bg-opacity-50 z-50">
-                        <div className="bg-gray-100 px-4 py-6 border border-gray-300 rounded shadow w-72 relative">
+                        <div className="bg-gray-200 px-4 py-6 border border-gray-300 rounded shadow w-72 relative">
                             <button
                                 className="absolute top-2 right-2 text-xl text-black"
                                 onClick={handleCancelOrder}
@@ -212,7 +212,7 @@ const Cart = ({ onClose}) => {
                     </div>
                 )}
 
-                {success && <SuccessAlert className='w-64 absolute z-40' message={success}/>}
+                {success && <SuccessAlert className='bg-gray-200 absolute z-40' message={success}/>}
             </div>
         </div>
     );

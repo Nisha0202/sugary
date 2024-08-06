@@ -9,7 +9,7 @@ const SuccessAlert = ({ message }) => {
     <div
       role="alert"
       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-      flex items-center justify-center bg-white p-2 border border-gray-300 rounded shadow"
+      flex items-center justify-center bg-gray-100 p-2 border border-gray-300 rounded shadow-xl"
     >
       <div className="relative p-4 w-80 ">
         <button
@@ -31,7 +31,7 @@ const SuccessAlert = ({ message }) => {
             />
           </svg>
         </button>
-        <div className="alert alert-success border-0 text-green-600 font-bold bg-white flex gap-1 items-center p-2 max-w-md rounded-md mt-1">
+        <div className="alert alert-success border-0 text-green-600 font-bold bg-gray-100 flex gap-1 items-center p-2 max-w-md rounded-md mt-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"

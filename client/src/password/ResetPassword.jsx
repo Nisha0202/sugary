@@ -65,7 +65,7 @@ const ResetPassword = () => {
                 {loading && <span className="loading loading-spinner font-bold text-success absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
       flex items-center justify-center"></span>}
             </form>
-            {success && <SuccessAlert message={success} />}
+            {success && <SuccessAlert className="bg-white" message={success} />}
             {message && <p className="mt-4 text-red-500 font-bold text-center">{message}</p>}
         </div>
     );

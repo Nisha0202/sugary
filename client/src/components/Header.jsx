@@ -13,7 +13,6 @@ export default function Header() {
   const token = localStorage.getItem('sugaryToken');
   const [admin, setAdmin] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-//const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const cart = useCart();
   const [isCartVisible, setIsCartVisible] = useState(false);
 
@@ -44,9 +43,7 @@ export default function Header() {
     setShowConfirmDialog(false);
   };
 
-  // const toggleMobileMenu = () => {
-  //   setIsMobileMenuOpen(prev => !prev);
-  // };
+  
 
   // Calculate the number of unique items in the cart
   const uniqueItemsCount = cart.length;

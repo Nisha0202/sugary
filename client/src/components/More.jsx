@@ -42,7 +42,7 @@ const More = ({ cupcakes }) => {
           />
         </section>
         <section className="cupcake-info w-full lg:w-2/3">
-          <p className="text-gray-700 mb-4 leading-loose max-w-md text-wrap">{cupcake.description}</p>
+          <p className="text-gray-700 mb-4 leading-relaxed max-w-md text-wrap">{cupcake.description}</p>
           <div className="flex justify-between items-center max-w-sm">
             <div className="detail">
               <h3 className="text-base font-medium text-gray-800">Weight</h3>
@@ -54,7 +54,7 @@ const More = ({ cupcakes }) => {
             </div>
             </div>
             <div className="detail mt-4 max-w-md">
-              <h3 className="text-base font-medium text-gray-800">Ingredients</h3>
+              <h3 className="text-base font-medium text-gray-800 leading-relaxed ">Ingredients</h3>
               <p className="text-sm text-gray-600">{cupcake.ingredients.map(ingredient => ingredient.charAt(0).toUpperCase() + ingredient.slice(1)).join(', ')}</p>
             </div>
          
