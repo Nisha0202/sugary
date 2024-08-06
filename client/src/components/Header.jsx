@@ -16,6 +16,7 @@ export default function Header() {
   const cart = useCart();
   const [isCartVisible, setIsCartVisible] = useState(false);
 
+  const [confirmDialogKey, setConfirmDialogKey] = useState(0);
   useEffect(() => {
     if (token) {
       try {
@@ -29,9 +30,12 @@ export default function Header() {
 
   const handleLogoutClick = () => {
     setShowConfirmDialog(true);
+    console.log("logout");
+    setConfirmDialogKey(prevKey => prevKey + 1);
   };
 
   const handleLogout = () => {
+
     localStorage.removeItem('sugaryToken');
     localStorage.removeItem('cart');
     setShowConfirmDialog(false);
@@ -41,9 +45,10 @@ export default function Header() {
 
   const handleCancel = () => {
     setShowConfirmDialog(false);
+
   };
 
-  
+
 
   // Calculate the number of unique items in the cart
   const uniqueItemsCount = cart.length;
@@ -209,6 +214,7 @@ export default function Header() {
               </button>
               {showConfirmDialog && (
                 <Sure
+                  key={confirmDialogKey}
                   message="Are you sure you want to log out?"
                   onConfirm={handleLogout}
                   onCancel={handleCancel}

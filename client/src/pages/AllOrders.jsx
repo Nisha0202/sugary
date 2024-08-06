@@ -12,7 +12,7 @@ const AllOrders = () => {
     const [showConfirm, setShowConfirm] = useState(false);
     const [selectedOrderId, setSelectedOrderId] = useState(null);
     const [isAdmin, setIsAdmin] = useState(null);
-
+    const [confirmDialogKey, setConfirmDialogKey] = useState(0);
     useEffect(() => {
         const token = localStorage.getItem('sugaryToken');
         if (token) {
@@ -48,9 +48,11 @@ const AllOrders = () => {
             setOrders(orders.filter(order => order._id !== selectedOrderId));
             setShowConfirm(false);
             setSelectedOrderId(null);
+            setConfirmDialogKey(prevKey => prevKey + 1);
         } catch (error) {
             console.error('Error deleting order:', error);
         }
+        setConfirmDialogKey(prevKey => prevKey + 1);
     };
 
     const handleConfirm = async (id) => {
@@ -60,6 +62,7 @@ const AllOrders = () => {
         } catch (error) {
             console.error('Error confirming order:', error);
         }
+       
     };
 
     if (loading) return <div>Loading...</div>;
@@ -132,6 +135,7 @@ const AllOrders = () => {
             </div>
             {showConfirm && (
                 <Sure
+                key={confirmDialogKey}
                     message="Are you sure you want to delete this order?"
                     onConfirm={handleDelete}
                     onCancel={() => setShowConfirm(false)}
