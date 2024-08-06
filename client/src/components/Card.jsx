@@ -216,7 +216,7 @@ const Card = ({ cupcake }) => {
                 </div>
 
             </div>
-            {success && <SuccessAlert className='bg-gray-200 absolute z-40' message={success}/>}
+            {success && <SuccessAlert className='' message={success}/>}
         </div>
     );
 };
