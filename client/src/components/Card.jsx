@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useNavi } from 'react';
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCartPlus} from "react-icons/fa6";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatchCart, useCart } from "../../state/ContextReducer"; // Import useDispatchCart
 import { jwtDecode } from 'jwt-decode';
 
@@ -10,10 +10,16 @@ const Card = ({ cupcake }) => {
     const [quantity, setQuantity] = useState(1);
     const [price, setPrice] = useState(0);
     const dispatch = useDispatchCart(); // Get dispatch function
-
+ const token = localStorage.getItem('sugaryToken');
     const [isAdmin, setIsAdmin] = useState(null);
+
+    const navigate = useNavigate();
+
+
+
+
     useEffect(() => {
-      const token = localStorage.getItem('sugaryToken');
+     
       if (token) {
        
           const decoded = jwtDecode(token);
@@ -50,6 +56,13 @@ const Card = ({ cupcake }) => {
     //   Add to Cart
 
     const handleAddToCart = async () => {
+
+        if (!token) {
+            navigate('/login');
+            return; // Ensure no further code is executed
+        }
+
+
         const existingItemIndex = cart.findIndex(item => item.id === cupcake._id && item.size === boxSize);
 
         if (existingItemIndex !== -1) {

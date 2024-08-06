@@ -37,6 +37,7 @@ export default function Header() {
     localStorage.removeItem('cart');
     setShowConfirmDialog(false);
     navigate('/login');
+    location.reload();
   };
 
   const handleCancel = () => {

@@ -10,8 +10,8 @@ export default {
         primary: '#65a30d',
         secondary: '#f97316',
         accent: '#fce5cd',
-        text: '#555555',
-        text2: '#064e3b',
+        text: '#1f2937',
+        text2: '#1f2937',
         background: '#fffff'
       },
     },

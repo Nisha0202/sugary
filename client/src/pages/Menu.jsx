@@ -65,8 +65,8 @@ const Menu = () => {
                 <h2 className="text-2xl w-full max-w-xl font-semibold text-center text-primary">Our Menu</h2>
                 <div className='flex lg:gap-4 gap-1 max-w-xl w-full items-center'>
                     {/* search */}
-                    <form className="max-w-xl w-full mx-auto">
-                        <label htmlFor="default-search" className="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <form className="max-w-xl w-full mx-auto bg-white">
+                        <label htmlFor="default-search" className="text-sm font-medium text-gray-900 sr-only ">Search</label>
                         <div className="relative">
                             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                 <FiSearch className='text-xl text-text font-bold' />
@@ -76,8 +76,7 @@ const Menu = () => {
                                 type="search"
                                 id="default-search"
                                 className="focus:outline-none input rounded-md block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300
-                                bg-gray-50 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
-                                dark:focus:ring-green-500 dark:focus:border-green-500"
+                                bg-gray-50 focus:ring-green-500 focus:border-green-500 "
                                 placeholder="Happiness, One Cupcake at a Time..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -87,7 +86,7 @@ const Menu = () => {
                     </form>
 
                     {/* sort */}
-                    <div className="dropdown dropdown-left">
+                    <div className="dropdown dropdown-left bg-white">
                         <summary tabIndex={0}  className="btn m-1 text-text">
                             <FaSortAmountDown />
                         </summary>

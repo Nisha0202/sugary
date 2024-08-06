@@ -30,7 +30,7 @@ react-awesome-reveal
 // order x
 // my order x
 // make sent real email 
-//location
+// location x
 
 
 

@@ -75,7 +75,7 @@ useEffect(() => {
                             <tr key={order._id} className={`text-gray-700 ${order.isConfirmed ? 'bg-gray-200' : ''}`}>
                                 <td className="border px-4 py-2">{order.username}</td>
                                 <td className="border px-4 py-2">{order.dateTime}</td>
-                                <td className="border px-4 py-2">{order.location}</td>
+                                <td className="border px-4 py-2 text-wrap">{order.location}</td>
                                 <td className="border px-4 py-2">{order.bill} Tk</td>
                                 <td className="border px-4 py-2">
                                     <ul className="list-disc list-inside">

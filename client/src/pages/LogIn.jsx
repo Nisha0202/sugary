@@ -141,7 +141,7 @@ export default function LogIn() {
           Log In
         </button>
         <div className='flex justify-between items-center'>
-          <Link to={'/forgot-password'} className="text-sm ">Frogot Password?
+          <Link to={'/forgot-password'} className="text-sm ">Forgot Password?
             <span className="mx-2 text-start text-primary underline underline-offset-2">Here</span>
 
           </Link>
