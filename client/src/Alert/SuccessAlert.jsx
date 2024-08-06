@@ -31,7 +31,8 @@ const SuccessAlert = ({ message }) => {
             />
           </svg>
         </button>
-        <div className="alert alert-success border-0 text-green-600 font-bold bg-gray-100 flex gap-1 items-center p-2 max-w-md rounded-md mt-1">
+        <div className="alert alert-success border-0 text-green-700 font-bold bg-gray-100 flex gap-1
+         items-center p-2 max-w-md rounded-md mt-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"

@@ -9,7 +9,7 @@ const Sure = ({ message, onConfirm, onCancel }) => {
     <div
       role="alert"
       className="absolute mt-12 z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-      flex items-center justify-center bg-white border border-gray-300 rounded shadow"
+      flex items-center justify-center bg-gray-200 border border-gray-300 rounded shadow-xl"
     >
       <div className="relative p-4 max-w-md ">
         <button
@@ -34,7 +34,7 @@ const Sure = ({ message, onConfirm, onCancel }) => {
             />
           </svg>
         </button>
-        <div className="alert alert-success min-w-64 border-0 text-green-600 font-bold bg-white flex gap-1 items-start p-2 max-w-md rounded-md mt-1">
+        <div className="alert alert-success min-w-64 border-0 text-green-700 font-bold bg-gray-200 flex gap-1 items-start p-2 max-w-md rounded-md mt-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"
@@ -62,7 +62,7 @@ const Sure = ({ message, onConfirm, onCancel }) => {
           </button>
           <button
             onClick={() => setIsVisible(false)}
-            className="px-4 py-2 font-bold text-green-600 hover:text-text hover:bg-gray-200 rounded-md"
+            className="px-4 py-2 font-bold text-green-700 hover:text-text hover:bg-gray-200 rounded-md"
           >
             No
           </button>

@@ -42,6 +42,12 @@ const AllOrders = () => {
         }
     }, [isAdmin]);
 
+    const handleDeleteClick = async () => {
+
+        setShowConfirm(true);
+        setConfirmDialogKey(prevKey => prevKey + 1);
+    }
+
     const handleDelete = async () => {
         try {
             await axios.delete(`https://sugary-backend.vercel.app/api/orders/${selectedOrderId}`);
@@ -62,7 +68,7 @@ const AllOrders = () => {
         } catch (error) {
             console.error('Error confirming order:', error);
         }
-       
+
     };
 
     if (loading) return <div>Loading...</div>;
@@ -111,22 +117,23 @@ const AllOrders = () => {
                                 </td>
                                 <td className="border px-4 py-2">
                                     {!order.isConfirmed && (
-                                        <button 
-                                            onClick={() => handleConfirm(order._id)} 
+                                        <button
+                                            onClick={() => handleConfirm(order._id)}
                                             className="text-primary text-xl mr-2"
                                         >
                                             <IoCheckmarkDoneCircleSharp />
                                         </button>
                                     )}
-                                    <button 
+                                    <button
                                         onClick={() => {
                                             setSelectedOrderId(order._id);
-                                            setShowConfirm(true);
-                                        }} 
+                                            handleDeleteClick();
+                                        }}
                                         className="text-lg text-text"
                                     >
                                         <MdDelete />
                                     </button>
+
                                 </td>
                             </tr>
                         ))}
@@ -135,7 +142,7 @@ const AllOrders = () => {
             </div>
             {showConfirm && (
                 <Sure
-                key={confirmDialogKey}
+                    key={confirmDialogKey}
                     message="Are you sure you want to delete this order?"
                     onConfirm={handleDelete}
                     onCancel={() => setShowConfirm(false)}
