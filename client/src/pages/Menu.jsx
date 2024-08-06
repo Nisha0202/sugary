@@ -59,6 +59,11 @@ const Menu = () => {
         setCurrentPage(pageNumber);
     };
 
+    // Function to handle filter change and reset to the first page
+    const handleFilterChange = (newFilter) => {
+        setFilter(newFilter);
+        setCurrentPage(1);
+    };
     return (
         <div className="flex flex-col gap-4 justify-center items-center min-h-[calc(100vh-268px)]">
             <section className='w-full flex flex-col gap-6 items-center mb-6 mt-4 md:mt-6'>
@@ -91,10 +96,10 @@ const Menu = () => {
                             <FaSortAmountDown />
                         </summary>
                         <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                            <li><a onClick={() => setFilter('affordable')}>Affordable</a></li>
-                            <li><a onClick={() => setFilter('vegan')}>Vegan</a></li>
-                            <li><a onClick={() => setFilter('non-vegan')}>Non-Vegan</a></li>
-                            <li><a onClick={() => setFilter('')}>All</a></li>
+                            <li><a onClick={() => handleFilterChange('affordable')}>Affordable</a></li>
+                            <li><a onClick={() => handleFilterChange('vegan')}>Vegan</a></li>
+                            <li><a onClick={() => handleFilterChange('non-vegan')}>Non-Vegan</a></li>
+                            <li><a onClick={() => handleFilterChange('')}>All</a></li>
                         </ul>
                     </div>
                 </div>
