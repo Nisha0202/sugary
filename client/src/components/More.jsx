@@ -33,8 +33,8 @@ const More = ({ cupcakes }) => {
      
         <div className="text-2xl w-full text-end lg:text-start lg:w-2/3 font-bold text-gray-800 ">{cupcake.title}</div>
       </header>
-      <main className="flex flex-col lg:flex-row justify-between gap-4 px-4 py-4"> 
-        <section className="cupcake-image w-full flex justify-center items-center lg:w-1/3 mb-4  h-96">
+      <main className="flex flex-col lg:flex-row justify-between px-4 py-4 w-full"> 
+        <section className="cupcake-image w-full lg:pr-6 pr-0 flex justify-center lg:justify-start items-center lg:w-1/3 mb-4  h-96">
           <img
             src={cupcake.image}
             alt={cupcake.title}
@@ -42,8 +42,8 @@ const More = ({ cupcakes }) => {
           />
         </section>
         <section className="cupcake-info w-full lg:w-2/3">
-          <p className="text-gray-700 mb-4 leading-loose max-w-xl text-wrap">{cupcake.description}</p>
-          <div className="details-grid grid grid-cols-2 gap-4">
+          <p className="text-gray-700 mb-4 leading-loose max-w-md text-wrap">{cupcake.description}</p>
+          <div className="flex justify-between items-center max-w-sm">
             <div className="detail">
               <h3 className="text-base font-medium text-gray-800">Weight</h3>
               <p className="text-sm text-gray-600">{cupcake.weight}g each</p>
@@ -52,11 +52,12 @@ const More = ({ cupcakes }) => {
               <h3 className="text-base font-medium text-gray-800">Category</h3>
               <p className="text-sm text-gray-600">{cupcake.category.charAt(0).toUpperCase() + cupcake.category.slice(1)}</p>
             </div>
-            <div className="detail">
+            </div>
+            <div className="detail mt-4 max-w-md">
               <h3 className="text-base font-medium text-gray-800">Ingredients</h3>
               <p className="text-sm text-gray-600">{cupcake.ingredients.map(ingredient => ingredient.charAt(0).toUpperCase() + ingredient.slice(1)).join(', ')}</p>
             </div>
-          </div>
+         
           <div className="benefits mt-6">
             <h2 className="text-xl font-bold text-gray-800">Why Choose Our Cupcakes?</h2>
             <ul className="benefits-list list-none pl-1 mt-2">

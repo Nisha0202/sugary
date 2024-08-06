@@ -87,7 +87,7 @@ const Menu = () => {
 
                     {/* sort */}
                     <div className="dropdown dropdown-left bg-white">
-                        <summary tabIndex={0}  className="btn m-1 text-text">
+                        <summary tabIndex={0}  className="btn m-1 text-text bg-gray-200">
                             <FaSortAmountDown />
                         </summary>
                         <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">

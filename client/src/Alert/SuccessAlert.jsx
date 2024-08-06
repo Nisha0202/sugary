@@ -11,7 +11,7 @@ const SuccessAlert = ({ message }) => {
       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
       flex items-center justify-center bg-white p-2 border border-gray-300 rounded shadow"
     >
-      <div className="relative p-4 max-w-md ">
+      <div className="relative p-4 w-80 ">
         <button
           className="absolute top-0 right-0 mt-2 mr-2 text-black"
           onClick={() => setIsVisible(false)}

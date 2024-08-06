@@ -32,6 +32,9 @@ react-awesome-reveal
 // make sent real email 
 // location x
 
+// affordable issue
+// login page
+
 
 
 //pagination x
