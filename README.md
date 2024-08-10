@@ -1,7 +1,7 @@
 
 ## website link - https://sugaryy.netlify.app/
-## Features
 
+## Features
 ### Frontend
 
 1. **Basic Features:**
@@ -39,10 +39,6 @@
 - **Email Verification**: Users must verify their email to log in.
 - **Token Management**: User tokens are securely stored on login.
 - **Admin and Customer Accounts**: Distinct roles with tailored navigation and permissions.
-
-### Payment Gateway
-
-- Integrated with **Stripe** for secure and efficient payment processing.
 
 ## Installation
 
