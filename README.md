@@ -54,7 +54,7 @@ To get started with the frontend:
 
    ```
    git clone https://github.com/Nisha0202/sugary/tree/main/client
-   cd sugary-frontend
+   cd client
    ```
 
 2. Install the necessary dependencies:
@@ -78,7 +78,7 @@ To set up the backend:
 
    ```
    git clone https://github.com/Nisha0202/sugary/tree/main/backend
-   cd sugary-backend
+   cd backend
    ```
 
 2. Install the necessary dependencies:
