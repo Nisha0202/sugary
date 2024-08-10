@@ -107,7 +107,7 @@ To set up the backend:
 
 ## Customer Access
 
-- **Customer Email**: `aneha@gmail.com`
+- **Customer Email**: `neha@gmail.com`
 - **Customer Password**: `12345`
 
 ## Tech Stack
