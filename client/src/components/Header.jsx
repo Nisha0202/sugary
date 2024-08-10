@@ -15,13 +15,14 @@ export default function Header() {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const cart = useCart();
   const [isCartVisible, setIsCartVisible] = useState(false);
-
+  const [customer, setCustomer] = useState('');
   const [confirmDialogKey, setConfirmDialogKey] = useState(0);
   useEffect(() => {
     if (token) {
       try {
         const decoded = jwtDecode(token);
         setAdmin(decoded.isAdmin);
+        setCustomer(decoded.username);
       } catch (error) {
         console.error('Error decoding token:', error);
       }
@@ -35,11 +36,11 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-
     localStorage.removeItem('sugaryToken');
     localStorage.removeItem('cart');
     setShowConfirmDialog(false);
     navigate('/login');
+    setCustomer('');
     location.reload();
   };
 
@@ -47,8 +48,6 @@ export default function Header() {
     setShowConfirmDialog(false);
 
   };
-
-
 
   // Calculate the number of unique items in the cart
   const uniqueItemsCount = cart.length;
@@ -125,7 +124,13 @@ export default function Header() {
           </div>
 
           {/* Logo */}
-          <NavLink to="/" className="text-lg text-pink-600 font-semibold">Sugary</NavLink>
+          {/* <NavLink to="/" className="text-lg text-pink-600 font-semibold " title='Sugary Home'>Sugary <span className='font-normal text-base ps-2 hidden lg:inline text-primary'> Hi {customer}!</span> </NavLink> */}
+          <NavLink to="/" className="text-lg text-pink-600 font-semibold" title='Sugary Home'>
+            Sugary
+            {token && <span className='font-normal text-base ps-2 hidden lg:inline text-primary'> Hi {customer}!</span>}
+          </NavLink>
+
+
         </div>
 
         {/* Desktop Menu */}
@@ -190,12 +195,12 @@ export default function Header() {
         </div>
 
         {/* Navbar End */}
-        <div className="navbar-end flex items-center text-sm rounded-md gap-1">
+        <div className="navbar-end flex items-center text-sm rounded-md gap-1 " >
           <button
             onClick={() => setIsCartVisible(!isCartVisible)}
             className={isCartVisible ? "p-2 hover:bg-gray-200 rounded" : "p-2 hover:bg-gray-200 hover:text-text rounded-md"}
           >
-            <BsFillCartCheckFill className='text-lg indicator text-green-600 hover:text-text' />
+            <BsFillCartCheckFill className='text-lg indicator text-green-600 hover:text-text' title='Your Cart' />
             {uniqueItemsCount > 0 && (
               <span className="ms-2 px-1.5 indicator-item indicator-middle indicator-end p-1 text-[10px] font-bold rounded-full text-white bg-pink-500">
                 {uniqueItemsCount}

@@ -8,28 +8,32 @@ const ForgotPassword = () => {
     const [message, setMessage] = useState('');
     const [success, setSuccess] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    // const apiUrl = 'http://localhost:5000';
+     const apiUrl = 'https://sugary-backend.vercel.app';
     const onSubmit = async (data) => {
         setLoading(true);
         try {
-            const response = await axios.post('https://sugary-backend.vercel.app/api/forgot-password', { email: data.email });
+            const response = await axios.post(`${apiUrl}/api/forgot-password`, { email: data.email });
             setSuccess(response.data.message);
-setLoading(false);
+            setLoading(false);
+            setMessage("");
 
         } catch (error) {
             if (error.response && error.response.status === 404) {
                 setMessage(error.response.data.error || 'User account not exists!');
-              } else if(error.response && error.response.status === 403) {
+            } else if (error.response && error.response.status === 403) {
                 setMessage(error.response.data.error || 'User is not Verified!');
-              } else {
+            } else {
                 setMessage('An unexpected error occurred. Please try again.');
-              }
-              setLoading(false);
-            
+            }
+            setLoading(false);
+
         }
     };
 
     return (
-        <div className="flex flex-col items-center justify-center mt-4 min-h-[calc(100vh-300px)] ">
+        <div className="flex flex-col items-center justify-center mt-4 min-h-[calc(100vh-268px)] ">
             <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 w-full max-w-md">
                 <h2 className="text-xl font-semibold mb-8 text-primary tracking-wider text-center">Enter Email</h2>
 

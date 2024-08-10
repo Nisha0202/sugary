@@ -56,41 +56,6 @@ const Card = ({ cupcake }) => {
 
     //   Add to Cart
 
-    // const handleAddToCart = async () => {
-
-    //     if (!token) {
-    //         navigate('/login');
-    //         return; // Ensure no further code is executed
-    //     }
-
-
-    //     const existingItemIndex = cart.findIndex(item => item.id === cupcake._id && item.size === boxSize);
-
-    //     if (existingItemIndex !== -1) {
-    //         // Item exists in cart with the same size
-    //         await dispatch({
-    //             type: "UPDATE",
-    //             id: cupcake._id,
-    //             price: price,
-    //             qty: quantity
-    //         });
-    //         console.log("Item updated in cart.");
-    //     } else {
-    //         // Item does not exist in cart or size is different
-    //         await dispatch({
-    //             type: "ADD",
-    //             id: cupcake._id,
-    //             name: cupcake.title,
-    //             price: price,
-    //             qty: quantity,
-    //             size: boxSize,
-    //             img: cupcake.image
-    //         });
-    //         console.log("Item added to cart.");
-    //     }
-    // };
-
-
     const handleAddToCart = async () => {
 
         if (!token) {

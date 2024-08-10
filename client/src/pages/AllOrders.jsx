@@ -85,7 +85,7 @@ const AllOrders = () => {
 
     return (
         <div className="px-4 min-h-screen">
-            <h1 className="text-lg font-medium text-primary my-4 text-center w-full">All Orders</h1>
+            <h1 className="text-lg font-medium text-primary my-4 text-center w-full py-2">All Orders</h1>
             <div className="overflow-x-auto">
                 <table className="min-w-full bg-white text-sm">
                     <thead className="bg-gray-300 font-medium">

@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { LuEye, LuEyeOff } from "react-icons/lu";
+import SuccessAlert from '../Alert/SuccessAlert';
+
 const ResetPassword = () => {
     const [success, setSuccess] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,11 +15,15 @@ const ResetPassword = () => {
     const query = new URLSearchParams(location.search);
     const token = query.get('token');
 
+
+    // const apiUrl = 'http://localhost:5000';
+     const apiUrl = 'https://sugary-backend.vercel.app';
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post('https://sugary-backend.vercel.app/api/reset-password', { token, newPassword: data.password });
+            const response = await axios.post(`${apiUrl}/api/reset-password`, { token, newPassword: data.password });
             setSuccess(response.data.message);
             setLoading(false);
+            setMessage("");
         } catch (error) {
             setMessage('Error resetting password');
             setLoading(false);
@@ -29,7 +35,7 @@ const ResetPassword = () => {
         setShowPassword(prevState => !prevState);
       };
     return (
-        <div className="flex flex-col items-center justify-center min-h-[calc(100vh-300px)]">
+        <div className="flex flex-col items-center justify-center min-h-[calc(100vh-268px)]">
                 <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 w-full max-w-md">
                 <h2 className="text-xl font-semibold mb-8 text-primary tracking-wider text-center">Enter New Password</h2>
 

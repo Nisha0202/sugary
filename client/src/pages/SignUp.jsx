@@ -21,6 +21,7 @@ export default function SignUp() {
     formState: { errors },
   } = useForm();
 
+   // const apiUrl = 'http://localhost:5000';
   const apiUrl = 'https://sugary-backend.vercel.app';
 
   // Toggle password visibility
@@ -28,7 +29,7 @@ export default function SignUp() {
     setShowPassword(prevState => !prevState);
   };
 
-  // Get user's location and reverse geocode
+
   const handleGetLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -45,8 +46,7 @@ export default function SignUp() {
               }
             });
             const address = response.data.display_name;
-            setLocation(address);
-
+            setLocation(address); // Update the location state
             setValue('location', address); // Update the location value in the form state
             setLocationError(''); // Clear any previous errors
           } catch (error) {
@@ -65,13 +65,16 @@ export default function SignUp() {
     }
   };
 
+
   // Handle form submission
   const onSubmit = async (data) => {
     console.log('Form submitted:', data);
     setLoading(true); // Set loading to true when form is submitted
-
-    // Include location data in form submission
+    if(location){
+       // Include location data in form submission
     data.location = location;
+    }
+   
 
     try {
       const response = await axios.post(`${apiUrl}/api/createuser`, data);
@@ -97,6 +100,13 @@ export default function SignUp() {
     }
   };
 
+  const handleLocationChange = (e) => {
+    const userInput = e.target.value;
+    if (userInput !== '') {
+      setLocation(userInput); // Update the location state
+    }
+  };
+
   return (
     <div className='mt-3 min-h-[calc(100vh-208px)]'>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto px-2 py-6 rounded-md text-sm">
@@ -116,14 +126,14 @@ export default function SignUp() {
           {errors.name && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{errors.name.message}</p>}
         </div>
 
-        <div className="relative mb-1 flex items-center">
+    <div className="relative mb-1 flex items-center">
           <div className="flex-1 relative">
             <input
               type="text"
               name="location"
               id="location"
-              value={location} // Controlled input value
-              onChange={(e) => setLocation(e.target.value)} // Allow user to edit the value
+              onChange={handleLocationChange}
+              // onChange={(e) => setLocation(e.target.value)} // Allow user to edit the value
               {...register("location", { required: "Location is required" })}
               className="block w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent peer"
               placeholder=" "
@@ -142,7 +152,8 @@ export default function SignUp() {
           >
             My Location
           </button>
-        </div>
+        </div> 
+   
         <div className='mb-7 text-primary'>
           {!locationError && !errors.location && <div>We only deliver orders inside Dhaka city</div>}
           {locationError && <p className="font-medium tracking-wide text-red-500 text-xs mt-1.5">{locationError}</p>}
