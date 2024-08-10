@@ -35,7 +35,7 @@ useEffect(() => {
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching orders:', error);
-                setError('Failed to fetch orders');
+                setError('No orders found.');
                 setLoading(false);
             }
         };
@@ -45,14 +45,13 @@ useEffect(() => {
     }
 }, [email]);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
-    if (!orders)  return (
-        <div  className='min-h-[calc(100vh-268px)]
-        flex items-center justify-center'>
-          <h1 className='text-red-600 text-lg '>You haven't placed any orders yet!</h1>
+    //if (loading) return <div className='min-h-[calc(100vh-268px)] flex items-center justify-center'>Loading...</div>;
+    if (error) return <div className='min-h-[calc(100vh-268px)] flex items-center justify-center'>{error}</div>;
+    if (orders.length === 0 || loading)  return (
+        <div className='min-h-[calc(100vh-268px)] flex items-center justify-center'>
+          <h1 className=''>Loading...</h1>
         </div>
-      );
+    );
     
 
     return (

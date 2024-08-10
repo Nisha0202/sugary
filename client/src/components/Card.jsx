@@ -48,8 +48,8 @@ const Card = ({ cupcake }) => {
     const isRecent = (dateString) => {
         const dateParts = dateString.split(' ')[0].split('/').map(Number);
         const dateTime = new Date(dateParts[2], dateParts[0] - 1, dateParts[1]);
-        const oneMonthAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-        return dateTime < oneMonthAgo;
+        const sevenMonthsAgo = new Date(Date.now() - 210 * 24 * 60 * 60 * 1000); // 210 days = approximately 7 months
+        return dateTime > sevenMonthsAgo;
     };
 
 
@@ -62,9 +62,9 @@ const Card = ({ cupcake }) => {
             navigate('/login');
             return; // Ensure no further code is executed
         }
-    
+
         const existingItemIndex = cart.findIndex(item => item.id === cupcake._id && item.size === boxSize);
-    
+
         if (existingItemIndex !== -1) {
             // Item exists in cart with the same size
             await dispatch({
@@ -75,6 +75,9 @@ const Card = ({ cupcake }) => {
             });
             console.log("Item updated in cart.");
             setSuccess("Item updated in cart");
+            setTimeout(() => {
+                setSuccess(null);
+            }, 1000);
 
         } else {
             // Item does not exist in cart or size is different
@@ -90,8 +93,20 @@ const Card = ({ cupcake }) => {
             console.log("Item added to cart");
             setSuccess("Item added to cart");
         }
+
+        // Clear success message after 2 seconds
+        const timeoutId = setTimeout(() => {
+            setSuccess(null);
+        }, 3000);
+
+        // Clear the timeout if the component unmounts
+        return () => clearTimeout(timeoutId);
+
+
+
+
     };
-    
+
 
     if (!cupcake) {
         return <div className='grid place-items-center my-4 text-xl font-semibold'>No menu item to show!</div>
@@ -181,7 +196,7 @@ const Card = ({ cupcake }) => {
                 </div>
 
             </div>
-            {success && <SuccessAlert className='' message={success}/>}
+            {success && <SuccessAlert className='' message={success} />}
         </div>
     );
 };
