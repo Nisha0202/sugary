@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
     port: 465,
     secure: true, 
     auth: {
-        user: '2020-3-60-066@std.ewubd.edu',
+        user: process.env.GMAIL,
         pass: process.env.GMAIL_API
     }
 });
