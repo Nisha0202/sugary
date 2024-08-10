@@ -53,7 +53,7 @@ To get started with the frontend:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/Nisha0202/sugary-frontend.git
+   git clone https://github.com/Nisha0202/sugary/tree/main/client
    cd sugary-frontend
    ```
 
@@ -77,7 +77,7 @@ To set up the backend:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/Nisha0202/sugary.git
+   git clone https://github.com/Nisha0202/sugary/tree/main/backend
    cd sugary-backend
    ```
 
