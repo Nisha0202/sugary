@@ -53,11 +53,10 @@ To get started with the frontend:
    cd client
    ```
 
-2. Install the necessary dependencies:
+2. Install NPM packagess:
 
-   ```bash
-   npm install react-slick slick-carousel
-   npm install react-awesome-reveal
+   ```
+   npm install
    ```
 
 3. Start the development server:
@@ -77,7 +76,7 @@ To set up the backend:
    cd backend
    ```
 
-2. Install the necessary dependencies:
+2. Install NPM packages
 
    ```
    npm install
