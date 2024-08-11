@@ -80,7 +80,7 @@ To set up the backend:
 2. Install the necessary dependencies:
 
    ```
-   npm install cors dotenv express nodemon mongoose express-validator jsonwebtoken bcrypt moment nodemailer
+   npm install
    ```
 
 3. Set up your environment variables in a `.env` file:
@@ -93,7 +93,7 @@ To set up the backend:
 4. Start the backend server:
 
    ```
-   npm run dev
+   nodemon .index.js
    ```
 
 ## Admin Access
