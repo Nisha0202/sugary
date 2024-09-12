@@ -1,5 +1,5 @@
 
-## website link - https://sugaryy.netlify.app/
+## website link - https://sugaryy.netlify.app
 
 ## Features
 ### Frontend
