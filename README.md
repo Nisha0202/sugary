@@ -62,7 +62,7 @@ To get started with the frontend:
 3. Start the development server:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
 ### Backend Installation
