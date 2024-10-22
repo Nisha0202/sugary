@@ -23,10 +23,10 @@
    - Search functionality for menu items.
    - Display menu item details.
    - Local storage support for persisting cart data.
-   - Location tracking for order deliveries.
+   - Easy location tracking for order deliveries.
 
 4. **UI Enhancements:**
-   - Input box styling with background color customization.
+   - Input box styling with theme color.
    - Responsive design with gap and justified content centered.
    - Modals for displaying additional information.
 
@@ -110,7 +110,6 @@ To set up the backend:
 - **Frontend**: React, React Router, Tailwind CSS
 - **Backend**: Node.js, Express.js, MongoDB, Mongoose
 - **Authentication**: JWT, bcrypt
-- **Payment Gateway**: Stripe
 - **Image Hosting**: ImgBB
 
 ## Usage
